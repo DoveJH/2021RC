@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "mv_driver")
 set(mv_driver_VERSION "0.0.0")
-set(mv_driver_MAINTAINER "dovejh <dovejh@todo.todo>")
+set(mv_driver_MAINTAINER "yzchen <yzchen@todo.todo>")
 set(mv_driver_PACKAGE_FORMAT "2")
 set(mv_driver_BUILD_DEPENDS )
 set(mv_driver_BUILD_EXPORT_DEPENDS )

@@ -1,0 +1,7 @@
+\subsubsection usage Usage
+\verbatim
+<node name="mv_driver_node" pkg="config" type="mv_driver_node">
+  <param name="exposure" type="int" value="30000" />
+</node>
+\endverbatim
+

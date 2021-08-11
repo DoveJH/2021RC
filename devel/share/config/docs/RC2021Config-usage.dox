@@ -1,0 +1,7 @@
+\subsubsection usage Usage
+\verbatim
+<node name="config_node" pkg="config" type="config_node">
+  <param name="exposure" type="int" value="30000" />
+</node>
+\endverbatim
+

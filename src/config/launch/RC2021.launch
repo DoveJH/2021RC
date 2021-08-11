@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="mv_driver" type="mv_driver_node" name="mv_driver_node" output="screen" respawn="true" />
+    <node pkg="config" type="config_node" name="config_node" output="screen" respawn="true" />
+    <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure" output="screen" respawn="true" />
+</launch>
