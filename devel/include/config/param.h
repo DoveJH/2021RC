@@ -24,17 +24,22 @@ struct param_
   typedef param_<ContainerAllocator> Type;
 
   param_()
-    : exposure(0)  {
+    : NMS_THRESH(0.0)
+    , CONF_THRESH(0.0)  {
     }
   param_(const ContainerAllocator& _alloc)
-    : exposure(0)  {
+    : NMS_THRESH(0.0)
+    , CONF_THRESH(0.0)  {
   (void)_alloc;
     }
 
 
 
-   typedef int32_t _exposure_type;
-  _exposure_type exposure;
+   typedef float _NMS_THRESH_type;
+  _NMS_THRESH_type NMS_THRESH;
+
+   typedef float _CONF_THRESH_type;
+  _CONF_THRESH_type CONF_THRESH;
 
 
 
@@ -65,7 +70,8 @@ return s;
 template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::config::param_<ContainerAllocator1> & lhs, const ::config::param_<ContainerAllocator2> & rhs)
 {
-  return lhs.exposure == rhs.exposure;
+  return lhs.NMS_THRESH == rhs.NMS_THRESH &&
+    lhs.CONF_THRESH == rhs.CONF_THRESH;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -122,12 +128,12 @@ struct MD5Sum< ::config::param_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "0535ed1a1204bb999d0e7bea8f6c3c81";
+    return "a0b1b6f3d3665bfdff09071fd56959d6";
   }
 
   static const char* value(const ::config::param_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x0535ed1a1204bb99ULL;
-  static const uint64_t static_value2 = 0x9d0e7bea8f6c3c81ULL;
+  static const uint64_t static_value1 = 0xa0b1b6f3d3665bfdULL;
+  static const uint64_t static_value2 = 0xff09071fd56959d6ULL;
 };
 
 template<class ContainerAllocator>
@@ -146,7 +152,8 @@ struct Definition< ::config::param_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "int32 exposure\n"
+    return "float32 NMS_THRESH\n"
+"float32 CONF_THRESH\n"
 ;
   }
 
@@ -165,7 +172,8 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
-      stream.next(m.exposure);
+      stream.next(m.NMS_THRESH);
+      stream.next(m.CONF_THRESH);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -184,8 +192,10 @@ struct Printer< ::config::param_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::config::param_<ContainerAllocator>& v)
   {
-    s << indent << "exposure: ";
-    Printer<int32_t>::stream(s, indent + "  ", v.exposure);
+    s << indent << "NMS_THRESH: ";
+    Printer<float>::stream(s, indent + "  ", v.NMS_THRESH);
+    s << indent << "CONF_THRESH: ";
+    Printer<float>::stream(s, indent + "  ", v.CONF_THRESH);
   }
 };
 

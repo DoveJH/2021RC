@@ -434,8 +434,6 @@ class_loader_DIR:PATH=/opt/ros/melodic/share/class_loader/cmake
 //Value Computed by CMake
 config_BINARY_DIR:STATIC=/home/dovejh/project/RC/RC2021/build/config
 
-config_DIR:PATH=
-
 //Value Computed by CMake
 config_SOURCE_DIR:STATIC=/home/dovejh/project/RC/RC2021/src/config
 

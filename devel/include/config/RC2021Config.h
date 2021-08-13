@@ -236,11 +236,13 @@ class DEFAULT
         boost::any val;
         (*_i)->getValue(config, val);
 
-        if("exposure"==(*_i)->name){exposure = boost::any_cast<int>(val);}
+        if("NMS_THRESH"==(*_i)->name){NMS_THRESH = boost::any_cast<double>(val);}
+        if("CONF_THRESH"==(*_i)->name){CONF_THRESH = boost::any_cast<double>(val);}
       }
     }
 
-    int exposure;
+    double NMS_THRESH;
+double CONF_THRESH;
 
     bool state;
     std::string name;
@@ -251,7 +253,9 @@ class DEFAULT
 
 
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      int exposure;
+      double NMS_THRESH;
+//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      double CONF_THRESH;
 //#line 228 "/opt/ros/melodic/share/dynamic_reconfigure/cmake/../templates/ConfigType.h.template"
 
     bool __fromMessage__(dynamic_reconfigure::Config &msg)
@@ -391,15 +395,25 @@ class DEFAULT
     {
 RC2021Config::GroupDescription<RC2021Config::DEFAULT, RC2021Config> Default("Default", "", 0, 0, true, &RC2021Config::groups);
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __min__.exposure = 1000;
+      __min__.NMS_THRESH = 0.1;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __max__.exposure = 100000;
+      __max__.NMS_THRESH = 1.0;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.exposure = 30000;
+      __default__.NMS_THRESH = 0.4;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("exposure", "int", 0, "Exposure time", "", &RC2021Config::exposure)));
+      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("NMS_THRESH", "double", 0, "The coverage ablve this will be ignored", "", &RC2021Config::NMS_THRESH)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("exposure", "int", 0, "Exposure time", "", &RC2021Config::exposure)));
+      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("NMS_THRESH", "double", 0, "The coverage ablve this will be ignored", "", &RC2021Config::NMS_THRESH)));
+//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __min__.CONF_THRESH = 0.1;
+//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __max__.CONF_THRESH = 1.0;
+//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __default__.CONF_THRESH = 0.25;
+//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("CONF_THRESH", "double", 0, "The confidence below this will be ignored", "", &RC2021Config::CONF_THRESH)));
+//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("CONF_THRESH", "double", 0, "The confidence below this will be ignored", "", &RC2021Config::CONF_THRESH)));
 //#line 246 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.convertParams();
 //#line 246 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"

@@ -1,1 +1,2 @@
-int32 exposure
+float32 NMS_THRESH
+float32 CONF_THRESH

@@ -7,11 +7,12 @@
 #include "utils.h"
 #include <opencv2/opencv.hpp>
 #include <sensor_msgs/Image.h>
+#include <config/param.h>
 
 #define USE_FP32  // set USE_INT8 or USE_FP16 or USE_FP32
 #define DEVICE 0  // GPU id
-#define NMS_THRESH 0.4
-#define CONF_THRESH 0.25
+float NMS_THRESH = 0.4;
+float CONF_THRESH = 0.7;
 
 // stuff we know about the network and the input/output blobs
 static const int INPUT_H = Yolo::INPUT_H;
@@ -37,7 +38,11 @@ void doInference(IExecutionContext& context, cudaStream_t& stream, void **buffer
     CUDA_CHECK(cudaMemcpyAsync(output, buffers[1], batchSize * OUTPUT_SIZE * sizeof(float), cudaMemcpyDeviceToHost, stream));
     cudaStreamSynchronize(stream);
 }
-
+void paramCallback(const config::param::ConstPtr& msg)
+{
+    NMS_THRESH = msg->NMS_THRESH;
+    CONF_THRESH = msg->CONF_THRESH;
+}
 int main(int argc, char** argv)
 {
     cudaSetDevice(DEVICE);
@@ -49,7 +54,7 @@ int main(int argc, char** argv)
     size_t size = 0;
     std::string engine_name;
     engine_name ="/home/dovejh/project/RC/RC2021/src/config/engine/yolov5s.engine";
-    //n.getParam("/engine_name", engine_name);
+    n.getParam("/engine_name", engine_name);
     std::ifstream file(engine_name, std::ios::binary);
     if(file.good())
     {
@@ -85,6 +90,7 @@ int main(int argc, char** argv)
     ROS_WARN("engine init done!");
 
     ros::Subscriber imageSub = n.subscribe("/MVCamera/image_raw", 1, &imageCallback);
+    ros::Subscriber paramSub = n.subscribe("/param", 1, &paramCallback);
     detectingPub = n.advertise<sensor_msgs::Image>("/detectingResult", 1);
     ros::Rate loop_rate(100);
     while(ros::ok())
@@ -134,6 +140,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
             cv::Rect r = get_rect(img, batch_res[j].bbox);
             cv::rectangle(img, r, cv::Scalar(0x27, 0xC1, 0x36), 2);
             cv::putText(img, std::to_string((int)batch_res[j].class_id + 1), cv::Point(r.x, r.y - 1), cv::FONT_HERSHEY_PLAIN, 1.2, cv::Scalar(0xFF, 0xFF, 0xFF), 2);
+
         }
     }
     sensor_msgs::ImagePtr detectingResult = cv_bridge::CvImage(std_msgs::Header(), "bgr8", img).toImageMsg();

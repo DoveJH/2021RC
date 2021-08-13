@@ -18,22 +18,31 @@ class param {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
-      this.exposure = null;
+      this.NMS_THRESH = null;
+      this.CONF_THRESH = null;
     }
     else {
-      if (initObj.hasOwnProperty('exposure')) {
-        this.exposure = initObj.exposure
+      if (initObj.hasOwnProperty('NMS_THRESH')) {
+        this.NMS_THRESH = initObj.NMS_THRESH
       }
       else {
-        this.exposure = 0;
+        this.NMS_THRESH = 0.0;
+      }
+      if (initObj.hasOwnProperty('CONF_THRESH')) {
+        this.CONF_THRESH = initObj.CONF_THRESH
+      }
+      else {
+        this.CONF_THRESH = 0.0;
       }
     }
   }
 
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type param
-    // Serialize message field [exposure]
-    bufferOffset = _serializer.int32(obj.exposure, buffer, bufferOffset);
+    // Serialize message field [NMS_THRESH]
+    bufferOffset = _serializer.float32(obj.NMS_THRESH, buffer, bufferOffset);
+    // Serialize message field [CONF_THRESH]
+    bufferOffset = _serializer.float32(obj.CONF_THRESH, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -41,13 +50,15 @@ class param {
     //deserializes a message object of type param
     let len;
     let data = new param(null);
-    // Deserialize message field [exposure]
-    data.exposure = _deserializer.int32(buffer, bufferOffset);
+    // Deserialize message field [NMS_THRESH]
+    data.NMS_THRESH = _deserializer.float32(buffer, bufferOffset);
+    // Deserialize message field [CONF_THRESH]
+    data.CONF_THRESH = _deserializer.float32(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 4;
+    return 8;
   }
 
   static datatype() {
@@ -57,13 +68,14 @@ class param {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '0535ed1a1204bb999d0e7bea8f6c3c81';
+    return 'a0b1b6f3d3665bfdff09071fd56959d6';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    int32 exposure
+    float32 NMS_THRESH
+    float32 CONF_THRESH
     
     `;
   }
@@ -74,11 +86,18 @@ class param {
       msg = {};
     }
     const resolved = new param(null);
-    if (msg.exposure !== undefined) {
-      resolved.exposure = msg.exposure;
+    if (msg.NMS_THRESH !== undefined) {
+      resolved.NMS_THRESH = msg.NMS_THRESH;
     }
     else {
-      resolved.exposure = 0
+      resolved.NMS_THRESH = 0.0
+    }
+
+    if (msg.CONF_THRESH !== undefined) {
+      resolved.CONF_THRESH = msg.CONF_THRESH;
+    }
+    else {
+      resolved.CONF_THRESH = 0.0
     }
 
     return resolved;

@@ -8,13 +8,14 @@ import struct
 
 
 class param(genpy.Message):
-  _md5sum = "0535ed1a1204bb999d0e7bea8f6c3c81"
+  _md5sum = "a0b1b6f3d3665bfdff09071fd56959d6"
   _type = "config/param"
   _has_header = False  # flag to mark the presence of a Header object
-  _full_text = """int32 exposure
+  _full_text = """float32 NMS_THRESH
+float32 CONF_THRESH
 """
-  __slots__ = ['exposure']
-  _slot_types = ['int32']
+  __slots__ = ['NMS_THRESH','CONF_THRESH']
+  _slot_types = ['float32','float32']
 
   def __init__(self, *args, **kwds):
     """
@@ -24,7 +25,7 @@ class param(genpy.Message):
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       exposure
+       NMS_THRESH,CONF_THRESH
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -33,10 +34,13 @@ class param(genpy.Message):
     if args or kwds:
       super(param, self).__init__(*args, **kwds)
       # message fields cannot be None, assign default values for those that are
-      if self.exposure is None:
-        self.exposure = 0
+      if self.NMS_THRESH is None:
+        self.NMS_THRESH = 0.
+      if self.CONF_THRESH is None:
+        self.CONF_THRESH = 0.
     else:
-      self.exposure = 0
+      self.NMS_THRESH = 0.
+      self.CONF_THRESH = 0.
 
   def _get_types(self):
     """
@@ -50,8 +54,8 @@ class param(genpy.Message):
     :param buff: buffer, ``StringIO``
     """
     try:
-      _x = self.exposure
-      buff.write(_get_struct_i().pack(_x))
+      _x = self
+      buff.write(_get_struct_2f().pack(_x.NMS_THRESH, _x.CONF_THRESH))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -64,9 +68,10 @@ class param(genpy.Message):
       codecs.lookup_error("rosmsg").msg_type = self._type
     try:
       end = 0
+      _x = self
       start = end
-      end += 4
-      (self.exposure,) = _get_struct_i().unpack(str[start:end])
+      end += 8
+      (_x.NMS_THRESH, _x.CONF_THRESH,) = _get_struct_2f().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -79,8 +84,8 @@ class param(genpy.Message):
     :param numpy: numpy python module
     """
     try:
-      _x = self.exposure
-      buff.write(_get_struct_i().pack(_x))
+      _x = self
+      buff.write(_get_struct_2f().pack(_x.NMS_THRESH, _x.CONF_THRESH))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -94,9 +99,10 @@ class param(genpy.Message):
       codecs.lookup_error("rosmsg").msg_type = self._type
     try:
       end = 0
+      _x = self
       start = end
-      end += 4
-      (self.exposure,) = _get_struct_i().unpack(str[start:end])
+      end += 8
+      (_x.NMS_THRESH, _x.CONF_THRESH,) = _get_struct_2f().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -105,9 +111,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_i = None
-def _get_struct_i():
-    global _struct_i
-    if _struct_i is None:
-        _struct_i = struct.Struct("<i")
-    return _struct_i
+_struct_2f = None
+def _get_struct_2f():
+    global _struct_2f
+    if _struct_2f is None:
+        _struct_2f = struct.Struct("<2f")
+    return _struct_2f

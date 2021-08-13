@@ -2,5 +2,6 @@
 
 Reads and maintains the following parameters on the ROS server
 
-- \b "~exposure" : \b [int] Exposure time min: 1000, default: 30000, max: 100000
+- \b "~NMS_THRESH" : \b [double] The coverage ablve this will be ignored min: 0.1, default: 0.4, max: 1.0
+- \b "~CONF_THRESH" : \b [double] The confidence below this will be ignored min: 0.1, default: 0.25, max: 1.0
 

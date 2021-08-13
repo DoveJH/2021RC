@@ -22,10 +22,19 @@ int main(int argc, char **argv)
 void dynamicCallback(config::RC2021Config &config, uint32_t level)
 {
     config::param param_msg;
-    param_msg.exposure = 30000;
-    if(param_msg.exposure != config.exposure)
+
+    param_msg.CONF_THRESH = 0.7;
+    if(param_msg.CONF_THRESH != config.CONF_THRESH)
     {
-        param_msg.exposure = config.exposure;
+        param_msg.CONF_THRESH = config.CONF_THRESH;
         param_pub.publish(param_msg);
     }
+
+    param_msg.NMS_THRESH = 0.4;
+    if(param_msg.NMS_THRESH != config.NMS_THRESH)
+    {
+        param_msg.NMS_THRESH = config.NMS_THRESH;
+        param_pub.publish(param_msg);
+    }
+   
 }

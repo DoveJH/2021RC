@@ -3,7 +3,6 @@
 
 config/CMakeFiles/config_node.dir/src/config_node.cpp.o
  /home/dovejh/project/RC/RC2021/devel/include/config/RC2021Config.h
- /home/dovejh/project/RC/RC2021/devel/include/config/param.h
  /home/dovejh/project/RC/RC2021/src/config/src/config_node.cpp
  /opt/ros/melodic/include/dynamic_reconfigure/BoolParameter.h
  /opt/ros/melodic/include/dynamic_reconfigure/Config.h
