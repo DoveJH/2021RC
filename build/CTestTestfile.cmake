@@ -7,3 +7,4 @@
 subdirs("gtest")
 subdirs("config")
 subdirs("mv_driver")
+subdirs("yolov5")

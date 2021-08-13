@@ -882,6 +882,58 @@ geometry_msgs_generate_messages_eus/fast:
 	$(MAKE) -f mv_driver/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make mv_driver/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
 .PHONY : geometry_msgs_generate_messages_eus/fast
 
+#=============================================================================
+# Target rules for targets named _yolov5_generate_messages_check_deps_result
+
+# Build rule for target.
+_yolov5_generate_messages_check_deps_result: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _yolov5_generate_messages_check_deps_result
+.PHONY : _yolov5_generate_messages_check_deps_result
+
+# fast build rule for target.
+_yolov5_generate_messages_check_deps_result/fast:
+	$(MAKE) -f yolov5/CMakeFiles/_yolov5_generate_messages_check_deps_result.dir/build.make yolov5/CMakeFiles/_yolov5_generate_messages_check_deps_result.dir/build
+.PHONY : _yolov5_generate_messages_check_deps_result/fast
+
+#=============================================================================
+# Target rules for targets named yolov5_generate_messages
+
+# Build rule for target.
+yolov5_generate_messages: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 yolov5_generate_messages
+.PHONY : yolov5_generate_messages
+
+# fast build rule for target.
+yolov5_generate_messages/fast:
+	$(MAKE) -f yolov5/CMakeFiles/yolov5_generate_messages.dir/build.make yolov5/CMakeFiles/yolov5_generate_messages.dir/build
+.PHONY : yolov5_generate_messages/fast
+
+#=============================================================================
+# Target rules for targets named myplugins
+
+# Build rule for target.
+myplugins: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 myplugins
+.PHONY : myplugins
+
+# fast build rule for target.
+myplugins/fast:
+	$(MAKE) -f yolov5/CMakeFiles/myplugins.dir/build.make yolov5/CMakeFiles/myplugins.dir/build
+.PHONY : myplugins/fast
+
+#=============================================================================
+# Target rules for targets named yolov5_node
+
+# Build rule for target.
+yolov5_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 yolov5_node
+.PHONY : yolov5_node
+
+# fast build rule for target.
+yolov5_node/fast:
+	$(MAKE) -f yolov5/CMakeFiles/yolov5_node.dir/build.make yolov5/CMakeFiles/yolov5_node.dir/build
+.PHONY : yolov5_node/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -950,6 +1002,10 @@ help:
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_nodejs"
 	@echo "... geometry_msgs_generate_messages_eus"
+	@echo "... _yolov5_generate_messages_check_deps_result"
+	@echo "... yolov5_generate_messages"
+	@echo "... myplugins"
+	@echo "... yolov5_node"
 .PHONY : help
 
 
