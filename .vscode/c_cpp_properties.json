@@ -8,8 +8,14 @@
       "includePath": [
         "/opt/ros/melodic/include/**",
         "/home/dovejh/project/RC/RC2021/src/mv_driver/include/**",
-        "/home/dovejh/project/RC/RC2021/devel/include",
-        "/usr/include/**"
+        "/home/dovejh/project/RC/RC2021/devel/include/**",
+        "/usr/include/**",
+        "/home/dovejh/project/RC/RC2021/src/yolov5/include/**",
+        "/usr/local/cuda/lib64/**",
+        "/home/dovejh/TensorRT-8.0.1.6.Linux.x86_64-gnu.cuda-10.2.cudnn8.2/TensorRT-8.0.1.6/include/**",
+        "/usr/include/x86_64-linux-gnu/**",
+        "/home/dovejh/TensorRT-8.0.1.6.Linux.x86_64-gnu.cuda-10.2.cudnn8.2/TensorRT-8.0.1.6/lib/**",
+        "/opt/ros/melodic/include/**"
       ],
       "name": "ROS"
     }
