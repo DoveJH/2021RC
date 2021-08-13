@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+/home/dovejh/project/RC/RC2021/src/image_deal/../../devel/include/config/param.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
 /home/dovejh/project/RC/RC2021/src/image_deal/../../devel/include/yolov5/result.h
 string
 -
@@ -32,6 +48,8 @@ opencv2/opencv.hpp
 cv_bridge/cv_bridge.h
 -
 sensor_msgs/Image.h
+-
+config/param.h
 -
 
 /opt/ros/melodic/include/cv_bridge/cv_bridge.h

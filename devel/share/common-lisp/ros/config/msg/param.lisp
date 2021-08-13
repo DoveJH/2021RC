@@ -36,7 +36,12 @@
     :reader k_mark
     :initarg :k_mark
     :type cl:integer
-    :initform 0))
+    :initform 0)
+   (if_shot
+    :reader if_shot
+    :initarg :if_shot
+    :type cl:boolean
+    :initform cl:nil))
 )
 
 (cl:defclass param (<param>)
@@ -76,6 +81,11 @@
 (cl:defmethod k_mark-val ((m <param>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader config-msg:k_mark-val is deprecated.  Use config-msg:k_mark instead.")
   (k_mark m))
+
+(cl:ensure-generic-function 'if_shot-val :lambda-list '(m))
+(cl:defmethod if_shot-val ((m <param>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader config-msg:if_shot-val is deprecated.  Use config-msg:if_shot instead.")
+  (if_shot m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <param>) ostream)
   "Serializes a message object of type '<param>"
   (cl:let ((bits (roslisp-utils:encode-single-float-bits (cl:slot-value msg 'NMS_THRESH))))
@@ -112,6 +122,7 @@
     (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
     )
+  (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:if (cl:slot-value msg 'if_shot) 1 0)) ostream)
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <param>) istream)
   "Deserializes a message object of type '<param>"
@@ -151,6 +162,7 @@
       (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
       (cl:setf (cl:slot-value msg 'k_mark) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296))))
+    (cl:setf (cl:slot-value msg 'if_shot) (cl:not (cl:zerop (cl:read-byte istream))))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<param>)))
@@ -161,16 +173,16 @@
   "config/param")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<param>)))
   "Returns md5sum for a message object of type '<param>"
-  "9364dee32f19eb394cddb06cd910fe87")
+  "c4f32d994079a3a9434ca3b64f8b4020")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'param)))
   "Returns md5sum for a message object of type 'param"
-  "9364dee32f19eb394cddb06cd910fe87")
+  "c4f32d994079a3a9434ca3b64f8b4020")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<param>)))
   "Returns full string definition for message of type '<param>"
-  (cl:format cl:nil "float32 NMS_THRESH~%float32 CONF_THRESH~%int32 k_volleyball~%int32 k_basketball~%int32 k_basket~%int32 k_mark~%~%"))
+  (cl:format cl:nil "float32 NMS_THRESH~%float32 CONF_THRESH~%int32 k_volleyball~%int32 k_basketball~%int32 k_basket~%int32 k_mark~%bool if_shot~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'param)))
   "Returns full string definition for message of type 'param"
-  (cl:format cl:nil "float32 NMS_THRESH~%float32 CONF_THRESH~%int32 k_volleyball~%int32 k_basketball~%int32 k_basket~%int32 k_mark~%~%"))
+  (cl:format cl:nil "float32 NMS_THRESH~%float32 CONF_THRESH~%int32 k_volleyball~%int32 k_basketball~%int32 k_basket~%int32 k_mark~%bool if_shot~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <param>))
   (cl:+ 0
      4
@@ -179,6 +191,7 @@
      4
      4
      4
+     1
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <param>))
   "Converts a ROS message object to a list"
@@ -189,4 +202,5 @@
     (cl:cons ':k_basketball (k_basketball msg))
     (cl:cons ':k_basket (k_basket msg))
     (cl:cons ':k_mark (k_mark msg))
+    (cl:cons ':if_shot (if_shot msg))
 ))

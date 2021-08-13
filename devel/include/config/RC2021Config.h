@@ -242,6 +242,7 @@ class DEFAULT
         if("k_basketball"==(*_i)->name){k_basketball = boost::any_cast<int>(val);}
         if("k_basket"==(*_i)->name){k_basket = boost::any_cast<int>(val);}
         if("k_mark"==(*_i)->name){k_mark = boost::any_cast<int>(val);}
+        if("if_shot"==(*_i)->name){if_shot = boost::any_cast<bool>(val);}
       }
     }
 
@@ -251,6 +252,7 @@ int k_volleyball;
 int k_basketball;
 int k_basket;
 int k_mark;
+bool if_shot;
 
     bool state;
     std::string name;
@@ -272,6 +274,8 @@ int k_mark;
       int k_basket;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       int k_mark;
+//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      bool if_shot;
 //#line 228 "/opt/ros/melodic/share/dynamic_reconfigure/cmake/../templates/ConfigType.h.template"
 
     bool __fromMessage__(dynamic_reconfigure::Config &msg)
@@ -470,6 +474,16 @@ RC2021Config::GroupDescription<RC2021Config::DEFAULT, RC2021Config> Default("Def
       Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_mark", "int", 0, "Related to the distance of mark", "", &RC2021Config::k_mark)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_mark", "int", 0, "Related to the distance of mark", "", &RC2021Config::k_mark)));
+//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __min__.if_shot = 0;
+//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __max__.if_shot = 1;
+//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __default__.if_shot = 0;
+//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<bool>("if_shot", "bool", 0, "If true press s to take a picture", "", &RC2021Config::if_shot)));
+//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<bool>("if_shot", "bool", 0, "If true press s to take a picture", "", &RC2021Config::if_shot)));
 //#line 246 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.convertParams();
 //#line 246 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"

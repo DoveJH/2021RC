@@ -7,6 +7,7 @@
   <param name="k_basketball" type="int" value="0" />
   <param name="k_basket" type="int" value="0" />
   <param name="k_mark" type="int" value="0" />
+  <param name="if_shot" type="bool" value="False" />
 </node>
 \endverbatim
 

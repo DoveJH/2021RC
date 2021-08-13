@@ -11,4 +11,6 @@
           K_BASKET
           K_MARK-VAL
           K_MARK
+          IF_SHOT-VAL
+          IF_SHOT
 ))

@@ -64,4 +64,11 @@ void dynamicCallback(config::RC2021Config &config, uint32_t level)
         param_msg.k_mark = config.k_mark;
         param_pub.publish(param_msg);
     }
+
+    param_msg.if_shot = 0;
+    if(param_msg.if_shot != config.if_shot)
+    {
+        param_msg.if_shot = config.if_shot;
+        param_pub.publish(param_msg);
+    }
 }

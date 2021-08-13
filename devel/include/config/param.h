@@ -29,7 +29,8 @@ struct param_
     , k_volleyball(0)
     , k_basketball(0)
     , k_basket(0)
-    , k_mark(0)  {
+    , k_mark(0)
+    , if_shot(false)  {
     }
   param_(const ContainerAllocator& _alloc)
     : NMS_THRESH(0.0)
@@ -37,7 +38,8 @@ struct param_
     , k_volleyball(0)
     , k_basketball(0)
     , k_basket(0)
-    , k_mark(0)  {
+    , k_mark(0)
+    , if_shot(false)  {
   (void)_alloc;
     }
 
@@ -60,6 +62,9 @@ struct param_
 
    typedef int32_t _k_mark_type;
   _k_mark_type k_mark;
+
+   typedef uint8_t _if_shot_type;
+  _if_shot_type if_shot;
 
 
 
@@ -95,7 +100,8 @@ bool operator==(const ::config::param_<ContainerAllocator1> & lhs, const ::confi
     lhs.k_volleyball == rhs.k_volleyball &&
     lhs.k_basketball == rhs.k_basketball &&
     lhs.k_basket == rhs.k_basket &&
-    lhs.k_mark == rhs.k_mark;
+    lhs.k_mark == rhs.k_mark &&
+    lhs.if_shot == rhs.if_shot;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -152,12 +158,12 @@ struct MD5Sum< ::config::param_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "9364dee32f19eb394cddb06cd910fe87";
+    return "c4f32d994079a3a9434ca3b64f8b4020";
   }
 
   static const char* value(const ::config::param_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x9364dee32f19eb39ULL;
-  static const uint64_t static_value2 = 0x4cddb06cd910fe87ULL;
+  static const uint64_t static_value1 = 0xc4f32d994079a3a9ULL;
+  static const uint64_t static_value2 = 0x434ca3b64f8b4020ULL;
 };
 
 template<class ContainerAllocator>
@@ -182,6 +188,7 @@ struct Definition< ::config::param_<ContainerAllocator> >
 "int32 k_basketball\n"
 "int32 k_basket\n"
 "int32 k_mark\n"
+"bool if_shot\n"
 ;
   }
 
@@ -206,6 +213,7 @@ namespace serialization
       stream.next(m.k_basketball);
       stream.next(m.k_basket);
       stream.next(m.k_mark);
+      stream.next(m.if_shot);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -236,6 +244,8 @@ struct Printer< ::config::param_<ContainerAllocator> >
     Printer<int32_t>::stream(s, indent + "  ", v.k_basket);
     s << indent << "k_mark: ";
     Printer<int32_t>::stream(s, indent + "  ", v.k_mark);
+    s << indent << "if_shot: ";
+    Printer<uint8_t>::stream(s, indent + "  ", v.if_shot);
   }
 };
 
