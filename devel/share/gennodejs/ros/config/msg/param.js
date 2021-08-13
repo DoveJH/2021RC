@@ -25,6 +25,7 @@ class param {
       this.k_basket = null;
       this.k_mark = null;
       this.if_shot = null;
+      this.if_show = null;
     }
     else {
       if (initObj.hasOwnProperty('NMS_THRESH')) {
@@ -69,6 +70,12 @@ class param {
       else {
         this.if_shot = false;
       }
+      if (initObj.hasOwnProperty('if_show')) {
+        this.if_show = initObj.if_show
+      }
+      else {
+        this.if_show = false;
+      }
     }
   }
 
@@ -88,6 +95,8 @@ class param {
     bufferOffset = _serializer.int32(obj.k_mark, buffer, bufferOffset);
     // Serialize message field [if_shot]
     bufferOffset = _serializer.bool(obj.if_shot, buffer, bufferOffset);
+    // Serialize message field [if_show]
+    bufferOffset = _serializer.bool(obj.if_show, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -109,11 +118,13 @@ class param {
     data.k_mark = _deserializer.int32(buffer, bufferOffset);
     // Deserialize message field [if_shot]
     data.if_shot = _deserializer.bool(buffer, bufferOffset);
+    // Deserialize message field [if_show]
+    data.if_show = _deserializer.bool(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 25;
+    return 26;
   }
 
   static datatype() {
@@ -123,7 +134,7 @@ class param {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'c4f32d994079a3a9434ca3b64f8b4020';
+    return '6d68603a995f522ff42920316e8f8368';
   }
 
   static messageDefinition() {
@@ -136,6 +147,7 @@ class param {
     int32 k_basket
     int32 k_mark
     bool if_shot
+    bool if_show
     `;
   }
 
@@ -192,6 +204,13 @@ class param {
     }
     else {
       resolved.if_shot = false
+    }
+
+    if (msg.if_show !== undefined) {
+      resolved.if_show = msg.if_show;
+    }
+    else {
+      resolved.if_show = false
     }
 
     return resolved;

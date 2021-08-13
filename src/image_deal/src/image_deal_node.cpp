@@ -26,6 +26,7 @@ void paramCallback(const config::param::ConstPtr& msg)
 {
     if_shot = msg->if_shot;
 }
+
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "image_deal_node");

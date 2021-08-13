@@ -13,4 +13,6 @@
           K_MARK
           IF_SHOT-VAL
           IF_SHOT
+          IF_SHOW-VAL
+          IF_SHOW
 ))

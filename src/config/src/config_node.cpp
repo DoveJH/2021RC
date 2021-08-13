@@ -71,4 +71,11 @@ void dynamicCallback(config::RC2021Config &config, uint32_t level)
         param_msg.if_shot = config.if_shot;
         param_pub.publish(param_msg);
     }
+
+    param_msg.if_show = 1;
+    if(param_msg.if_show != config.if_show)
+    {
+        param_msg.if_show = config.if_show;
+        param_pub.publish(param_msg);
+    }
 }

@@ -9,4 +9,5 @@ Reads and maintains the following parameters on the ROS server
 - \b "~k_basket" : \b [int] Related to the distance of basket min: -2147483648, default: 0, max: 2147483647
 - \b "~k_mark" : \b [int] Related to the distance of mark min: -2147483648, default: 0, max: 2147483647
 - \b "~if_shot" : \b [bool] If true press s to take a picture min: False, default: False, max: True
+- \b "~if_show" : \b [bool] If true press s to take a picture min: False, default: True, max: True
 

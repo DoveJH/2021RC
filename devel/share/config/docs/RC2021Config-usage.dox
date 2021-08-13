@@ -8,6 +8,7 @@
   <param name="k_basket" type="int" value="0" />
   <param name="k_mark" type="int" value="0" />
   <param name="if_shot" type="bool" value="False" />
+  <param name="if_show" type="bool" value="True" />
 </node>
 \endverbatim
 

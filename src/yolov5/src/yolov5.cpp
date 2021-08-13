@@ -34,6 +34,7 @@ int k_volleyball = 0;
 int k_basketball = 0;
 int k_basket = 0;
 int k_mark = 0;
+bool if_show = true;
 void doInference(IExecutionContext& context, cudaStream_t& stream, void **buffers, float* input, float* output, int batchSize) {
     // DMA input batch data to device, infer on the batch asynchronously, and DMA output back to host
     CUDA_CHECK(cudaMemcpyAsync(buffers[0], input, batchSize * 3 * INPUT_H * INPUT_W * sizeof(float), cudaMemcpyHostToDevice, stream));
@@ -49,6 +50,7 @@ void paramCallback(const config::param::ConstPtr& msg)
     k_basketball = msg->k_basketball;
     k_volleyball = msg->k_volleyball;
     k_mark = msg->k_mark;
+    if_show = msg->if_show;
 }
 int main(int argc, char** argv)
 {
@@ -143,17 +145,20 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
     doInference(*context, stream, buffers, data, prob, 1);
     std::vector<Yolo::Detection> batch_res;
     nms(batch_res, &prob[0], CONF_THRESH, NMS_THRESH);
-    for (int b = 0; b < batch_res.size(); b++) 
+    if(if_show)
     {
-        auto& res = batch_res[b];
-        for (size_t j = 0; j < batch_res.size(); j++) 
+        for (int b = 0; b < batch_res.size(); b++) 
         {
-            cv::Rect r = get_rect(img, batch_res[j].bbox);
-            cv::rectangle(img, r, cv::Scalar(0x27, 0xC1, 0x36), 2);
-            cv::putText(img, std::to_string((int)batch_res[j].class_id + 1), cv::Point(r.x, r.y - 1), cv::FONT_HERSHEY_PLAIN, 1.2, cv::Scalar(0xFF, 0xFF, 0xFF), 2);
-            cv::putText(img, std::to_string(batch_res[j].conf), cvPoint(r.x, r.y - 15), cv::FONT_HERSHEY_PLAIN, 1.2, cv::Scalar(0xFF, 0xFF, 0xFF), 2);
+            auto& res = batch_res[b];
+            for (size_t j = 0; j < batch_res.size(); j++) 
+            {
+                cv::Rect r = get_rect(img, batch_res[j].bbox);
+                cv::rectangle(img, r, cv::Scalar(0x27, 0xC1, 0x36), 2);
+                cv::putText(img, std::to_string((int)batch_res[j].class_id + 1), cv::Point(r.x, r.y - 1), cv::FONT_HERSHEY_PLAIN, 1.2, cv::Scalar(0xFF, 0xFF, 0xFF), 2);
+                cv::putText(img, std::to_string(batch_res[j].conf), cvPoint(r.x, r.y - 15), cv::FONT_HERSHEY_PLAIN, 1.2, cv::Scalar(0xFF, 0xFF, 0xFF), 2);
+            }
         }
+        sensor_msgs::ImagePtr detectingResult = cv_bridge::CvImage(std_msgs::Header(), "bgr8", img).toImageMsg();
+        detectingPub.publish(detectingResult);
     }
-    sensor_msgs::ImagePtr detectingResult = cv_bridge::CvImage(std_msgs::Header(), "bgr8", img).toImageMsg();
-    detectingPub.publish(detectingResult);
 }

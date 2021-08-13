@@ -14,7 +14,7 @@
 
 (defclass config::param
   :super ros::object
-  :slots (_NMS_THRESH _CONF_THRESH _k_volleyball _k_basketball _k_basket _k_mark _if_shot ))
+  :slots (_NMS_THRESH _CONF_THRESH _k_volleyball _k_basketball _k_basket _k_mark _if_shot _if_show ))
 
 (defmethod config::param
   (:init
@@ -26,6 +26,7 @@
     ((:k_basket __k_basket) 0)
     ((:k_mark __k_mark) 0)
     ((:if_shot __if_shot) nil)
+    ((:if_show __if_show) nil)
     )
    (send-super :init)
    (setq _NMS_THRESH (float __NMS_THRESH))
@@ -35,6 +36,7 @@
    (setq _k_basket (round __k_basket))
    (setq _k_mark (round __k_mark))
    (setq _if_shot __if_shot)
+   (setq _if_show __if_show)
    self)
   (:NMS_THRESH
    (&optional __NMS_THRESH)
@@ -57,6 +59,9 @@
   (:if_shot
    (&optional __if_shot)
    (if __if_shot (setq _if_shot __if_shot)) _if_shot)
+  (:if_show
+   (&optional __if_show)
+   (if __if_show (setq _if_show __if_show)) _if_show)
   (:serialization-length
    ()
    (+
@@ -73,6 +78,8 @@
     ;; int32 _k_mark
     4
     ;; bool _if_shot
+    1
+    ;; bool _if_show
     1
     ))
   (:serialize
@@ -93,6 +100,8 @@
        (write-long _k_mark s)
      ;; bool _if_shot
        (if _if_shot (write-byte -1 s) (write-byte 0 s))
+     ;; bool _if_show
+       (if _if_show (write-byte -1 s) (write-byte 0 s))
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -111,11 +120,13 @@
      (setq _k_mark (sys::peek buf ptr- :integer)) (incf ptr- 4)
    ;; bool _if_shot
      (setq _if_shot (not (= 0 (sys::peek buf ptr- :char)))) (incf ptr- 1)
+   ;; bool _if_show
+     (setq _if_show (not (= 0 (sys::peek buf ptr- :char)))) (incf ptr- 1)
    ;;
    self)
   )
 
-(setf (get config::param :md5sum-) "c4f32d994079a3a9434ca3b64f8b4020")
+(setf (get config::param :md5sum-) "6d68603a995f522ff42920316e8f8368")
 (setf (get config::param :datatype-) "config/param")
 (setf (get config::param :definition-)
       "float32 NMS_THRESH
@@ -125,10 +136,11 @@ int32 k_basketball
 int32 k_basket
 int32 k_mark
 bool if_shot
+bool if_show
 ")
 
 
 
-(provide :config/param "c4f32d994079a3a9434ca3b64f8b4020")
+(provide :config/param "6d68603a995f522ff42920316e8f8368")
 
 
