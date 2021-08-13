@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/dovejh/project/RC/RC2021/build
 include yolov5/CMakeFiles/_yolov5_generate_messages_check_deps_result.dir/progress.make
 
 yolov5/CMakeFiles/_yolov5_generate_messages_check_deps_result:
-	cd /home/dovejh/project/RC/RC2021/build/yolov5 && ../catkin_generated/env_cached.sh /usr/bin/python2 yolov5 /home/dovejh/project/RC/RC2021/src/yolov5/msg/result.msg 
+	cd /home/dovejh/project/RC/RC2021/build/yolov5 && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py yolov5 /home/dovejh/project/RC/RC2021/src/yolov5/msg/result.msg 
 
 _yolov5_generate_messages_check_deps_result: yolov5/CMakeFiles/_yolov5_generate_messages_check_deps_result
 _yolov5_generate_messages_check_deps_result: yolov5/CMakeFiles/_yolov5_generate_messages_check_deps_result.dir/build.make

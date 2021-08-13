@@ -1,0 +1,8 @@
+prefix=/home/dovejh/project/RC/RC2021/devel
+
+Name: image_deal
+Description: Description of image_deal
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

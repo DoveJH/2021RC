@@ -16,7 +16,27 @@
     :reader CONF_THRESH
     :initarg :CONF_THRESH
     :type cl:float
-    :initform 0.0))
+    :initform 0.0)
+   (k_volleyball
+    :reader k_volleyball
+    :initarg :k_volleyball
+    :type cl:integer
+    :initform 0)
+   (k_basketball
+    :reader k_basketball
+    :initarg :k_basketball
+    :type cl:integer
+    :initform 0)
+   (k_basket
+    :reader k_basket
+    :initarg :k_basket
+    :type cl:integer
+    :initform 0)
+   (k_mark
+    :reader k_mark
+    :initarg :k_mark
+    :type cl:integer
+    :initform 0))
 )
 
 (cl:defclass param (<param>)
@@ -36,6 +56,26 @@
 (cl:defmethod CONF_THRESH-val ((m <param>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader config-msg:CONF_THRESH-val is deprecated.  Use config-msg:CONF_THRESH instead.")
   (CONF_THRESH m))
+
+(cl:ensure-generic-function 'k_volleyball-val :lambda-list '(m))
+(cl:defmethod k_volleyball-val ((m <param>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader config-msg:k_volleyball-val is deprecated.  Use config-msg:k_volleyball instead.")
+  (k_volleyball m))
+
+(cl:ensure-generic-function 'k_basketball-val :lambda-list '(m))
+(cl:defmethod k_basketball-val ((m <param>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader config-msg:k_basketball-val is deprecated.  Use config-msg:k_basketball instead.")
+  (k_basketball m))
+
+(cl:ensure-generic-function 'k_basket-val :lambda-list '(m))
+(cl:defmethod k_basket-val ((m <param>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader config-msg:k_basket-val is deprecated.  Use config-msg:k_basket instead.")
+  (k_basket m))
+
+(cl:ensure-generic-function 'k_mark-val :lambda-list '(m))
+(cl:defmethod k_mark-val ((m <param>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader config-msg:k_mark-val is deprecated.  Use config-msg:k_mark instead.")
+  (k_mark m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <param>) ostream)
   "Serializes a message object of type '<param>"
   (cl:let ((bits (roslisp-utils:encode-single-float-bits (cl:slot-value msg 'NMS_THRESH))))
@@ -48,6 +88,30 @@
     (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream))
+  (cl:let* ((signed (cl:slot-value msg 'k_volleyball)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
+    )
+  (cl:let* ((signed (cl:slot-value msg 'k_basketball)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
+    )
+  (cl:let* ((signed (cl:slot-value msg 'k_basket)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
+    )
+  (cl:let* ((signed (cl:slot-value msg 'k_mark)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
+    )
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <param>) istream)
   "Deserializes a message object of type '<param>"
@@ -63,6 +127,30 @@
       (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
     (cl:setf (cl:slot-value msg 'CONF_THRESH) (roslisp-utils:decode-single-float-bits bits)))
+    (cl:let ((unsigned 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'k_volleyball) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296))))
+    (cl:let ((unsigned 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'k_basketball) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296))))
+    (cl:let ((unsigned 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'k_basket) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296))))
+    (cl:let ((unsigned 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'k_mark) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296))))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<param>)))
@@ -73,18 +161,22 @@
   "config/param")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<param>)))
   "Returns md5sum for a message object of type '<param>"
-  "a0b1b6f3d3665bfdff09071fd56959d6")
+  "9364dee32f19eb394cddb06cd910fe87")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'param)))
   "Returns md5sum for a message object of type 'param"
-  "a0b1b6f3d3665bfdff09071fd56959d6")
+  "9364dee32f19eb394cddb06cd910fe87")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<param>)))
   "Returns full string definition for message of type '<param>"
-  (cl:format cl:nil "float32 NMS_THRESH~%float32 CONF_THRESH~%~%~%"))
+  (cl:format cl:nil "float32 NMS_THRESH~%float32 CONF_THRESH~%int32 k_volleyball~%int32 k_basketball~%int32 k_basket~%int32 k_mark~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'param)))
   "Returns full string definition for message of type 'param"
-  (cl:format cl:nil "float32 NMS_THRESH~%float32 CONF_THRESH~%~%~%"))
+  (cl:format cl:nil "float32 NMS_THRESH~%float32 CONF_THRESH~%int32 k_volleyball~%int32 k_basketball~%int32 k_basket~%int32 k_mark~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <param>))
   (cl:+ 0
+     4
+     4
+     4
+     4
      4
      4
 ))
@@ -93,4 +185,8 @@
   (cl:list 'param
     (cl:cons ':NMS_THRESH (NMS_THRESH msg))
     (cl:cons ':CONF_THRESH (CONF_THRESH msg))
+    (cl:cons ':k_volleyball (k_volleyball msg))
+    (cl:cons ':k_basketball (k_basketball msg))
+    (cl:cons ':k_basket (k_basket msg))
+    (cl:cons ':k_mark (k_mark msg))
 ))

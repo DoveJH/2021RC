@@ -3,5 +3,6 @@
     <rosparam file="$(find config)/cfg/RC2021.yaml" command="load" />
     <node pkg="mv_driver" type="mv_driver_node" name="mv_driver_node" output="screen" respawn="true" />
     <node pkg="yolov5" type="yolov5_node" name="yolov5_node" output="screen" respawn="true" />
+    <node pkg="image_deal" type="image_deal_node" name="image_deal_node" output="screen" respawn="false" />
     <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure" output="screen" respawn="true" />
 </launch>

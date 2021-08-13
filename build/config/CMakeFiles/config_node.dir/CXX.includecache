@@ -24,6 +24,22 @@ dynamic_reconfigure/config_init_mutex.h
 boost/any.hpp
 -
 
+/home/dovejh/project/RC/RC2021/devel/include/config/param.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
 /home/dovejh/project/RC/RC2021/src/config/src/config_node.cpp
 ros/ros.h
 -

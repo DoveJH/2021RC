@@ -8,14 +8,17 @@ import struct
 
 
 class param(genpy.Message):
-  _md5sum = "a0b1b6f3d3665bfdff09071fd56959d6"
+  _md5sum = "9364dee32f19eb394cddb06cd910fe87"
   _type = "config/param"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """float32 NMS_THRESH
 float32 CONF_THRESH
-"""
-  __slots__ = ['NMS_THRESH','CONF_THRESH']
-  _slot_types = ['float32','float32']
+int32 k_volleyball
+int32 k_basketball
+int32 k_basket
+int32 k_mark"""
+  __slots__ = ['NMS_THRESH','CONF_THRESH','k_volleyball','k_basketball','k_basket','k_mark']
+  _slot_types = ['float32','float32','int32','int32','int32','int32']
 
   def __init__(self, *args, **kwds):
     """
@@ -25,7 +28,7 @@ float32 CONF_THRESH
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       NMS_THRESH,CONF_THRESH
+       NMS_THRESH,CONF_THRESH,k_volleyball,k_basketball,k_basket,k_mark
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -38,9 +41,21 @@ float32 CONF_THRESH
         self.NMS_THRESH = 0.
       if self.CONF_THRESH is None:
         self.CONF_THRESH = 0.
+      if self.k_volleyball is None:
+        self.k_volleyball = 0
+      if self.k_basketball is None:
+        self.k_basketball = 0
+      if self.k_basket is None:
+        self.k_basket = 0
+      if self.k_mark is None:
+        self.k_mark = 0
     else:
       self.NMS_THRESH = 0.
       self.CONF_THRESH = 0.
+      self.k_volleyball = 0
+      self.k_basketball = 0
+      self.k_basket = 0
+      self.k_mark = 0
 
   def _get_types(self):
     """
@@ -55,7 +70,7 @@ float32 CONF_THRESH
     """
     try:
       _x = self
-      buff.write(_get_struct_2f().pack(_x.NMS_THRESH, _x.CONF_THRESH))
+      buff.write(_get_struct_2f4i().pack(_x.NMS_THRESH, _x.CONF_THRESH, _x.k_volleyball, _x.k_basketball, _x.k_basket, _x.k_mark))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -70,8 +85,8 @@ float32 CONF_THRESH
       end = 0
       _x = self
       start = end
-      end += 8
-      (_x.NMS_THRESH, _x.CONF_THRESH,) = _get_struct_2f().unpack(str[start:end])
+      end += 24
+      (_x.NMS_THRESH, _x.CONF_THRESH, _x.k_volleyball, _x.k_basketball, _x.k_basket, _x.k_mark,) = _get_struct_2f4i().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -85,7 +100,7 @@ float32 CONF_THRESH
     """
     try:
       _x = self
-      buff.write(_get_struct_2f().pack(_x.NMS_THRESH, _x.CONF_THRESH))
+      buff.write(_get_struct_2f4i().pack(_x.NMS_THRESH, _x.CONF_THRESH, _x.k_volleyball, _x.k_basketball, _x.k_basket, _x.k_mark))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -101,8 +116,8 @@ float32 CONF_THRESH
       end = 0
       _x = self
       start = end
-      end += 8
-      (_x.NMS_THRESH, _x.CONF_THRESH,) = _get_struct_2f().unpack(str[start:end])
+      end += 24
+      (_x.NMS_THRESH, _x.CONF_THRESH, _x.k_volleyball, _x.k_basketball, _x.k_basket, _x.k_mark,) = _get_struct_2f4i().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -111,9 +126,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_2f = None
-def _get_struct_2f():
-    global _struct_2f
-    if _struct_2f is None:
-        _struct_2f = struct.Struct("<2f")
-    return _struct_2f
+_struct_2f4i = None
+def _get_struct_2f4i():
+    global _struct_2f4i
+    if _struct_2f4i is None:
+        _struct_2f4i = struct.Struct("<2f4i")
+    return _struct_2f4i

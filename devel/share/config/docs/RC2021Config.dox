@@ -3,5 +3,9 @@
 Reads and maintains the following parameters on the ROS server
 
 - \b "~NMS_THRESH" : \b [double] The coverage ablve this will be ignored min: 0.1, default: 0.4, max: 1.0
-- \b "~CONF_THRESH" : \b [double] The confidence below this will be ignored min: 0.1, default: 0.25, max: 1.0
+- \b "~CONF_THRESH" : \b [double] The confidence below this will be ignored min: 0.1, default: 0.7, max: 1.0
+- \b "~k_volleyball" : \b [int] Related to the distance of volleyball min: -2147483648, default: 0, max: 2147483647
+- \b "~k_basketball" : \b [int] Related to the distance of basketball min: -2147483648, default: 0, max: 2147483647
+- \b "~k_basket" : \b [int] Related to the distance of basket min: -2147483648, default: 0, max: 2147483647
+- \b "~k_mark" : \b [int] Related to the distance of mark min: -2147483648, default: 0, max: 2147483647
 

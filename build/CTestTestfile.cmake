@@ -5,6 +5,7 @@
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
+subdirs("image_deal")
 subdirs("config")
 subdirs("mv_driver")
 subdirs("yolov5")

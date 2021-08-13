@@ -56,18 +56,6 @@ CMAKE_BINARY_DIR = /home/dovejh/project/RC/RC2021/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -101,16 +89,17 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
 
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -134,6 +123,17 @@ test:
 test/fast: test
 
 .PHONY : test/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,19 +168,64 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-yolov5/CMakeFiles/_yolov5_generate_messages_check_deps_result.dir/rule:
-	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5/CMakeFiles/_yolov5_generate_messages_check_deps_result.dir/rule
-.PHONY : yolov5/CMakeFiles/_yolov5_generate_messages_check_deps_result.dir/rule
+yolov5/CMakeFiles/yolov5_gencpp.dir/rule:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5/CMakeFiles/yolov5_gencpp.dir/rule
+.PHONY : yolov5/CMakeFiles/yolov5_gencpp.dir/rule
 
 # Convenience name for target.
-_yolov5_generate_messages_check_deps_result: yolov5/CMakeFiles/_yolov5_generate_messages_check_deps_result.dir/rule
+yolov5_gencpp: yolov5/CMakeFiles/yolov5_gencpp.dir/rule
 
-.PHONY : _yolov5_generate_messages_check_deps_result
+.PHONY : yolov5_gencpp
 
 # fast build rule for target.
-_yolov5_generate_messages_check_deps_result/fast:
-	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f yolov5/CMakeFiles/_yolov5_generate_messages_check_deps_result.dir/build.make yolov5/CMakeFiles/_yolov5_generate_messages_check_deps_result.dir/build
-.PHONY : _yolov5_generate_messages_check_deps_result/fast
+yolov5_gencpp/fast:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f yolov5/CMakeFiles/yolov5_gencpp.dir/build.make yolov5/CMakeFiles/yolov5_gencpp.dir/build
+.PHONY : yolov5_gencpp/fast
+
+# Convenience name for target.
+yolov5/CMakeFiles/yolov5_generate_messages_cpp.dir/rule:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5/CMakeFiles/yolov5_generate_messages_cpp.dir/rule
+.PHONY : yolov5/CMakeFiles/yolov5_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+yolov5_generate_messages_cpp: yolov5/CMakeFiles/yolov5_generate_messages_cpp.dir/rule
+
+.PHONY : yolov5_generate_messages_cpp
+
+# fast build rule for target.
+yolov5_generate_messages_cpp/fast:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f yolov5/CMakeFiles/yolov5_generate_messages_cpp.dir/build.make yolov5/CMakeFiles/yolov5_generate_messages_cpp.dir/build
+.PHONY : yolov5_generate_messages_cpp/fast
+
+# Convenience name for target.
+yolov5/CMakeFiles/yolov5_geneus.dir/rule:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5/CMakeFiles/yolov5_geneus.dir/rule
+.PHONY : yolov5/CMakeFiles/yolov5_geneus.dir/rule
+
+# Convenience name for target.
+yolov5_geneus: yolov5/CMakeFiles/yolov5_geneus.dir/rule
+
+.PHONY : yolov5_geneus
+
+# fast build rule for target.
+yolov5_geneus/fast:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f yolov5/CMakeFiles/yolov5_geneus.dir/build.make yolov5/CMakeFiles/yolov5_geneus.dir/build
+.PHONY : yolov5_geneus/fast
+
+# Convenience name for target.
+yolov5/CMakeFiles/yolov5_generate_messages_eus.dir/rule:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5/CMakeFiles/yolov5_generate_messages_eus.dir/rule
+.PHONY : yolov5/CMakeFiles/yolov5_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+yolov5_generate_messages_eus: yolov5/CMakeFiles/yolov5_generate_messages_eus.dir/rule
+
+.PHONY : yolov5_generate_messages_eus
+
+# fast build rule for target.
+yolov5_generate_messages_eus/fast:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f yolov5/CMakeFiles/yolov5_generate_messages_eus.dir/build.make yolov5/CMakeFiles/yolov5_generate_messages_eus.dir/build
+.PHONY : yolov5_generate_messages_eus/fast
 
 # Convenience name for target.
 yolov5/CMakeFiles/yolov5_generate_messages.dir/rule:
@@ -198,19 +243,64 @@ yolov5_generate_messages/fast:
 .PHONY : yolov5_generate_messages/fast
 
 # Convenience name for target.
-yolov5/CMakeFiles/myplugins.dir/rule:
-	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5/CMakeFiles/myplugins.dir/rule
-.PHONY : yolov5/CMakeFiles/myplugins.dir/rule
+yolov5/CMakeFiles/_yolov5_generate_messages_check_deps_result.dir/rule:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5/CMakeFiles/_yolov5_generate_messages_check_deps_result.dir/rule
+.PHONY : yolov5/CMakeFiles/_yolov5_generate_messages_check_deps_result.dir/rule
 
 # Convenience name for target.
-myplugins: yolov5/CMakeFiles/myplugins.dir/rule
+_yolov5_generate_messages_check_deps_result: yolov5/CMakeFiles/_yolov5_generate_messages_check_deps_result.dir/rule
 
-.PHONY : myplugins
+.PHONY : _yolov5_generate_messages_check_deps_result
 
 # fast build rule for target.
-myplugins/fast:
-	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f yolov5/CMakeFiles/myplugins.dir/build.make yolov5/CMakeFiles/myplugins.dir/build
-.PHONY : myplugins/fast
+_yolov5_generate_messages_check_deps_result/fast:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f yolov5/CMakeFiles/_yolov5_generate_messages_check_deps_result.dir/build.make yolov5/CMakeFiles/_yolov5_generate_messages_check_deps_result.dir/build
+.PHONY : _yolov5_generate_messages_check_deps_result/fast
+
+# Convenience name for target.
+yolov5/CMakeFiles/yolov5_generate_messages_lisp.dir/rule:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5/CMakeFiles/yolov5_generate_messages_lisp.dir/rule
+.PHONY : yolov5/CMakeFiles/yolov5_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+yolov5_generate_messages_lisp: yolov5/CMakeFiles/yolov5_generate_messages_lisp.dir/rule
+
+.PHONY : yolov5_generate_messages_lisp
+
+# fast build rule for target.
+yolov5_generate_messages_lisp/fast:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f yolov5/CMakeFiles/yolov5_generate_messages_lisp.dir/build.make yolov5/CMakeFiles/yolov5_generate_messages_lisp.dir/build
+.PHONY : yolov5_generate_messages_lisp/fast
+
+# Convenience name for target.
+yolov5/CMakeFiles/yolov5_genlisp.dir/rule:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5/CMakeFiles/yolov5_genlisp.dir/rule
+.PHONY : yolov5/CMakeFiles/yolov5_genlisp.dir/rule
+
+# Convenience name for target.
+yolov5_genlisp: yolov5/CMakeFiles/yolov5_genlisp.dir/rule
+
+.PHONY : yolov5_genlisp
+
+# fast build rule for target.
+yolov5_genlisp/fast:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f yolov5/CMakeFiles/yolov5_genlisp.dir/build.make yolov5/CMakeFiles/yolov5_genlisp.dir/build
+.PHONY : yolov5_genlisp/fast
+
+# Convenience name for target.
+yolov5/CMakeFiles/yolov5_gennodejs.dir/rule:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5/CMakeFiles/yolov5_gennodejs.dir/rule
+.PHONY : yolov5/CMakeFiles/yolov5_gennodejs.dir/rule
+
+# Convenience name for target.
+yolov5_gennodejs: yolov5/CMakeFiles/yolov5_gennodejs.dir/rule
+
+.PHONY : yolov5_gennodejs
+
+# fast build rule for target.
+yolov5_gennodejs/fast:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f yolov5/CMakeFiles/yolov5_gennodejs.dir/build.make yolov5/CMakeFiles/yolov5_gennodejs.dir/build
+.PHONY : yolov5_gennodejs/fast
 
 # Convenience name for target.
 yolov5/CMakeFiles/yolov5_node.dir/rule:
@@ -226,6 +316,66 @@ yolov5_node: yolov5/CMakeFiles/yolov5_node.dir/rule
 yolov5_node/fast:
 	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f yolov5/CMakeFiles/yolov5_node.dir/build.make yolov5/CMakeFiles/yolov5_node.dir/build
 .PHONY : yolov5_node/fast
+
+# Convenience name for target.
+yolov5/CMakeFiles/yolov5_generate_messages_nodejs.dir/rule:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5/CMakeFiles/yolov5_generate_messages_nodejs.dir/rule
+.PHONY : yolov5/CMakeFiles/yolov5_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+yolov5_generate_messages_nodejs: yolov5/CMakeFiles/yolov5_generate_messages_nodejs.dir/rule
+
+.PHONY : yolov5_generate_messages_nodejs
+
+# fast build rule for target.
+yolov5_generate_messages_nodejs/fast:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f yolov5/CMakeFiles/yolov5_generate_messages_nodejs.dir/build.make yolov5/CMakeFiles/yolov5_generate_messages_nodejs.dir/build
+.PHONY : yolov5_generate_messages_nodejs/fast
+
+# Convenience name for target.
+yolov5/CMakeFiles/yolov5_generate_messages_py.dir/rule:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5/CMakeFiles/yolov5_generate_messages_py.dir/rule
+.PHONY : yolov5/CMakeFiles/yolov5_generate_messages_py.dir/rule
+
+# Convenience name for target.
+yolov5_generate_messages_py: yolov5/CMakeFiles/yolov5_generate_messages_py.dir/rule
+
+.PHONY : yolov5_generate_messages_py
+
+# fast build rule for target.
+yolov5_generate_messages_py/fast:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f yolov5/CMakeFiles/yolov5_generate_messages_py.dir/build.make yolov5/CMakeFiles/yolov5_generate_messages_py.dir/build
+.PHONY : yolov5_generate_messages_py/fast
+
+# Convenience name for target.
+yolov5/CMakeFiles/yolov5_genpy.dir/rule:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5/CMakeFiles/yolov5_genpy.dir/rule
+.PHONY : yolov5/CMakeFiles/yolov5_genpy.dir/rule
+
+# Convenience name for target.
+yolov5_genpy: yolov5/CMakeFiles/yolov5_genpy.dir/rule
+
+.PHONY : yolov5_genpy
+
+# fast build rule for target.
+yolov5_genpy/fast:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f yolov5/CMakeFiles/yolov5_genpy.dir/build.make yolov5/CMakeFiles/yolov5_genpy.dir/build
+.PHONY : yolov5_genpy/fast
+
+# Convenience name for target.
+yolov5/CMakeFiles/myplugins.dir/rule:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5/CMakeFiles/myplugins.dir/rule
+.PHONY : yolov5/CMakeFiles/myplugins.dir/rule
+
+# Convenience name for target.
+myplugins: yolov5/CMakeFiles/myplugins.dir/rule
+
+.PHONY : myplugins
+
+# fast build rule for target.
+myplugins/fast:
+	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f yolov5/CMakeFiles/myplugins.dir/build.make yolov5/CMakeFiles/myplugins.dir/build
+.PHONY : myplugins/fast
 
 src/calibrator.o: src/calibrator.cpp.o
 
@@ -287,17 +437,27 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/strip"
 	@echo "... install"
 	@echo "... rebuild_cache"
-	@echo "... _yolov5_generate_messages_check_deps_result"
+	@echo "... yolov5_gencpp"
+	@echo "... yolov5_generate_messages_cpp"
+	@echo "... yolov5_geneus"
+	@echo "... yolov5_generate_messages_eus"
 	@echo "... yolov5_generate_messages"
 	@echo "... list_install_components"
-	@echo "... myplugins"
-	@echo "... edit_cache"
+	@echo "... _yolov5_generate_messages_check_deps_result"
+	@echo "... yolov5_generate_messages_lisp"
+	@echo "... install/strip"
+	@echo "... yolov5_genlisp"
 	@echo "... install/local"
+	@echo "... yolov5_gennodejs"
 	@echo "... yolov5_node"
 	@echo "... test"
+	@echo "... yolov5_generate_messages_nodejs"
+	@echo "... yolov5_generate_messages_py"
+	@echo "... yolov5_genpy"
+	@echo "... myplugins"
+	@echo "... edit_cache"
 	@echo "... src/calibrator.o"
 	@echo "... src/calibrator.i"
 	@echo "... src/calibrator.s"

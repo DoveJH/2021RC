@@ -79,7 +79,7 @@ set(CUDA_NVCC_FLAGS_MINSIZEREL  ; )
 set(CUDA_NVCC_FLAGS_RELEASE  ; )
 set(CUDA_NVCC_FLAGS_RELWITHDEBINFO  ; )
 set(nvcc_flags -m64;--std;c++11;-Dmyplugins_EXPORTS) # list
-set(CUDA_NVCC_INCLUDE_DIRS "/usr/local/cuda/include;/home/dovejh/project/RC/RC2021/src/yolov5/include;/opt/ros/melodic/include;/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp;/usr/include;/usr/include/opencv;/home/dovejh/project/RC/RC2021/src/yolov5/../../devel/include;/usr/local/cuda/include;/usr/include/x86_64-linux-gnu;/usr/local/cuda/include;/home/dovejh/TensorRT-8.0.1.6.Linux.x86_64-gnu.cuda-10.2.cudnn8.2/TensorRT-8.0.1.6/include;/usr/include/x86_64-linux-gnu;/opt/ros/melodic/include;/home/dovejh/project/RC/RC2021/src/yolov5/OpenCV_INCLUDE_DIRS") # list (needs to be in quotes to handle spaces properly).
+set(CUDA_NVCC_INCLUDE_DIRS "/usr/local/cuda/include;/home/dovejh/project/RC/RC2021/devel/include;/home/dovejh/project/RC/RC2021/src/yolov5/include;/opt/ros/melodic/include;/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp;/usr/include;/usr/include/opencv;/home/dovejh/project/RC/RC2021/src/yolov5/../../devel/include;/usr/local/cuda/include;/usr/include/x86_64-linux-gnu;/usr/local/cuda/include;/home/dovejh/TensorRT-8.0.1.6.Linux.x86_64-gnu.cuda-10.2.cudnn8.2/TensorRT-8.0.1.6/include;/usr/include/x86_64-linux-gnu;/opt/ros/melodic/include;/home/dovejh/project/RC/RC2021/src/yolov5/OpenCV_INCLUDE_DIRS") # list (needs to be in quotes to handle spaces properly).
 set(CUDA_NVCC_COMPILE_DEFINITIONS [==[ROS_BUILD_SHARED_LIBS=1;ROS_BUILD_SHARED_LIBS=1;ROS_PACKAGE_NAME="yolov5";ROSCONSOLE_BACKEND_LOG4CXX]==]) # list (needs to be in lua quotes see #16510 ).
 set(format_flag "-c") # string
 set(cuda_language_flag ) # list

@@ -25,11 +25,19 @@ struct param_
 
   param_()
     : NMS_THRESH(0.0)
-    , CONF_THRESH(0.0)  {
+    , CONF_THRESH(0.0)
+    , k_volleyball(0)
+    , k_basketball(0)
+    , k_basket(0)
+    , k_mark(0)  {
     }
   param_(const ContainerAllocator& _alloc)
     : NMS_THRESH(0.0)
-    , CONF_THRESH(0.0)  {
+    , CONF_THRESH(0.0)
+    , k_volleyball(0)
+    , k_basketball(0)
+    , k_basket(0)
+    , k_mark(0)  {
   (void)_alloc;
     }
 
@@ -40,6 +48,18 @@ struct param_
 
    typedef float _CONF_THRESH_type;
   _CONF_THRESH_type CONF_THRESH;
+
+   typedef int32_t _k_volleyball_type;
+  _k_volleyball_type k_volleyball;
+
+   typedef int32_t _k_basketball_type;
+  _k_basketball_type k_basketball;
+
+   typedef int32_t _k_basket_type;
+  _k_basket_type k_basket;
+
+   typedef int32_t _k_mark_type;
+  _k_mark_type k_mark;
 
 
 
@@ -71,7 +91,11 @@ template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::config::param_<ContainerAllocator1> & lhs, const ::config::param_<ContainerAllocator2> & rhs)
 {
   return lhs.NMS_THRESH == rhs.NMS_THRESH &&
-    lhs.CONF_THRESH == rhs.CONF_THRESH;
+    lhs.CONF_THRESH == rhs.CONF_THRESH &&
+    lhs.k_volleyball == rhs.k_volleyball &&
+    lhs.k_basketball == rhs.k_basketball &&
+    lhs.k_basket == rhs.k_basket &&
+    lhs.k_mark == rhs.k_mark;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -128,12 +152,12 @@ struct MD5Sum< ::config::param_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "a0b1b6f3d3665bfdff09071fd56959d6";
+    return "9364dee32f19eb394cddb06cd910fe87";
   }
 
   static const char* value(const ::config::param_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xa0b1b6f3d3665bfdULL;
-  static const uint64_t static_value2 = 0xff09071fd56959d6ULL;
+  static const uint64_t static_value1 = 0x9364dee32f19eb39ULL;
+  static const uint64_t static_value2 = 0x4cddb06cd910fe87ULL;
 };
 
 template<class ContainerAllocator>
@@ -154,6 +178,10 @@ struct Definition< ::config::param_<ContainerAllocator> >
   {
     return "float32 NMS_THRESH\n"
 "float32 CONF_THRESH\n"
+"int32 k_volleyball\n"
+"int32 k_basketball\n"
+"int32 k_basket\n"
+"int32 k_mark\n"
 ;
   }
 
@@ -174,6 +202,10 @@ namespace serialization
     {
       stream.next(m.NMS_THRESH);
       stream.next(m.CONF_THRESH);
+      stream.next(m.k_volleyball);
+      stream.next(m.k_basketball);
+      stream.next(m.k_basket);
+      stream.next(m.k_mark);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -196,6 +228,14 @@ struct Printer< ::config::param_<ContainerAllocator> >
     Printer<float>::stream(s, indent + "  ", v.NMS_THRESH);
     s << indent << "CONF_THRESH: ";
     Printer<float>::stream(s, indent + "  ", v.CONF_THRESH);
+    s << indent << "k_volleyball: ";
+    Printer<int32_t>::stream(s, indent + "  ", v.k_volleyball);
+    s << indent << "k_basketball: ";
+    Printer<int32_t>::stream(s, indent + "  ", v.k_basketball);
+    s << indent << "k_basket: ";
+    Printer<int32_t>::stream(s, indent + "  ", v.k_basket);
+    s << indent << "k_mark: ";
+    Printer<int32_t>::stream(s, indent + "  ", v.k_mark);
   }
 };
 
