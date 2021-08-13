@@ -115,10 +115,6 @@ utils.h
 /home/dovejh/project/RC/RC2021/src/yolov5/src/utils.h
 
 /home/dovejh/project/RC/RC2021/src/yolov5/src/yolov5.cpp
-iostream
--
-chrono
--
 cmath
 -
 cv_bridge/cv_bridge.h
@@ -133,8 +129,6 @@ common.hpp
 /home/dovejh/project/RC/RC2021/src/yolov5/src/common.hpp
 utils.h
 /home/dovejh/project/RC/RC2021/src/yolov5/src/utils.h
-calibrator.h
-/home/dovejh/project/RC/RC2021/src/yolov5/src/calibrator.h
 opencv2/opencv.hpp
 -
 sensor_msgs/Image.h
