@@ -13,6 +13,7 @@ catkin_package()
 include_directories(
  include
  ${catkin_INCLUDE_DIRS}
+ ../../devel/include
 )
 
 set(ROS_BUILD_TYPE Release)

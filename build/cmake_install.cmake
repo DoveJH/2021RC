@@ -131,8 +131,8 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/dovejh/project/RC/RC2021/build/gtest/cmake_install.cmake")
-  include("/home/dovejh/project/RC/RC2021/build/mv_driver/cmake_install.cmake")
   include("/home/dovejh/project/RC/RC2021/build/config/cmake_install.cmake")
+  include("/home/dovejh/project/RC/RC2021/build/mv_driver/cmake_install.cmake")
 
 endif()
 

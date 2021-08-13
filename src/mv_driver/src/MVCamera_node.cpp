@@ -11,6 +11,7 @@ using namespace std;
 #include "MVCamera.h"
 #include <std_msgs/Bool.h>
 #include <std_msgs/Int16.h>
+//#include <config/RC2021Config.h>
 using namespace std;
 using namespace cv;
 MVCamera *mv_driver=NULL;
@@ -24,46 +25,31 @@ public:
     Mat rawImg;
     sensor_msgs::ImagePtr msg;
     image_transport::Publisher image_pub_;
-    ros::Subscriber cfg_exp_sub;
-    ros::Subscriber is_large_sub;
-    ros::Subscriber is_rcd_sub;
-
-    int image_width_, image_height_, framerate_, exposure_=1200, fps_mode=1;
+    int image_width_, image_height_, framerate_, fps_mode=1, exposure = 30000;
+    
     bool large_resolution_=false, autoexposure_=false;
     MVCamNode():
         node_("~")
     {
+        node_.getParam("/exposure", exposure);
+        node_.getParam("/autoexposure", autoexposure_);
         image_transport::ImageTransport it(node_);
-        cfg_exp_sub=node_.subscribe("/mv_param/exp_time",1,&MVCamNode::get_exp,this);
-
         image_pub_ = it.advertise("/MVCamera/image_raw", 1);
-
         node_.param("image_width", image_width_, 640);
         node_.param("image_height", image_height_, 512);
-        node_.param("framerate", framerate_, 100);
+        node_.param("framerate", framerate_, 250);
         //init camera param
         mv_driver=new MVCamera;
         mv_driver->Init();
-        mv_driver->SetExposureTime(autoexposure_, exposure_);
+        mv_driver->SetExposureTime(autoexposure_, exposure);
         mv_driver->SetLargeResolution(large_resolution_);
         mv_driver->Set_fps(fps_mode);
         mv_driver->Play();
-
-
     }
     ~MVCamNode()
     {
         mv_driver->Stop();
         mv_driver->Uninit();
-    }
-    void get_exp(const std_msgs::Int16ConstPtr &exp_time)
-    {
-        if(exposure_!=exp_time->data)
-        {
-            exposure_=exp_time->data;
-            mv_driver->SetExposureTime(autoexposure_, exposure_);
-
-        }
     }
     bool take_and_send_image()
     {
@@ -81,7 +67,6 @@ public:
         image_pub_.publish(msg);
         return true;
     }
-
     bool spin()
     {
         ros::Rate loop_rate(this->framerate_);
