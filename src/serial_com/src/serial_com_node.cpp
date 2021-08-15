@@ -31,6 +31,15 @@ int main(int argc, char** argv)
     ros::Rate loop_rate(500);
     while(ros::ok())
     {
-
+        size_t n = sp.available();
+        if(n != 0)
+        {
+            uint8_t buffer[1024];
+            n = sp.read(buffer, n);
+            sp.write(buffer, n);
+        }
+        loop_rate.sleep();
     }
+    sp.close();
+    return 0;
 }

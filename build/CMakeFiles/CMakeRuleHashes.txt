@@ -1,6 +1,7 @@
 # Hashes of file build rules.
 bac89c40f208176a48cbcfcebf18cc9d /home/dovejh/project/RC/RC2021/devel/include/config/RC2021Config.h
 3a6d9572ad5ca3929fb804eaba0082a9 /home/dovejh/project/RC/RC2021/devel/include/config/param.h
+959abb065a76c372d3593f365ea5f241 /home/dovejh/project/RC/RC2021/devel/include/imu_filter_madgwick/ImuFilterMadgwickConfig.h
 ca58c82834d46c7b564b5bb211aed5f2 /home/dovejh/project/RC/RC2021/devel/include/yolov5/result.h
 4ca5db106ce479679a2bedf37613da6d /home/dovejh/project/RC/RC2021/devel/lib/python2.7/dist-packages/config/msg/__init__.py
 04a6216b4b622cdfc3454be635b81d9a /home/dovejh/project/RC/RC2021/devel/lib/python2.7/dist-packages/config/msg/_param.py

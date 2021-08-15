@@ -1,2 +1,2 @@
-config:image_deal:mv_driver:yolov5
+config:image_deal:imu:imu_complementary_filter:mv_driver:serial_com:yolov5
 -DCATKIN_DEVEL_PREFIX=/home/dovejh/project/RC/RC2021/devel -DCMAKE_INSTALL_PREFIX=/home/dovejh/project/RC/RC2021/install -G Unix Makefiles

@@ -1,0 +1,8 @@
+prefix=/home/dovejh/project/RC/RC2021/devel
+
+Name: imu
+Description: Description of imu
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

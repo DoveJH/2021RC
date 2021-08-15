@@ -1,8 +1,22 @@
 <launch>
-    <node pkg="config" type="config_node" name="config_node" output="screen" respawn="true" />
-    <rosparam file="$(find config)/cfg/RC2021.yaml" command="load" />
-    <node pkg="mv_driver" type="mv_driver_node" name="mv_driver_node" output="screen" respawn="true" />
-    <node pkg="yolov5" type="yolov5_node" name="yolov5_node" output="screen" respawn="true" />
-    <node pkg="image_deal" type="image_deal_node" name="image_deal_node" output="screen" respawn="false" />
-    <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure" output="screen" respawn="true" />
+    <include file="/opt/ros/melodic/share/realsense2_camera/launch/rs_camera.launch"/>
+    <node pkg="nodelet" type="nodelet" name="imu_manager" 
+    args="manager" output="screen" />
+    <node pkg="nodelet" type="nodelet" name="PhidgetsImuNodelet" 
+    args="load phidgets_imu/PhidgetsImuNodelet imu_manager" 
+    output="screen">
+    <param name="period" value="4"/>
+    </node>
+    <node pkg="imu_complementary_filter" type="complementary_filter_node"
+    name="complementary_filter_gain_node" output="screen">
+    <param name="do_bias_estimation" value="true"/>
+    <param name="do_adaptive_gain" value="true"/>
+    <param name="use_mag" value="false"/>
+    <param name="gain_acc" value="0.01"/>
+    <param name="gain_mag" value="0.01"/>
+    <param name="publish_debug_topics" value="false"/>
+    <param name="publish_tf" value="true"/>
+    </node>
+    <node pkg="imu" type="imu_node" name="imu_node" output="screen" respawn="true" />
+
 </launch>
