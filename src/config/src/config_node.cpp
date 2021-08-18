@@ -78,4 +78,53 @@ void dynamicCallback(config::RC2021Config &config, uint32_t level)
         param_msg.if_show = config.if_show;
         param_pub.publish(param_msg);
     }
+
+    param_msg.k_x0 = 0.5;
+    if(param_msg.k_x0 != config.k_x0)
+    {
+        param_msg.k_x0 = config.k_x0;
+        param_pub.publish(param_msg);
+    }
+
+    param_msg.k_y0 = 0.5;
+    if(param_msg.k_y0 != config.k_y0)
+    {
+        param_msg.k_y0 = config.k_y0;
+        param_pub.publish(param_msg);
+    }
+
+    param_msg.k_z0 = 0.5;
+    if(param_msg.k_z0 != config.k_z0)
+    {
+        param_msg.k_z0 = config.k_z0;
+        param_pub.publish(param_msg);
+    }
+
+    param_msg.k_x1 = 1;
+    if(param_msg.k_x1 != config.k_x1)
+    {
+        param_msg.k_x1 = config.k_x1;
+        param_pub.publish(param_msg);
+    }
+
+    param_msg.k_y1 = 1;
+    if(param_msg.k_y1 != config.k_y1)
+    {
+        param_msg.k_y1 = config.k_y1;
+        param_pub.publish(param_msg);
+    }
+
+    param_msg.k_z1 = 1;
+    if(param_msg.k_z1 != config.k_z1)
+    {
+        param_msg.k_z1 = config.k_z1;
+        param_pub.publish(param_msg);
+    }
+
+    param_msg.k_test = 1;
+    if(param_msg.k_test != config.k_test)
+    {
+        param_msg.k_test = config.k_test;
+        param_pub.publish(param_msg);
+    }
 }

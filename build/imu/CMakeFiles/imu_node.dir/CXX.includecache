@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+/home/dovejh/project/RC/RC2021/src/imu/../../devel/include/config/param.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
 /home/dovejh/project/RC/RC2021/src/imu/src/imu_node.cpp
 ros/ros.h
 -
@@ -14,6 +30,10 @@ tf/tf.h
 sensor_msgs/Imu.h
 -
 std_msgs/Float64.h
+-
+math.h
+-
+config/param.h
 -
 
 /opt/ros/melodic/include/geometry_msgs/Point.h

@@ -46,7 +46,42 @@
     :reader if_show
     :initarg :if_show
     :type cl:boolean
-    :initform cl:nil))
+    :initform cl:nil)
+   (k_x0
+    :reader k_x0
+    :initarg :k_x0
+    :type cl:float
+    :initform 0.0)
+   (k_y0
+    :reader k_y0
+    :initarg :k_y0
+    :type cl:float
+    :initform 0.0)
+   (k_z0
+    :reader k_z0
+    :initarg :k_z0
+    :type cl:float
+    :initform 0.0)
+   (k_x1
+    :reader k_x1
+    :initarg :k_x1
+    :type cl:float
+    :initform 0.0)
+   (k_y1
+    :reader k_y1
+    :initarg :k_y1
+    :type cl:float
+    :initform 0.0)
+   (k_z1
+    :reader k_z1
+    :initarg :k_z1
+    :type cl:float
+    :initform 0.0)
+   (k_test
+    :reader k_test
+    :initarg :k_test
+    :type cl:float
+    :initform 0.0))
 )
 
 (cl:defclass param (<param>)
@@ -96,6 +131,41 @@
 (cl:defmethod if_show-val ((m <param>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader config-msg:if_show-val is deprecated.  Use config-msg:if_show instead.")
   (if_show m))
+
+(cl:ensure-generic-function 'k_x0-val :lambda-list '(m))
+(cl:defmethod k_x0-val ((m <param>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader config-msg:k_x0-val is deprecated.  Use config-msg:k_x0 instead.")
+  (k_x0 m))
+
+(cl:ensure-generic-function 'k_y0-val :lambda-list '(m))
+(cl:defmethod k_y0-val ((m <param>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader config-msg:k_y0-val is deprecated.  Use config-msg:k_y0 instead.")
+  (k_y0 m))
+
+(cl:ensure-generic-function 'k_z0-val :lambda-list '(m))
+(cl:defmethod k_z0-val ((m <param>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader config-msg:k_z0-val is deprecated.  Use config-msg:k_z0 instead.")
+  (k_z0 m))
+
+(cl:ensure-generic-function 'k_x1-val :lambda-list '(m))
+(cl:defmethod k_x1-val ((m <param>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader config-msg:k_x1-val is deprecated.  Use config-msg:k_x1 instead.")
+  (k_x1 m))
+
+(cl:ensure-generic-function 'k_y1-val :lambda-list '(m))
+(cl:defmethod k_y1-val ((m <param>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader config-msg:k_y1-val is deprecated.  Use config-msg:k_y1 instead.")
+  (k_y1 m))
+
+(cl:ensure-generic-function 'k_z1-val :lambda-list '(m))
+(cl:defmethod k_z1-val ((m <param>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader config-msg:k_z1-val is deprecated.  Use config-msg:k_z1 instead.")
+  (k_z1 m))
+
+(cl:ensure-generic-function 'k_test-val :lambda-list '(m))
+(cl:defmethod k_test-val ((m <param>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader config-msg:k_test-val is deprecated.  Use config-msg:k_test instead.")
+  (k_test m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <param>) ostream)
   "Serializes a message object of type '<param>"
   (cl:let ((bits (roslisp-utils:encode-single-float-bits (cl:slot-value msg 'NMS_THRESH))))
@@ -134,6 +204,69 @@
     )
   (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:if (cl:slot-value msg 'if_shot) 1 0)) ostream)
   (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:if (cl:slot-value msg 'if_show) 1 0)) ostream)
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'k_x0))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'k_y0))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'k_z0))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'k_x1))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'k_y1))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'k_z1))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'k_test))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <param>) istream)
   "Deserializes a message object of type '<param>"
@@ -175,6 +308,76 @@
       (cl:setf (cl:slot-value msg 'k_mark) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296))))
     (cl:setf (cl:slot-value msg 'if_shot) (cl:not (cl:zerop (cl:read-byte istream))))
     (cl:setf (cl:slot-value msg 'if_show) (cl:not (cl:zerop (cl:read-byte istream))))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'k_x0) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'k_y0) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'k_z0) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'k_x1) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'k_y1) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'k_z1) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'k_test) (roslisp-utils:decode-double-float-bits bits)))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<param>)))
@@ -185,16 +388,16 @@
   "config/param")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<param>)))
   "Returns md5sum for a message object of type '<param>"
-  "6d68603a995f522ff42920316e8f8368")
+  "4507b4f03a0f3c68cc9f0657404bb3a2")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'param)))
   "Returns md5sum for a message object of type 'param"
-  "6d68603a995f522ff42920316e8f8368")
+  "4507b4f03a0f3c68cc9f0657404bb3a2")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<param>)))
   "Returns full string definition for message of type '<param>"
-  (cl:format cl:nil "float32 NMS_THRESH~%float32 CONF_THRESH~%int32 k_volleyball~%int32 k_basketball~%int32 k_basket~%int32 k_mark~%bool if_shot~%bool if_show~%~%"))
+  (cl:format cl:nil "float32 NMS_THRESH~%float32 CONF_THRESH~%int32 k_volleyball~%int32 k_basketball~%int32 k_basket~%int32 k_mark~%bool if_shot~%bool if_show~%float64 k_x0~%float64 k_y0~%float64 k_z0~%float64 k_x1~%float64 k_y1~%float64 k_z1~%float64 k_test~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'param)))
   "Returns full string definition for message of type 'param"
-  (cl:format cl:nil "float32 NMS_THRESH~%float32 CONF_THRESH~%int32 k_volleyball~%int32 k_basketball~%int32 k_basket~%int32 k_mark~%bool if_shot~%bool if_show~%~%"))
+  (cl:format cl:nil "float32 NMS_THRESH~%float32 CONF_THRESH~%int32 k_volleyball~%int32 k_basketball~%int32 k_basket~%int32 k_mark~%bool if_shot~%bool if_show~%float64 k_x0~%float64 k_y0~%float64 k_z0~%float64 k_x1~%float64 k_y1~%float64 k_z1~%float64 k_test~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <param>))
   (cl:+ 0
      4
@@ -205,6 +408,13 @@
      4
      1
      1
+     8
+     8
+     8
+     8
+     8
+     8
+     8
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <param>))
   "Converts a ROS message object to a list"
@@ -217,4 +427,11 @@
     (cl:cons ':k_mark (k_mark msg))
     (cl:cons ':if_shot (if_shot msg))
     (cl:cons ':if_show (if_show msg))
+    (cl:cons ':k_x0 (k_x0 msg))
+    (cl:cons ':k_y0 (k_y0 msg))
+    (cl:cons ':k_z0 (k_z0 msg))
+    (cl:cons ':k_x1 (k_x1 msg))
+    (cl:cons ':k_y1 (k_y1 msg))
+    (cl:cons ':k_z1 (k_z1 msg))
+    (cl:cons ':k_test (k_test msg))
 ))

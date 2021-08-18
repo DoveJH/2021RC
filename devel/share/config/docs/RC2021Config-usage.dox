@@ -9,6 +9,13 @@
   <param name="k_mark" type="int" value="0" />
   <param name="if_shot" type="bool" value="False" />
   <param name="if_show" type="bool" value="True" />
+  <param name="k_x0" type="double" value="0.4" />
+  <param name="k_y0" type="double" value="0.4" />
+  <param name="k_z0" type="double" value="0.4" />
+  <param name="k_x1" type="double" value="0.99293" />
+  <param name="k_y1" type="double" value="0.9766" />
+  <param name="k_z1" type="double" value="1.0" />
+  <param name="k_test" type="double" value="0.5" />
 </node>
 \endverbatim
 

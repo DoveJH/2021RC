@@ -39,20 +39,6 @@ cstdint
 /home/dovejh/TensorRT-8.0.1.6.Linux.x86_64-gnu.cuda-10.2.cudnn8.2/TensorRT-8.0.1.6/include/NvInferVersion.h
 
 /home/dovejh/project/RC/RC2021/devel/include/config/param.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
 
 /home/dovejh/project/RC/RC2021/src/yolov5/include/calibrator.h
 NvInfer.h

@@ -2,9 +2,69 @@
 #include <tf/tf.h>
 #include <sensor_msgs/Imu.h>
 #include <std_msgs/Float64.h>
+#include <math.h>
+#include <config/param.h>
 #define PI 3.14159265
-ros::Publisher test;
-ros::Publisher test2;
+ros::Publisher testx;
+ros::Publisher testy;
+ros::Publisher testz;
+double k_x0 = 0.4, k_y0 = 0.4, k_z0 = 0.4,  k_x1, k_y1, k_z1, k_test = 0.5;
+class controller
+{
+private:
+public:
+    double linear_acceleration_raw[100];
+    int count;
+    double error;
+    double variance;
+    double average;
+    bool is_moving;
+    controller()
+    {
+        linear_acceleration_raw[100] = {0};
+        count = 0;
+        error = 0;
+        variance = 0;
+        average = 0;
+        is_moving = false;
+    }
+    void updateVariance()
+    {
+        for(int i = 0; i < count; i++)
+        {
+            average += linear_acceleration_raw[i];
+        }
+        average /= count;
+        for(int i = 0; i < count; i++)
+        {
+            variance += (linear_acceleration_raw[i] - average) * (linear_acceleration_raw[i] - average);
+        }
+        variance /= count;
+    }
+    void updateError(double& varianceMax)
+    {
+        if(variance < varianceMax)
+        {
+            error = average;
+            is_moving = false;
+        }
+        else
+        {
+            is_moving = true;
+        }
+    }
+    void insertData(double newData, double varianceMax)
+    {
+        for(int i = 0; i < 99; i++ )
+        {
+            linear_acceleration_raw[i] = linear_acceleration_raw[i + 1];
+        }
+        linear_acceleration_raw[99] = newData;
+        if(count <= 100)count++;
+        updateVariance();
+        updateError(varianceMax);
+    }
+};
 void four_num_mult(double w1, double x1, double y1, double z1, double w2, double x2, double y2, double z2, double& w3, double& x3, double& y3, double& z3)
 {
     w3 = (w1 * w2 - x1 * x2 - y1 * y2 - z1 * z2);
@@ -16,49 +76,109 @@ void imuCallback(const sensor_msgs::ImuConstPtr& msg)
 {
     static int count = 0;
     static double adj_x = 0, adj_y = 0, adj_z = 0;
+    static bool flag_lowPass = true;
+    static double last_linear_acceleration_x_msg = 0, last_linear_acceleration_y_msg = 0, last_linear_acceleration_z_msg = 0;
     double roll, pitch, yaw;
+    double linear_acceleration_x_msg = 0, linear_acceleration_y_msg = 0, linear_acceleration_z_msg = 0;
     tf::Quaternion q;
     tf::quaternionMsgToTF(msg->orientation, q);
     tf::Matrix3x3(q).getRPY(roll, pitch, yaw);
-    //yaw -= adj_count * 0.0000184731288919;
+    roll -= 0.01865829194179713113;
+    pitch -= 0.00279585943802088437;
     //ROS_INFO("roll%.12lf, pitch%.12lf, yaw%.12lf", roll / PI * 180, pitch / PI * 180, yaw/ PI * 180);
-    msg->linear_acceleration;
-    double linear_acceration_x_world, linear_acceration_y_world, linear_acceration_z_world, linear_acceration_w;
-    double linear_acceration_x_car, linear_acceration_y_car, linear_acceration_z_car;
-    four_num_mult(msg->orientation.w, msg->orientation.x, msg->orientation.y, msg->orientation.z, 0, msg->linear_acceleration.x, msg->linear_acceleration.y, msg->linear_acceleration.z, linear_acceration_w, linear_acceration_x_world, linear_acceration_y_world, linear_acceration_z_world);
-    four_num_mult(linear_acceration_w, linear_acceration_x_world, linear_acceration_y_world, linear_acceration_z_world, msg->orientation.w, 0 - msg->orientation.x, 0 - msg->orientation.y, 0 - msg->orientation.z, linear_acceration_w, linear_acceration_x_world, linear_acceration_y_world, linear_acceration_z_world);
-    //ROS_INFO("x:%.12lf, y:%.12lf, z:%.12lf",linear_acceration_x_world - 0.0028076428663798, linear_acceration_y_world - 0.0030384335564513, linear_acceration_z_world - 9.9174929536584677);
-    linear_acceration_x_world -= 0.0028076428663798;
-    linear_acceration_y_world -= 0.0030384335564513;
-    linear_acceration_z_world -= 9.9174929536584677;
-    if(linear_acceration_x_world < 0.031576408788 && linear_acceration_x_world > -0.029234894534)linear_acceration_x_world = 0;
-    if(linear_acceration_y_world < 0.025060626917 && linear_acceration_y_world > -0.000350800818)linear_acceration_y_world = 0;
-    if(linear_acceration_z_world < 0.033986401263 && linear_acceration_z_world > -0.023278846668)linear_acceration_z_world = 0;
-    four_num_mult(msg->orientation.w, 0 - msg->orientation.x, 0 - msg->orientation.y, 0 - msg->orientation.z, 0, linear_acceration_x_world, linear_acceration_y_world, linear_acceration_z_world, linear_acceration_w, linear_acceration_x_world, linear_acceration_y_world, linear_acceration_z_world);
-    four_num_mult(linear_acceration_w, linear_acceration_x_world, linear_acceration_y_world, linear_acceration_z_world, msg->orientation.w, msg->orientation.x, msg->orientation.y, msg->orientation.z, linear_acceration_w, linear_acceration_x_car, linear_acceration_y_car, linear_acceration_z_car);
-    count ++;
-    adj_x += msg->linear_acceleration.x;
-    adj_y += msg->linear_acceleration.y;
-    adj_z += msg->linear_acceleration.z;
-    ROS_INFO("count:%d, x:%.16lf, y:%.16lf, z:%.16lf", count, adj_x, adj_y, adj_z);
+
+    //低通滤波
+    if(flag_lowPass)
+    {
+        flag_lowPass = false;
+        last_linear_acceleration_x_msg = msg->linear_acceleration.x;
+        last_linear_acceleration_z_msg = msg->linear_acceleration.z;
+        last_linear_acceleration_y_msg = msg->linear_acceleration.y;
+    }
+    else
+    {
+        linear_acceleration_x_msg = k_x0 * msg->linear_acceleration.x + (1 - k_x0) * last_linear_acceleration_x_msg;
+        last_linear_acceleration_x_msg = linear_acceleration_x_msg;
+
+        linear_acceleration_y_msg = k_y0 * msg->linear_acceleration.y + (1 - k_y0) * last_linear_acceleration_y_msg;
+        last_linear_acceleration_y_msg = linear_acceleration_y_msg;
+
+        linear_acceleration_z_msg = k_z0 * msg->linear_acceleration.z + (1 - k_z0) * last_linear_acceleration_z_msg;
+        last_linear_acceleration_z_msg = linear_acceleration_z_msg;
+    }
+
+   //比例尺调整
+    if(msg->linear_acceleration.x > 0)
+    {
+        linear_acceleration_x_msg = linear_acceleration_x_msg / 97648.4979180416703457 * 97708.5588791172922356;
+    }
+    else
+    {
+        linear_acceleration_x_msg = linear_acceleration_x_msg / 97831.5928680142678786 * 97708.5588791172922356;
+    }
+    if(msg->linear_acceleration.y > 0)
+    {
+        linear_acceleration_y_msg = linear_acceleration_y_msg / 97940.0281369405420264 * 97708.5588791172922356;
+    }
+    else
+    {
+        linear_acceleration_y_msg = linear_acceleration_y_msg / 97629.4267177577858092 * 97708.5588791172922356;
+    }
+    if(msg->linear_acceleration.z < 0)
+    {
+        linear_acceleration_z_msg = linear_acceleration_z_msg / 97789.6638300983759109 * 97708.5588791172922356;
+    }
+    else
+    {
+        linear_acceleration_z_msg = linear_acceleration_z_msg;
+    }
     
-    //下面计算时间间隔
+    double linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world, linear_acceleration_w;
+    double linear_acceleration_x_car, linear_acceleration_y_car, linear_acceleration_z_car;
+
+    //转为世界坐标系
+    four_num_mult(msg->orientation.w, msg->orientation.x, msg->orientation.y, msg->orientation.z, 0, linear_acceleration_x_msg, linear_acceleration_y_msg, linear_acceleration_z_msg, linear_acceleration_w, linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world);
+    four_num_mult(linear_acceleration_w, linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world, msg->orientation.w, 0 - msg->orientation.x, 0 - msg->orientation.y, 0 - msg->orientation.z, linear_acceleration_w, linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world);
+
+    //调零
+    linear_acceleration_x_world -= 0.001 - 0.00068265913061043948;
+    //linear_acceleration_y_world -= -0.0432535613068771;
+    linear_acceleration_z_world -= (9.75428169703640596708 + 0.00045785053283986787);
+
+    //转回相机坐标系
+    four_num_mult(msg->orientation.w, 0 - msg->orientation.x, 0 - msg->orientation.y, 0 - msg->orientation.z, 0, linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world, linear_acceleration_w, linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world);
+    four_num_mult(linear_acceleration_w, linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world, msg->orientation.w, msg->orientation.x, msg->orientation.y, msg->orientation.z, linear_acceleration_w, linear_acceleration_x_car, linear_acceleration_y_car, linear_acceleration_z_car);
+
+    //计算时间间隔
     int duration = 0, now_nsec = 0;
     static int last_nsec = 0;
-    static double last_linear_acceration_x;
-    static double x;
-    double now_linear_acceration_y;
-    static bool flag = true;
-    if(flag)
+    static double last_linear_acceleration_x;
+    static bool flag_linearVelocity;
+    static double linear_velocity_x;
+    double now_linear_acceleration_x;
+    static controller linear_acceleration_x_controller;
+    linear_acceleration_x_controller.insertData(linear_acceleration_x_car, 0.001);
+    //ROS_INFO("%lf", linear_acceleration_x_controller.getAverage());
+
+
+    //调试用
+    //count ++;
+    //adj_x += linear_acceleration_x_world;
+    //adj_y += linear_acceleration_y_world;
+    //adj_z += linear_acceleration_z_world;
+    //if(count > 200 && adj_x < linear_acceleration_x_controller.variance)adj_x = linear_acceleration_x_controller.variance;
+    //ROS_INFO("count:%d, x:%.16lf, y:%.16lf, z:%.16lf", count, adj_x, adj_y, adj_z);
+
+    if(flag_linearVelocity)
     {
-        flag = false;
+        flag_linearVelocity = false;
         last_nsec = msg->header.stamp.nsec;
-        last_linear_acceration_x = linear_acceration_x_car;
+        last_linear_acceleration_x = linear_acceleration_x_car - linear_acceleration_x_controller.error;
     }
     else
     {
         now_nsec = msg->header.stamp.nsec;
-        now_linear_acceration_x = linear_acceration_x_car;
+        now_linear_acceleration_x = linear_acceleration_x_car - linear_acceleration_x_controller.error;
         if(now_nsec > last_nsec)
         {
             duration = now_nsec - last_nsec;
@@ -68,24 +188,43 @@ void imuCallback(const sensor_msgs::ImuConstPtr& msg)
             duration = 1000000000 - last_nsec + now_nsec;
         }
         last_nsec = now_nsec;
-        //x += (last_linear_acceration_x + now_linear_acceration_x) * 0.5 * duration / 1000000000;
-        x += last_linear_acceration_x * duration / 1000000000;
-        last_linear_acceration_x = now_linear_acceration_x;
+        if(!linear_acceleration_x_controller.is_moving)
+        {
+            linear_velocity_x = 0;
+        }
+        else
+        {
+            linear_velocity_x += (last_linear_acceleration_x + now_linear_acceleration_x) * 0.5 * duration / 1000000000;
+        }
+        last_linear_acceleration_x = now_linear_acceleration_x;
     }
-    ROS_INFO("%.12f", x);
-
+    //ROS_INFO("%.12f", x);
     std_msgs::Float64 testMsg;
-    testMsg.data = msg->orientation.x;
-    test.publish(testMsg);
-    //testMsg.data = linear_acceration_x_car;
-    //test2.publish(testMsg);
+    testMsg.data = linear_velocity_x;
+    testx.publish(testMsg);
+    testMsg.data = linear_acceleration_y_car;
+    testy.publish(testMsg);
+    testMsg.data = linear_acceleration_z_car;
+    testz.publish(testMsg);
+}
+void paramCallback(const config::paramConstPtr& msg)
+{
+    k_x0 = msg->k_x0;
+    k_x1 = msg->k_x1;
+    k_y0 = msg->k_y0;
+    k_y1 = msg->k_y1;
+    k_z0 = msg->k_z0;
+    k_z1 = msg->k_z1;
+    k_test = msg->k_test;
 }
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "imu_node");
     ros::NodeHandle n;
     ros::Subscriber sub = n.subscribe("/imu/data", 1, &imuCallback);
-    test = n.advertise<std_msgs::Float64>("/test", 1);
-    test2 = n.advertise<std_msgs::Float64>("/test2", 1);
+    ros::Subscriber paramSub = n.subscribe("/param", 1, &paramCallback);
+    testx = n.advertise<std_msgs::Float64>("/testx", 1);
+    testy = n.advertise<std_msgs::Float64>("/testy", 1);
+    testz = n.advertise<std_msgs::Float64>("/testz", 1);
     ros::spin();
 }

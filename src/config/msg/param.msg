@@ -6,3 +6,10 @@ int32 k_basket
 int32 k_mark
 bool if_shot
 bool if_show
+float64 k_x0
+float64 k_y0
+float64 k_z0
+float64 k_x1
+float64 k_y1
+float64 k_z1
+float64 k_test

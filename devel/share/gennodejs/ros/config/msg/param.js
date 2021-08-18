@@ -26,6 +26,13 @@ class param {
       this.k_mark = null;
       this.if_shot = null;
       this.if_show = null;
+      this.k_x0 = null;
+      this.k_y0 = null;
+      this.k_z0 = null;
+      this.k_x1 = null;
+      this.k_y1 = null;
+      this.k_z1 = null;
+      this.k_test = null;
     }
     else {
       if (initObj.hasOwnProperty('NMS_THRESH')) {
@@ -76,6 +83,48 @@ class param {
       else {
         this.if_show = false;
       }
+      if (initObj.hasOwnProperty('k_x0')) {
+        this.k_x0 = initObj.k_x0
+      }
+      else {
+        this.k_x0 = 0.0;
+      }
+      if (initObj.hasOwnProperty('k_y0')) {
+        this.k_y0 = initObj.k_y0
+      }
+      else {
+        this.k_y0 = 0.0;
+      }
+      if (initObj.hasOwnProperty('k_z0')) {
+        this.k_z0 = initObj.k_z0
+      }
+      else {
+        this.k_z0 = 0.0;
+      }
+      if (initObj.hasOwnProperty('k_x1')) {
+        this.k_x1 = initObj.k_x1
+      }
+      else {
+        this.k_x1 = 0.0;
+      }
+      if (initObj.hasOwnProperty('k_y1')) {
+        this.k_y1 = initObj.k_y1
+      }
+      else {
+        this.k_y1 = 0.0;
+      }
+      if (initObj.hasOwnProperty('k_z1')) {
+        this.k_z1 = initObj.k_z1
+      }
+      else {
+        this.k_z1 = 0.0;
+      }
+      if (initObj.hasOwnProperty('k_test')) {
+        this.k_test = initObj.k_test
+      }
+      else {
+        this.k_test = 0.0;
+      }
     }
   }
 
@@ -97,6 +146,20 @@ class param {
     bufferOffset = _serializer.bool(obj.if_shot, buffer, bufferOffset);
     // Serialize message field [if_show]
     bufferOffset = _serializer.bool(obj.if_show, buffer, bufferOffset);
+    // Serialize message field [k_x0]
+    bufferOffset = _serializer.float64(obj.k_x0, buffer, bufferOffset);
+    // Serialize message field [k_y0]
+    bufferOffset = _serializer.float64(obj.k_y0, buffer, bufferOffset);
+    // Serialize message field [k_z0]
+    bufferOffset = _serializer.float64(obj.k_z0, buffer, bufferOffset);
+    // Serialize message field [k_x1]
+    bufferOffset = _serializer.float64(obj.k_x1, buffer, bufferOffset);
+    // Serialize message field [k_y1]
+    bufferOffset = _serializer.float64(obj.k_y1, buffer, bufferOffset);
+    // Serialize message field [k_z1]
+    bufferOffset = _serializer.float64(obj.k_z1, buffer, bufferOffset);
+    // Serialize message field [k_test]
+    bufferOffset = _serializer.float64(obj.k_test, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -120,11 +183,25 @@ class param {
     data.if_shot = _deserializer.bool(buffer, bufferOffset);
     // Deserialize message field [if_show]
     data.if_show = _deserializer.bool(buffer, bufferOffset);
+    // Deserialize message field [k_x0]
+    data.k_x0 = _deserializer.float64(buffer, bufferOffset);
+    // Deserialize message field [k_y0]
+    data.k_y0 = _deserializer.float64(buffer, bufferOffset);
+    // Deserialize message field [k_z0]
+    data.k_z0 = _deserializer.float64(buffer, bufferOffset);
+    // Deserialize message field [k_x1]
+    data.k_x1 = _deserializer.float64(buffer, bufferOffset);
+    // Deserialize message field [k_y1]
+    data.k_y1 = _deserializer.float64(buffer, bufferOffset);
+    // Deserialize message field [k_z1]
+    data.k_z1 = _deserializer.float64(buffer, bufferOffset);
+    // Deserialize message field [k_test]
+    data.k_test = _deserializer.float64(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 26;
+    return 82;
   }
 
   static datatype() {
@@ -134,7 +211,7 @@ class param {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '6d68603a995f522ff42920316e8f8368';
+    return '4507b4f03a0f3c68cc9f0657404bb3a2';
   }
 
   static messageDefinition() {
@@ -148,6 +225,13 @@ class param {
     int32 k_mark
     bool if_shot
     bool if_show
+    float64 k_x0
+    float64 k_y0
+    float64 k_z0
+    float64 k_x1
+    float64 k_y1
+    float64 k_z1
+    float64 k_test
     `;
   }
 
@@ -211,6 +295,55 @@ class param {
     }
     else {
       resolved.if_show = false
+    }
+
+    if (msg.k_x0 !== undefined) {
+      resolved.k_x0 = msg.k_x0;
+    }
+    else {
+      resolved.k_x0 = 0.0
+    }
+
+    if (msg.k_y0 !== undefined) {
+      resolved.k_y0 = msg.k_y0;
+    }
+    else {
+      resolved.k_y0 = 0.0
+    }
+
+    if (msg.k_z0 !== undefined) {
+      resolved.k_z0 = msg.k_z0;
+    }
+    else {
+      resolved.k_z0 = 0.0
+    }
+
+    if (msg.k_x1 !== undefined) {
+      resolved.k_x1 = msg.k_x1;
+    }
+    else {
+      resolved.k_x1 = 0.0
+    }
+
+    if (msg.k_y1 !== undefined) {
+      resolved.k_y1 = msg.k_y1;
+    }
+    else {
+      resolved.k_y1 = 0.0
+    }
+
+    if (msg.k_z1 !== undefined) {
+      resolved.k_z1 = msg.k_z1;
+    }
+    else {
+      resolved.k_z1 = 0.0
+    }
+
+    if (msg.k_test !== undefined) {
+      resolved.k_test = msg.k_test;
+    }
+    else {
+      resolved.k_test = 0.0
     }
 
     return resolved;

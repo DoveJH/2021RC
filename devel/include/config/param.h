@@ -31,7 +31,14 @@ struct param_
     , k_basket(0)
     , k_mark(0)
     , if_shot(false)
-    , if_show(false)  {
+    , if_show(false)
+    , k_x0(0.0)
+    , k_y0(0.0)
+    , k_z0(0.0)
+    , k_x1(0.0)
+    , k_y1(0.0)
+    , k_z1(0.0)
+    , k_test(0.0)  {
     }
   param_(const ContainerAllocator& _alloc)
     : NMS_THRESH(0.0)
@@ -41,7 +48,14 @@ struct param_
     , k_basket(0)
     , k_mark(0)
     , if_shot(false)
-    , if_show(false)  {
+    , if_show(false)
+    , k_x0(0.0)
+    , k_y0(0.0)
+    , k_z0(0.0)
+    , k_x1(0.0)
+    , k_y1(0.0)
+    , k_z1(0.0)
+    , k_test(0.0)  {
   (void)_alloc;
     }
 
@@ -70,6 +84,27 @@ struct param_
 
    typedef uint8_t _if_show_type;
   _if_show_type if_show;
+
+   typedef double _k_x0_type;
+  _k_x0_type k_x0;
+
+   typedef double _k_y0_type;
+  _k_y0_type k_y0;
+
+   typedef double _k_z0_type;
+  _k_z0_type k_z0;
+
+   typedef double _k_x1_type;
+  _k_x1_type k_x1;
+
+   typedef double _k_y1_type;
+  _k_y1_type k_y1;
+
+   typedef double _k_z1_type;
+  _k_z1_type k_z1;
+
+   typedef double _k_test_type;
+  _k_test_type k_test;
 
 
 
@@ -107,7 +142,14 @@ bool operator==(const ::config::param_<ContainerAllocator1> & lhs, const ::confi
     lhs.k_basket == rhs.k_basket &&
     lhs.k_mark == rhs.k_mark &&
     lhs.if_shot == rhs.if_shot &&
-    lhs.if_show == rhs.if_show;
+    lhs.if_show == rhs.if_show &&
+    lhs.k_x0 == rhs.k_x0 &&
+    lhs.k_y0 == rhs.k_y0 &&
+    lhs.k_z0 == rhs.k_z0 &&
+    lhs.k_x1 == rhs.k_x1 &&
+    lhs.k_y1 == rhs.k_y1 &&
+    lhs.k_z1 == rhs.k_z1 &&
+    lhs.k_test == rhs.k_test;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -164,12 +206,12 @@ struct MD5Sum< ::config::param_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "6d68603a995f522ff42920316e8f8368";
+    return "4507b4f03a0f3c68cc9f0657404bb3a2";
   }
 
   static const char* value(const ::config::param_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x6d68603a995f522fULL;
-  static const uint64_t static_value2 = 0xf42920316e8f8368ULL;
+  static const uint64_t static_value1 = 0x4507b4f03a0f3c68ULL;
+  static const uint64_t static_value2 = 0xcc9f0657404bb3a2ULL;
 };
 
 template<class ContainerAllocator>
@@ -196,6 +238,13 @@ struct Definition< ::config::param_<ContainerAllocator> >
 "int32 k_mark\n"
 "bool if_shot\n"
 "bool if_show\n"
+"float64 k_x0\n"
+"float64 k_y0\n"
+"float64 k_z0\n"
+"float64 k_x1\n"
+"float64 k_y1\n"
+"float64 k_z1\n"
+"float64 k_test\n"
 ;
   }
 
@@ -222,6 +271,13 @@ namespace serialization
       stream.next(m.k_mark);
       stream.next(m.if_shot);
       stream.next(m.if_show);
+      stream.next(m.k_x0);
+      stream.next(m.k_y0);
+      stream.next(m.k_z0);
+      stream.next(m.k_x1);
+      stream.next(m.k_y1);
+      stream.next(m.k_z1);
+      stream.next(m.k_test);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -256,6 +312,20 @@ struct Printer< ::config::param_<ContainerAllocator> >
     Printer<uint8_t>::stream(s, indent + "  ", v.if_shot);
     s << indent << "if_show: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.if_show);
+    s << indent << "k_x0: ";
+    Printer<double>::stream(s, indent + "  ", v.k_x0);
+    s << indent << "k_y0: ";
+    Printer<double>::stream(s, indent + "  ", v.k_y0);
+    s << indent << "k_z0: ";
+    Printer<double>::stream(s, indent + "  ", v.k_z0);
+    s << indent << "k_x1: ";
+    Printer<double>::stream(s, indent + "  ", v.k_x1);
+    s << indent << "k_y1: ";
+    Printer<double>::stream(s, indent + "  ", v.k_y1);
+    s << indent << "k_z1: ";
+    Printer<double>::stream(s, indent + "  ", v.k_z1);
+    s << indent << "k_test: ";
+    Printer<double>::stream(s, indent + "  ", v.k_test);
   }
 };
 

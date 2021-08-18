@@ -14,7 +14,7 @@
 
 (defclass config::param
   :super ros::object
-  :slots (_NMS_THRESH _CONF_THRESH _k_volleyball _k_basketball _k_basket _k_mark _if_shot _if_show ))
+  :slots (_NMS_THRESH _CONF_THRESH _k_volleyball _k_basketball _k_basket _k_mark _if_shot _if_show _k_x0 _k_y0 _k_z0 _k_x1 _k_y1 _k_z1 _k_test ))
 
 (defmethod config::param
   (:init
@@ -27,6 +27,13 @@
     ((:k_mark __k_mark) 0)
     ((:if_shot __if_shot) nil)
     ((:if_show __if_show) nil)
+    ((:k_x0 __k_x0) 0.0)
+    ((:k_y0 __k_y0) 0.0)
+    ((:k_z0 __k_z0) 0.0)
+    ((:k_x1 __k_x1) 0.0)
+    ((:k_y1 __k_y1) 0.0)
+    ((:k_z1 __k_z1) 0.0)
+    ((:k_test __k_test) 0.0)
     )
    (send-super :init)
    (setq _NMS_THRESH (float __NMS_THRESH))
@@ -37,6 +44,13 @@
    (setq _k_mark (round __k_mark))
    (setq _if_shot __if_shot)
    (setq _if_show __if_show)
+   (setq _k_x0 (float __k_x0))
+   (setq _k_y0 (float __k_y0))
+   (setq _k_z0 (float __k_z0))
+   (setq _k_x1 (float __k_x1))
+   (setq _k_y1 (float __k_y1))
+   (setq _k_z1 (float __k_z1))
+   (setq _k_test (float __k_test))
    self)
   (:NMS_THRESH
    (&optional __NMS_THRESH)
@@ -62,6 +76,27 @@
   (:if_show
    (&optional __if_show)
    (if __if_show (setq _if_show __if_show)) _if_show)
+  (:k_x0
+   (&optional __k_x0)
+   (if __k_x0 (setq _k_x0 __k_x0)) _k_x0)
+  (:k_y0
+   (&optional __k_y0)
+   (if __k_y0 (setq _k_y0 __k_y0)) _k_y0)
+  (:k_z0
+   (&optional __k_z0)
+   (if __k_z0 (setq _k_z0 __k_z0)) _k_z0)
+  (:k_x1
+   (&optional __k_x1)
+   (if __k_x1 (setq _k_x1 __k_x1)) _k_x1)
+  (:k_y1
+   (&optional __k_y1)
+   (if __k_y1 (setq _k_y1 __k_y1)) _k_y1)
+  (:k_z1
+   (&optional __k_z1)
+   (if __k_z1 (setq _k_z1 __k_z1)) _k_z1)
+  (:k_test
+   (&optional __k_test)
+   (if __k_test (setq _k_test __k_test)) _k_test)
   (:serialization-length
    ()
    (+
@@ -81,6 +116,20 @@
     1
     ;; bool _if_show
     1
+    ;; float64 _k_x0
+    8
+    ;; float64 _k_y0
+    8
+    ;; float64 _k_z0
+    8
+    ;; float64 _k_x1
+    8
+    ;; float64 _k_y1
+    8
+    ;; float64 _k_z1
+    8
+    ;; float64 _k_test
+    8
     ))
   (:serialize
    (&optional strm)
@@ -102,6 +151,20 @@
        (if _if_shot (write-byte -1 s) (write-byte 0 s))
      ;; bool _if_show
        (if _if_show (write-byte -1 s) (write-byte 0 s))
+     ;; float64 _k_x0
+       (sys::poke _k_x0 (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float64 _k_y0
+       (sys::poke _k_y0 (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float64 _k_z0
+       (sys::poke _k_z0 (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float64 _k_x1
+       (sys::poke _k_x1 (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float64 _k_y1
+       (sys::poke _k_y1 (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float64 _k_z1
+       (sys::poke _k_z1 (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float64 _k_test
+       (sys::poke _k_test (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -122,11 +185,25 @@
      (setq _if_shot (not (= 0 (sys::peek buf ptr- :char)))) (incf ptr- 1)
    ;; bool _if_show
      (setq _if_show (not (= 0 (sys::peek buf ptr- :char)))) (incf ptr- 1)
+   ;; float64 _k_x0
+     (setq _k_x0 (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float64 _k_y0
+     (setq _k_y0 (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float64 _k_z0
+     (setq _k_z0 (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float64 _k_x1
+     (setq _k_x1 (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float64 _k_y1
+     (setq _k_y1 (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float64 _k_z1
+     (setq _k_z1 (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float64 _k_test
+     (setq _k_test (sys::peek buf ptr- :double)) (incf ptr- 8)
    ;;
    self)
   )
 
-(setf (get config::param :md5sum-) "6d68603a995f522ff42920316e8f8368")
+(setf (get config::param :md5sum-) "4507b4f03a0f3c68cc9f0657404bb3a2")
 (setf (get config::param :datatype-) "config/param")
 (setf (get config::param :definition-)
       "float32 NMS_THRESH
@@ -137,10 +214,17 @@ int32 k_basket
 int32 k_mark
 bool if_shot
 bool if_show
+float64 k_x0
+float64 k_y0
+float64 k_z0
+float64 k_x1
+float64 k_y1
+float64 k_z1
+float64 k_test
 ")
 
 
 
-(provide :config/param "6d68603a995f522ff42920316e8f8368")
+(provide :config/param "4507b4f03a0f3c68cc9f0657404bb3a2")
 
 

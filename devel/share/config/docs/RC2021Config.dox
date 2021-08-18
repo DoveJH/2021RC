@@ -10,4 +10,11 @@ Reads and maintains the following parameters on the ROS server
 - \b "~k_mark" : \b [int] Related to the distance of mark min: -2147483648, default: 0, max: 2147483647
 - \b "~if_shot" : \b [bool] If true press s to take a picture min: False, default: False, max: True
 - \b "~if_show" : \b [bool] If true press s to take a picture min: False, default: True, max: True
+- \b "~k_x0" : \b [double] k_x0 min: 0.0, default: 0.4, max: 1.0
+- \b "~k_y0" : \b [double] k_y0 min: 0.0, default: 0.4, max: 1.0
+- \b "~k_z0" : \b [double] k_z0 min: 0.0, default: 0.4, max: 1.0
+- \b "~k_x1" : \b [double] k_x1 min: 0.9, default: 0.99293, max: 1.1
+- \b "~k_y1" : \b [double] k_y1 min: 0.9, default: 0.9766, max: 1.1
+- \b "~k_z1" : \b [double] k_z1 min: 0.9, default: 1.0, max: 1.1
+- \b "~k_test" : \b [double] k_test min: 0.0, default: 0.5, max: 1.0
 
