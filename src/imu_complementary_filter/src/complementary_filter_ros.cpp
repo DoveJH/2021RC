@@ -127,7 +127,7 @@ void ComplementaryFilterROS::initializeParams()
 
   filter_.setDoBiasEstimation(do_bias_estimation);
   filter_.setDoAdaptiveGain(do_adaptive_gain);
-
+/*
   if(!filter_.setGainAcc(gain_acc))
     ROS_WARN("Invalid gain_acc passed to ComplementaryFilter.");
   if (use_mag_)
@@ -140,15 +140,15 @@ void ComplementaryFilterROS::initializeParams()
     if(!filter_.setBiasAlpha(bias_alpha))
       ROS_WARN("Invalid bias_alpha passed to ComplementaryFilter.");
   }
-
+*/
   // check for illegal constant_dt values
-  if (constant_dt_ < 0.0)
+  /*if (constant_dt_ < 0.0)
   {
     // if constant_dt_ is 0.0 (default), use IMU timestamp to determine dt
     // otherwise, it will be constant
     ROS_WARN("constant_dt parameter is %f, must be >= 0.0. Setting to 0.0", constant_dt_);
     constant_dt_ = 0.0;
-  }
+  }*/
 }
 
 void ComplementaryFilterROS::imuCallback(const ImuMsg::ConstPtr& imu_msg_raw)

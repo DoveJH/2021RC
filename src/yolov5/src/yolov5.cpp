@@ -8,7 +8,9 @@
 #include <opencv2/opencv.hpp>
 #include <sensor_msgs/Image.h>
 #include <config/param.h>
-
+#include <yololayer.h>
+#include <logging.h>
+#include <NvInferRuntime.h>
 #define USE_FP32  // set USE_INT8 or USE_FP16 or USE_FP32
 #define DEVICE 0  // GPU id
 float NMS_THRESH = 0.4;
@@ -28,13 +30,102 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg);
 void* buffers[2];
 static float data[3 * INPUT_H * INPUT_W];
 static float prob[ OUTPUT_SIZE];
+int exchange_distance;
 cudaStream_t stream;
 IExecutionContext* context;
 int k_volleyball = 0;
 int k_basketball = 0;
 int k_basket = 0;
 int k_mark = 0;
+int k_home = 0;
+enum target
+{
+    volleyball = 0, basketball, basket, mark, home
+};
+target aim;
 bool if_show = true;
+class result_deal
+{
+public:
+    cv::Rect bbox;
+    float conf;
+    int class_id;
+    int score;
+    int distance;
+    void getDistance()
+    {
+        int k = 0, distance = 0;
+        if(class_id == 0 || class_id == 1)k = k_volleyball;
+        else if(class_id == 2 || class_id == 3)k = k_basketball;
+        else if(class_id == 4)distance = exchange_distance;
+        else if(class_id == 5)k = k_mark;
+        else if(class_id == 6)k = k_home;
+    }
+    void getScore()
+    {
+        if(aim == volleyball)
+        {
+            if(class_id == 2 || class_id == 3 || class_id == 4 ||class_id == 5 ||class_id == 6)
+            {
+                score = 0;
+            }
+            else
+            {
+                score = 10 / distance;
+            }
+        }
+        if(aim == basketball)
+        {
+            if(class_id == 0 || class_id == 1 || class_id == 4 ||class_id == 5 ||class_id == 6)
+            {
+                score = 0;
+            }
+            else
+            {
+                score = 10 / distance;
+            }
+        }
+        if(aim == basket)
+        {
+            if(class_id == 0 || class_id == 1 || class_id == 2 ||class_id == 3 ||class_id == 6 || class_id == 5)
+            {
+                score = 0;
+            }
+            else
+            {
+                score = 10;
+            }
+        }
+        if(aim == mark)
+        {
+            if(class_id == 0 || class_id == 1 || class_id == 2 ||class_id == 3 ||class_id == 6 || class_id == 4)
+            {
+                score = 0;
+            }
+            else
+            {
+                score = 10;
+            }
+        }
+        if(aim == home)
+        {
+             if(class_id == 0 || class_id == 1 || class_id == 2 ||class_id == 3 ||class_id == 5 || class_id == 4)
+            {
+                score = 0;
+            }
+            else
+            {
+                score = 10;
+            }
+        }
+    }
+    result_deal(cv::Rect r)
+    {
+        bbox = r;
+        getDistance();
+        getScore();
+    }
+};
 void doInference(IExecutionContext& context, cudaStream_t& stream, void **buffers, float* input, float* output, int batchSize) {
     // DMA input batch data to device, infer on the batch asynchronously, and DMA output back to host
     CUDA_CHECK(cudaMemcpyAsync(buffers[0], input, batchSize * 3 * INPUT_H * INPUT_W * sizeof(float), cudaMemcpyHostToDevice, stream));
@@ -113,15 +204,6 @@ int main(int argc, char** argv)
     runtime->destroy();
     return 0;
 }
-int getDistance(int x, int y, int type)
-{
-    int k = 0, distance = 0;
-    if(type == 1 || type == 2)k = k_volleyball;
-    else if(type == 3 || type == 4)k = k_basketball;
-    else if(type == 5)k = k_basket;
-    else k = k_mark;
-    return distance;
-}
 void imageCallback(const sensor_msgs::ImageConstPtr& msg)
 {
     cv::Mat img = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8)->image;
@@ -144,12 +226,18 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
     // Run inference
     doInference(*context, stream, buffers, data, prob, 1);
     std::vector<Yolo::Detection> batch_res;
+    std::vector<result_deal> pass_result(batch_res.size());
     nms(batch_res, &prob[0], CONF_THRESH, NMS_THRESH);
+    for (int b = 0; b < batch_res.size(); b++)
+    {
+        cv::Rect r = get_rect(img, batch_res[j].bbox);
+        pass_result.
+    }
     if(if_show)
     {
         for (int b = 0; b < batch_res.size(); b++) 
         {
-            auto& res = batch_res[b];
+            //auto& res = batch_res[b];
             for (size_t j = 0; j < batch_res.size(); j++) 
             {
                 cv::Rect r = get_rect(img, batch_res[j].bbox);

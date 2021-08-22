@@ -8,17 +8,12 @@ import struct
 
 
 class result(genpy.Message):
-  _md5sum = "043d72adf347ac3893fd75771296e418"
+  _md5sum = "d41d8cd98f00b204e9800998ecf8427e"
   _type = "yolov5/result"
   _has_header = False  # flag to mark the presence of a Header object
-  _full_text = """float32 bbox0
-float32 bbox1
-float32 bbox2
-float32 bbox3
-float32 conf
-float32 class_id"""
-  __slots__ = ['bbox0','bbox1','bbox2','bbox3','conf','class_id']
-  _slot_types = ['float32','float32','float32','float32','float32','float32']
+  _full_text = """"""
+  __slots__ = []
+  _slot_types = []
 
   def __init__(self, *args, **kwds):
     """
@@ -28,7 +23,7 @@ float32 class_id"""
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       bbox0,bbox1,bbox2,bbox3,conf,class_id
+       
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -36,26 +31,6 @@ float32 class_id"""
     """
     if args or kwds:
       super(result, self).__init__(*args, **kwds)
-      # message fields cannot be None, assign default values for those that are
-      if self.bbox0 is None:
-        self.bbox0 = 0.
-      if self.bbox1 is None:
-        self.bbox1 = 0.
-      if self.bbox2 is None:
-        self.bbox2 = 0.
-      if self.bbox3 is None:
-        self.bbox3 = 0.
-      if self.conf is None:
-        self.conf = 0.
-      if self.class_id is None:
-        self.class_id = 0.
-    else:
-      self.bbox0 = 0.
-      self.bbox1 = 0.
-      self.bbox2 = 0.
-      self.bbox3 = 0.
-      self.conf = 0.
-      self.class_id = 0.
 
   def _get_types(self):
     """
@@ -69,8 +44,7 @@ float32 class_id"""
     :param buff: buffer, ``StringIO``
     """
     try:
-      _x = self
-      buff.write(_get_struct_6f().pack(_x.bbox0, _x.bbox1, _x.bbox2, _x.bbox3, _x.conf, _x.class_id))
+      pass
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -83,10 +57,6 @@ float32 class_id"""
       codecs.lookup_error("rosmsg").msg_type = self._type
     try:
       end = 0
-      _x = self
-      start = end
-      end += 24
-      (_x.bbox0, _x.bbox1, _x.bbox2, _x.bbox3, _x.conf, _x.class_id,) = _get_struct_6f().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -99,8 +69,7 @@ float32 class_id"""
     :param numpy: numpy python module
     """
     try:
-      _x = self
-      buff.write(_get_struct_6f().pack(_x.bbox0, _x.bbox1, _x.bbox2, _x.bbox3, _x.conf, _x.class_id))
+      pass
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -114,10 +83,6 @@ float32 class_id"""
       codecs.lookup_error("rosmsg").msg_type = self._type
     try:
       end = 0
-      _x = self
-      start = end
-      end += 24
-      (_x.bbox0, _x.bbox1, _x.bbox2, _x.bbox3, _x.conf, _x.class_id,) = _get_struct_6f().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -126,9 +91,3 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_6f = None
-def _get_struct_6f():
-    global _struct_6f
-    if _struct_6f is None:
-        _struct_6f = struct.Struct("<6f")
-    return _struct_6f

@@ -9,7 +9,7 @@ ros::Publisher testx;
 ros::Publisher testy;
 ros::Publisher testz;
 double k_x0 = 0.4, k_y0 = 0.4, k_z0 = 0.4,  k_x1, k_y1, k_z1, k_test = 0.5;
-class controller
+class velocity_controller
 {
 private:
 public:
@@ -19,14 +19,16 @@ public:
     double variance;
     double average;
     bool is_moving;
-    controller()
+    bool last_is_moving;
+    velocity_controller()
     {
-        linear_acceleration_raw[100] = {0};
+        //linear_acceleration_raw[0] = 0;
         count = 0;
         error = 0;
         variance = 0;
         average = 0;
         is_moving = false;
+        last_is_moving = false;
     }
     void updateVariance()
     {
@@ -46,24 +48,83 @@ public:
         if(variance < varianceMax)
         {
             error = average;
+            last_is_moving = is_moving;
             is_moving = false;
         }
         else
         {
+            last_is_moving = is_moving;
             is_moving = true;
         }
     }
     void insertData(double newData, double varianceMax)
     {
-        for(int i = 0; i < 99; i++ )
+        if(count < 100)
         {
-            linear_acceleration_raw[i] = linear_acceleration_raw[i + 1];
+            linear_acceleration_raw[count] = newData;
+            count++;
         }
-        linear_acceleration_raw[99] = newData;
-        if(count <= 100)count++;
-        updateVariance();
-        updateError(varianceMax);
+        else
+        {
+            for(int i = 0; i < 99; i++ )
+            {
+                linear_acceleration_raw[i] = linear_acceleration_raw[i + 1];
+            }
+            linear_acceleration_raw[99] = newData;
+            updateVariance();
+            updateError(varianceMax);
+        }
     }
+};
+class location_controller
+{
+public:
+    double linear_velocity_raw[100];
+    int duration[99];
+    int count;
+    double average;
+    double variance;
+    double error;
+    location_controller()
+    {
+        linear_velocity_raw[0] = 0;
+        duration[0] = 0;
+        count = 0;
+        average = 0;
+        variance = 0;
+        error = 0;
+    }
+    void updateError()
+    {
+        for(int i = 0; i < 99; i++)
+        {
+            error += (linear_velocity_raw[i] + linear_velocity_raw[i + 1]) * 0.5 * duration[i + 1] / 1000000000;
+        }
+    }
+    void insertData(double newVelocity, int  newDuration, bool is_moving)
+    {
+        if(count < 100)
+        {
+            linear_velocity_raw[count] = newVelocity;
+            duration[count] = newDuration;
+            count ++;
+        }
+        else
+        {
+            for(int i = 0; i < 99; i++ )
+            {
+                linear_velocity_raw[i] = linear_velocity_raw[i + 1];
+                duration[i] = duration [i + 1];
+            }
+            linear_velocity_raw[99] = newVelocity;
+            duration[99] = newDuration;
+        }
+        if(!is_moving)
+        {
+            updateError();
+        }
+    }
+    
 };
 void four_num_mult(double w1, double x1, double y1, double z1, double w2, double x2, double y2, double z2, double& w3, double& x3, double& y3, double& z3)
 {
@@ -74,8 +135,6 @@ void four_num_mult(double w1, double x1, double y1, double z1, double w2, double
 }
 void imuCallback(const sensor_msgs::ImuConstPtr& msg)
 {
-    static int count = 0;
-    static double adj_x = 0, adj_y = 0, adj_z = 0;
     static bool flag_lowPass = true;
     static double last_linear_acceleration_x_msg = 0, last_linear_acceleration_y_msg = 0, last_linear_acceleration_z_msg = 0;
     double roll, pitch, yaw;
@@ -153,11 +212,15 @@ void imuCallback(const sensor_msgs::ImuConstPtr& msg)
     int duration = 0, now_nsec = 0;
     static int last_nsec = 0;
     static double last_linear_acceleration_x;
-    static bool flag_linearVelocity;
+    static bool flag_linearVelocity = true, flag_linearLocation = true;
     static double linear_velocity_x;
     double now_linear_acceleration_x;
-    static controller linear_acceleration_x_controller;
-    linear_acceleration_x_controller.insertData(linear_acceleration_x_car, 0.001);
+    static velocity_controller linear_velocity_x_controller;
+    static double last_linear_velocity_x = 0;
+    double now_linear_velocity_x = 0;
+    static double linear_location_x = 0;
+    linear_velocity_x_controller.insertData(linear_acceleration_x_car, 0.002);
+    static location_controller linear_location_x_controller;
     //ROS_INFO("%lf", linear_acceleration_x_controller.getAverage());
 
 
@@ -173,12 +236,12 @@ void imuCallback(const sensor_msgs::ImuConstPtr& msg)
     {
         flag_linearVelocity = false;
         last_nsec = msg->header.stamp.nsec;
-        last_linear_acceleration_x = linear_acceleration_x_car - linear_acceleration_x_controller.error;
+        last_linear_acceleration_x = linear_acceleration_x_car - linear_velocity_x_controller.error;
     }
     else
     {
         now_nsec = msg->header.stamp.nsec;
-        now_linear_acceleration_x = linear_acceleration_x_car - linear_acceleration_x_controller.error;
+        now_linear_acceleration_x = linear_acceleration_x_car - linear_velocity_x_controller.error;
         if(now_nsec > last_nsec)
         {
             duration = now_nsec - last_nsec;
@@ -188,7 +251,7 @@ void imuCallback(const sensor_msgs::ImuConstPtr& msg)
             duration = 1000000000 - last_nsec + now_nsec;
         }
         last_nsec = now_nsec;
-        if(!linear_acceleration_x_controller.is_moving)
+        if(!linear_velocity_x_controller.is_moving)
         {
             linear_velocity_x = 0;
         }
@@ -197,15 +260,43 @@ void imuCallback(const sensor_msgs::ImuConstPtr& msg)
             linear_velocity_x += (last_linear_acceleration_x + now_linear_acceleration_x) * 0.5 * duration / 1000000000;
         }
         last_linear_acceleration_x = now_linear_acceleration_x;
+        linear_location_x_controller.insertData(linear_velocity_x, duration, linear_velocity_x_controller.is_moving);
+        if(flag_linearLocation)
+        {
+            flag_linearLocation = false;
+            last_linear_velocity_x = linear_velocity_x;
+        }
+        else
+        {
+            if(linear_velocity_x_controller.is_moving)
+            {
+                now_linear_velocity_x = linear_velocity_x;
+                linear_location_x += (now_linear_velocity_x + last_linear_velocity_x) * 0.5 * duration / 1000000000;
+            }
+            else
+            {
+                if(linear_velocity_x_controller.is_moving == false && linear_velocity_x_controller.last_is_moving == true)
+                {
+                    linear_location_x -= linear_location_x_controller.error;
+                    linear_location_x_controller.error = 0;
+                }
+            }
+        }
     }
     //ROS_INFO("%.12f", x);
     std_msgs::Float64 testMsg;
-    testMsg.data = linear_velocity_x;
+    testMsg.data = linear_location_x;
+    //count++;
+    //if(count >= 10)
+    //{
     testx.publish(testMsg);
-    testMsg.data = linear_acceleration_y_car;
-    testy.publish(testMsg);
-    testMsg.data = linear_acceleration_z_car;
-    testz.publish(testMsg);
+        //count = 0;
+    //}
+    
+    //testMsg.data = linear_acceleration_y_car;
+    //testy.publish(testMsg);
+    //testMsg.data = linear_acceleration_z_car;
+    //testz.publish(testMsg);
 }
 void paramCallback(const config::paramConstPtr& msg)
 {
