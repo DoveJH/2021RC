@@ -151,12 +151,6 @@ sensor_msgs/Image.h
 -
 config/param.h
 -
-yololayer.h
--
-logging.h
--
-NvInferRuntime.h
--
 
 /opt/ros/melodic/include/cv_bridge/cv_bridge.h
 sensor_msgs/Image.h

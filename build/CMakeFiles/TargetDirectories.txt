@@ -97,11 +97,12 @@
 /home/dovejh/project/RC/RC2021/build/imu/CMakeFiles/install/strip.dir
 /home/dovejh/project/RC/RC2021/build/imu/CMakeFiles/tf2_msgs_generate_messages_cpp.dir
 /home/dovejh/project/RC/RC2021/build/serial_com/CMakeFiles/install/strip.dir
-/home/dovejh/project/RC/RC2021/build/serial_com/CMakeFiles/edit_cache.dir
-/home/dovejh/project/RC/RC2021/build/serial_com/CMakeFiles/list_install_components.dir
-/home/dovejh/project/RC/RC2021/build/serial_com/CMakeFiles/test.dir
 /home/dovejh/project/RC/RC2021/build/serial_com/CMakeFiles/install/local.dir
+/home/dovejh/project/RC/RC2021/build/serial_com/CMakeFiles/test.dir
+/home/dovejh/project/RC/RC2021/build/serial_com/CMakeFiles/list_install_components.dir
+/home/dovejh/project/RC/RC2021/build/serial_com/CMakeFiles/edit_cache.dir
 /home/dovejh/project/RC/RC2021/build/serial_com/CMakeFiles/rebuild_cache.dir
+/home/dovejh/project/RC/RC2021/build/serial_com/CMakeFiles/serial_com_node.dir
 /home/dovejh/project/RC/RC2021/build/serial_com/CMakeFiles/install.dir
 /home/dovejh/project/RC/RC2021/build/config/CMakeFiles/install/strip.dir
 /home/dovejh/project/RC/RC2021/build/config/CMakeFiles/install/local.dir

@@ -8,9 +8,6 @@
 #include <opencv2/opencv.hpp>
 #include <sensor_msgs/Image.h>
 #include <config/param.h>
-#include <yololayer.h>
-#include <logging.h>
-#include <NvInferRuntime.h>
 #define USE_FP32  // set USE_INT8 or USE_FP16 or USE_FP32
 #define DEVICE 0  // GPU id
 float NMS_THRESH = 0.4;
@@ -52,6 +49,12 @@ public:
     int class_id;
     int score;
     int distance;
+    result_deal(cv::Rect r = cv::Rect(0, 0, 0, 0))
+    {
+        bbox = r;
+        getDistance();
+        getScore();
+   }
     void getDistance()
     {
         int k = 0, distance = 0;
@@ -61,6 +64,7 @@ public:
         else if(class_id == 5)k = k_mark;
         else if(class_id == 6)k = k_home;
     }
+   
     void getScore()
     {
         if(aim == volleyball)
@@ -113,18 +117,14 @@ public:
             {
                 score = 0;
             }
+            //else if(yaw)
             else
             {
                 score = 10;
             }
         }
     }
-    result_deal(cv::Rect r)
-    {
-        bbox = r;
-        getDistance();
-        getScore();
-    }
+   
 };
 void doInference(IExecutionContext& context, cudaStream_t& stream, void **buffers, float* input, float* output, int batchSize) {
     // DMA input batch data to device, infer on the batch asynchronously, and DMA output back to host
@@ -222,16 +222,27 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
             }
         }
     }
-
     // Run inference
     doInference(*context, stream, buffers, data, prob, 1);
     std::vector<Yolo::Detection> batch_res;
-    std::vector<result_deal> pass_result(batch_res.size());
+    std::vector<result_deal> pass_result;
     nms(batch_res, &prob[0], CONF_THRESH, NMS_THRESH);
     for (int b = 0; b < batch_res.size(); b++)
     {
-        cv::Rect r = get_rect(img, batch_res[j].bbox);
-        pass_result.
+        cv::Rect r = get_rect(img, batch_res[b].bbox);
+        result_deal rd(r);
+        if(pass_result.empty())
+        {
+            pass_result.push_back(rd);
+        }
+        else if(rd.score >= pass_result[0].score)
+        {
+            pass_result.insert(pass_result.begin() + 1, rd);
+        }
+        else 
+        {
+            pass_result.push_back(rd);
+        }
     }
     if(if_show)
     {

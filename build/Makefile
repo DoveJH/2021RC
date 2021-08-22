@@ -896,6 +896,19 @@ tf2_msgs_generate_messages_cpp/fast:
 .PHONY : tf2_msgs_generate_messages_cpp/fast
 
 #=============================================================================
+# Target rules for targets named serial_com_node
+
+# Build rule for target.
+serial_com_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 serial_com_node
+.PHONY : serial_com_node
+
+# fast build rule for target.
+serial_com_node/fast:
+	$(MAKE) -f serial_com/CMakeFiles/serial_com_node.dir/build.make serial_com/CMakeFiles/serial_com_node.dir/build
+.PHONY : serial_com_node/fast
+
+#=============================================================================
 # Target rules for targets named config_node
 
 # Build rule for target.
@@ -1445,6 +1458,7 @@ help:
 	@echo "... actionlib_msgs_generate_messages_eus"
 	@echo "... actionlib_msgs_generate_messages_lisp"
 	@echo "... tf2_msgs_generate_messages_cpp"
+	@echo "... serial_com_node"
 	@echo "... config_node"
 	@echo "... config_gencfg"
 	@echo "... config_generate_messages_py"

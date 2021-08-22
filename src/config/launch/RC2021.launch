@@ -1,14 +1,3 @@
 <launch>
-    <include file="/opt/ros/melodic/share/realsense2_camera/launch/rs_camera.launch"/>
-    <node pkg="imu_complementary_filter" type="complementary_filter_node"
-    name="complementary_filter_gain_node" output="screen">
-    <param name="do_bias_estimation" value="true"/>
-    <param name="do_adaptive_gain" value="true"/>
-    <param name="use_mag" value="false"/>
-    <param name="gain_acc" value="0.01"/>
-    <param name="gain_mag" value="0.01"/>
-    <param name="publish_debug_topics" value="false"/>
-    <param name="publish_tf" value="true"/>
-    </node>
-    <node pkg="imu" type="imu_node" name="imu_node" output="screen" respawn="true" />
+    <node pkg="serial_com" type="serial_com_node" name="serial_com_node" output="screen" respawn="true" />
 </launch>

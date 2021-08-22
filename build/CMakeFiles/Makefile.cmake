@@ -364,6 +364,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "imu/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/DependInfo.cmake"
   "imu/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/DependInfo.cmake"
   "imu/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/DependInfo.cmake"
+  "serial_com/CMakeFiles/serial_com_node.dir/DependInfo.cmake"
   "config/CMakeFiles/config_node.dir/DependInfo.cmake"
   "config/CMakeFiles/config_gencfg.dir/DependInfo.cmake"
   "config/CMakeFiles/config_generate_messages_py.dir/DependInfo.cmake"

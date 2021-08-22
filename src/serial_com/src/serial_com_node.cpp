@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 #include <serial/serial.h>
-#include <yolov5/result.h>
+//#include <yolov5/result.h>
 
 int main(int argc, char** argv)
 {
@@ -8,7 +8,7 @@ int main(int argc, char** argv)
     ros::NodeHandle n;
     serial::Serial sp;
     serial::Timeout to = serial::Timeout::simpleTimeout(1000);
-    sp.setPort("dev/ttyUSB0");
+    sp.setPort("/dev/ttyUSB1");
     sp.setBaudrate(115200);
     sp.setTimeout(to);
     try
@@ -22,7 +22,7 @@ int main(int argc, char** argv)
     }
     if(sp.isOpen())
     {
-        ROS_WARN("/dev/ttyUSB0 is opened");
+        ROS_WARN("/dev/ttyUSB1 is opened");
     }
     else 
     {
@@ -36,6 +36,7 @@ int main(int argc, char** argv)
         {
             uint8_t buffer[1024];
             n = sp.read(buffer, n);
+            ROS_INFO_STREAM( buffer);
             sp.write(buffer, n);
         }
         loop_rate.sleep();

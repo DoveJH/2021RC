@@ -24,14 +24,27 @@ struct result_
   typedef result_<ContainerAllocator> Type;
 
   result_()
-    {
+    : x(0)
+    , y(0)
+    , distance(0)  {
     }
   result_(const ContainerAllocator& _alloc)
-    {
+    : x(0)
+    , y(0)
+    , distance(0)  {
   (void)_alloc;
     }
 
 
+
+   typedef int32_t _x_type;
+  _x_type x;
+
+   typedef int32_t _y_type;
+  _y_type y;
+
+   typedef int32_t _distance_type;
+  _distance_type distance;
 
 
 
@@ -56,6 +69,21 @@ std::ostream& operator<<(std::ostream& s, const ::yolov5::result_<ContainerAlloc
 {
 ros::message_operations::Printer< ::yolov5::result_<ContainerAllocator> >::stream(s, "", v);
 return s;
+}
+
+
+template<typename ContainerAllocator1, typename ContainerAllocator2>
+bool operator==(const ::yolov5::result_<ContainerAllocator1> & lhs, const ::yolov5::result_<ContainerAllocator2> & rhs)
+{
+  return lhs.x == rhs.x &&
+    lhs.y == rhs.y &&
+    lhs.distance == rhs.distance;
+}
+
+template<typename ContainerAllocator1, typename ContainerAllocator2>
+bool operator!=(const ::yolov5::result_<ContainerAllocator1> & lhs, const ::yolov5::result_<ContainerAllocator2> & rhs)
+{
+  return !(lhs == rhs);
 }
 
 
@@ -106,12 +134,12 @@ struct MD5Sum< ::yolov5::result_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "d41d8cd98f00b204e9800998ecf8427e";
+    return "7b8f97e1aab5db4dadbd6597afef2119";
   }
 
   static const char* value(const ::yolov5::result_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xd41d8cd98f00b204ULL;
-  static const uint64_t static_value2 = 0xe9800998ecf8427eULL;
+  static const uint64_t static_value1 = 0x7b8f97e1aab5db4dULL;
+  static const uint64_t static_value2 = 0xadbd6597afef2119ULL;
 };
 
 template<class ContainerAllocator>
@@ -130,7 +158,9 @@ struct Definition< ::yolov5::result_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "\n"
+    return "int32 x\n"
+"int32 y\n"
+"int32 distance\n"
 ;
   }
 
@@ -147,8 +177,12 @@ namespace serialization
 
   template<class ContainerAllocator> struct Serializer< ::yolov5::result_<ContainerAllocator> >
   {
-    template<typename Stream, typename T> inline static void allInOne(Stream&, T)
-    {}
+    template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
+    {
+      stream.next(m.x);
+      stream.next(m.y);
+      stream.next(m.distance);
+    }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
   }; // struct result_
@@ -164,8 +198,15 @@ namespace message_operations
 template<class ContainerAllocator>
 struct Printer< ::yolov5::result_<ContainerAllocator> >
 {
-  template<typename Stream> static void stream(Stream&, const std::string&, const ::yolov5::result_<ContainerAllocator>&)
-  {}
+  template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::yolov5::result_<ContainerAllocator>& v)
+  {
+    s << indent << "x: ";
+    Printer<int32_t>::stream(s, indent + "  ", v.x);
+    s << indent << "y: ";
+    Printer<int32_t>::stream(s, indent + "  ", v.y);
+    s << indent << "distance: ";
+    Printer<int32_t>::stream(s, indent + "  ", v.distance);
+  }
 };
 
 } // namespace message_operations
