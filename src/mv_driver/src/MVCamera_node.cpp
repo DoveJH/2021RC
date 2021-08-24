@@ -25,7 +25,7 @@ public:
     Mat rawImg;
     sensor_msgs::ImagePtr msg;
     image_transport::Publisher image_pub_;
-    int image_width_, image_height_, framerate_, fps_mode=1, exposure = 30000;
+    int image_width_, image_height_, framerate_, fps_mode=1, exposure = 15000;
     
     bool large_resolution_=false, autoexposure_=false;
     MVCamNode():

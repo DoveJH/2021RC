@@ -25,12 +25,10 @@ struct result_
 
   result_()
     : x(0)
-    , y(0)
     , distance(0)  {
     }
   result_(const ContainerAllocator& _alloc)
     : x(0)
-    , y(0)
     , distance(0)  {
   (void)_alloc;
     }
@@ -39,9 +37,6 @@ struct result_
 
    typedef int32_t _x_type;
   _x_type x;
-
-   typedef int32_t _y_type;
-  _y_type y;
 
    typedef int32_t _distance_type;
   _distance_type distance;
@@ -76,7 +71,6 @@ template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::yolov5::result_<ContainerAllocator1> & lhs, const ::yolov5::result_<ContainerAllocator2> & rhs)
 {
   return lhs.x == rhs.x &&
-    lhs.y == rhs.y &&
     lhs.distance == rhs.distance;
 }
 
@@ -134,12 +128,12 @@ struct MD5Sum< ::yolov5::result_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "7b8f97e1aab5db4dadbd6597afef2119";
+    return "868f6f96866e086832cb94501f599dc0";
   }
 
   static const char* value(const ::yolov5::result_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x7b8f97e1aab5db4dULL;
-  static const uint64_t static_value2 = 0xadbd6597afef2119ULL;
+  static const uint64_t static_value1 = 0x868f6f96866e0868ULL;
+  static const uint64_t static_value2 = 0x32cb94501f599dc0ULL;
 };
 
 template<class ContainerAllocator>
@@ -159,7 +153,6 @@ struct Definition< ::yolov5::result_<ContainerAllocator> >
   static const char* value()
   {
     return "int32 x\n"
-"int32 y\n"
 "int32 distance\n"
 ;
   }
@@ -180,7 +173,6 @@ namespace serialization
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
       stream.next(m.x);
-      stream.next(m.y);
       stream.next(m.distance);
     }
 
@@ -202,8 +194,6 @@ struct Printer< ::yolov5::result_<ContainerAllocator> >
   {
     s << indent << "x: ";
     Printer<int32_t>::stream(s, indent + "  ", v.x);
-    s << indent << "y: ";
-    Printer<int32_t>::stream(s, indent + "  ", v.y);
     s << indent << "distance: ";
     Printer<int32_t>::stream(s, indent + "  ", v.distance);
   }

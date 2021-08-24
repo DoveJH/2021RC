@@ -8,8 +8,12 @@
 #include <opencv2/opencv.hpp>
 #include <sensor_msgs/Image.h>
 #include <config/param.h>
+#include <sensor_msgs/Imu.h>
+#include <std_msgs/UInt8.h>
+#include <tf/tf.h>
 #define USE_FP32  // set USE_INT8 or USE_FP16 or USE_FP32
 #define DEVICE 0  // GPU id
+#define PI 3.14159265
 float NMS_THRESH = 0.4;
 float CONF_THRESH = 0.7;
 
@@ -20,6 +24,7 @@ static const int CLASS_NUM = Yolo::CLASS_NUM;
 static const int OUTPUT_SIZE = Yolo::MAX_OUTPUT_BBOX_COUNT * sizeof(Yolo::Detection) / sizeof(float) + 1;  // we assume the yololayer outputs no more than MAX_OUTPUT_BBOX_COUNT boxes that conf >= 0.1
 const char* INPUT_BLOB_NAME = "data";
 const char* OUTPUT_BLOB_NAME = "prob";
+double yaw, pitch, roll;
 static Logger gLogger;
 ros::Publisher detectingPub;
 ros::Publisher resultPub;
@@ -39,7 +44,7 @@ enum target
 {
     volleyball = 0, basketball, basket, mark, home
 };
-target aim;
+target aim = volleyball;
 bool if_show = true;
 class result_deal
 {
@@ -49,20 +54,28 @@ public:
     int class_id;
     int score;
     int distance;
-    result_deal(cv::Rect r = cv::Rect(0, 0, 0, 0))
+    double yaw;
+    double pitch;
+    double roll;
+    result_deal(cv::Rect re = cv::Rect(0, 0, 0, 0), double r = 0, double p = 0, double y = 0)
     {
-        bbox = r;
+        bbox = re;
         getDistance();
-        getScore();
+        //getScore();
+        roll = r;
+        yaw = y;
+        pitch = p;
+        ROS_INFO("roll%.12lf, pitch%.12lf, yaw%.12lf", roll / PI * 180, pitch / PI * 180, yaw/ PI * 180);
    }
     void getDistance()
     {
-        int k = 0, distance = 0;
+        int k = 0;
         if(class_id == 0 || class_id == 1)k = k_volleyball;
         else if(class_id == 2 || class_id == 3)k = k_basketball;
         else if(class_id == 4)distance = exchange_distance;
         else if(class_id == 5)k = k_mark;
         else if(class_id == 6)k = k_home;
+        distance = 100;
     }
    
     void getScore()
@@ -143,6 +156,11 @@ void paramCallback(const config::param::ConstPtr& msg)
     k_mark = msg->k_mark;
     if_show = msg->if_show;
 }
+void modeCallback(const std_msgs::UInt8::ConstPtr& msg)
+{
+    aim = (target)msg->data;
+    ROS_INFO("%d", aim);
+}
 int main(int argc, char** argv)
 {
     cudaSetDevice(DEVICE);
@@ -188,10 +206,11 @@ int main(int argc, char** argv)
     cudaStream_t stream;
     CUDA_CHECK(cudaStreamCreate(&stream));
     ROS_WARN("engine init done!");
-
     ros::Subscriber imageSub = n.subscribe("/MVCamera/image_raw", 1, &imageCallback);
     ros::Subscriber paramSub = n.subscribe("/param", 1, &paramCallback);
+    ros::Subscriber modeSub = n.subscribe("/mode", 1, &modeCallback);
     detectingPub = n.advertise<sensor_msgs::Image>("/detectingResult", 1);
+   
     ros::spin();
 
     // Release stream and buffers
@@ -227,10 +246,13 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
     std::vector<Yolo::Detection> batch_res;
     std::vector<result_deal> pass_result;
     nms(batch_res, &prob[0], CONF_THRESH, NMS_THRESH);
+    ros::param::get("/yaw", yaw);
+    ros::param::get("/pitch", pitch);
+    ros::param::get("/roll", roll);
     for (int b = 0; b < batch_res.size(); b++)
     {
         cv::Rect r = get_rect(img, batch_res[b].bbox);
-        result_deal rd(r);
+        result_deal rd(r, roll, pitch, yaw);
         if(pass_result.empty())
         {
             pass_result.push_back(rd);

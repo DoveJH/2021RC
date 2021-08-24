@@ -9,6 +9,7 @@ ros::Publisher testx;
 ros::Publisher testy;
 ros::Publisher testz;
 double k_x0 = 0.4, k_y0 = 0.4, k_z0 = 0.4,  k_x1, k_y1, k_z1, k_test = 0.5;
+double roll, pitch, yaw;
 class velocity_controller
 {
 private:
@@ -135,17 +136,20 @@ void four_num_mult(double w1, double x1, double y1, double z1, double w2, double
 }
 void imuCallback(const sensor_msgs::ImuConstPtr& msg)
 {
-    static bool flag_lowPass = true;
-    static double last_linear_acceleration_x_msg = 0, last_linear_acceleration_y_msg = 0, last_linear_acceleration_z_msg = 0;
-    double roll, pitch, yaw;
-    double linear_acceleration_x_msg = 0, linear_acceleration_y_msg = 0, linear_acceleration_z_msg = 0;
+    //static bool flag_lowPass = true;
+    //static double last_linear_acceleration_x_msg = 0, last_linear_acceleration_y_msg = 0, last_linear_acceleration_z_msg = 0;
+    
+    //double linear_acceleration_x_msg = 0, linear_acceleration_y_msg = 0, linear_acceleration_z_msg = 0;
     tf::Quaternion q;
     tf::quaternionMsgToTF(msg->orientation, q);
     tf::Matrix3x3(q).getRPY(roll, pitch, yaw);
     roll -= 0.01865829194179713113;
     pitch -= 0.00279585943802088437;
+    ros::param::set("/yaw", yaw);
+    ros::param::set("/pitch", pitch);
+    ros::param::set("/roll", roll);
     //ROS_INFO("roll%.12lf, pitch%.12lf, yaw%.12lf", roll / PI * 180, pitch / PI * 180, yaw/ PI * 180);
-
+/*
     //低通滤波
     if(flag_lowPass)
     {
@@ -194,21 +198,22 @@ void imuCallback(const sensor_msgs::ImuConstPtr& msg)
     
     double linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world, linear_acceleration_w;
     double linear_acceleration_x_car, linear_acceleration_y_car, linear_acceleration_z_car;
-
+*/
     //转为世界坐标系
-    four_num_mult(msg->orientation.w, msg->orientation.x, msg->orientation.y, msg->orientation.z, 0, linear_acceleration_x_msg, linear_acceleration_y_msg, linear_acceleration_z_msg, linear_acceleration_w, linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world);
-    four_num_mult(linear_acceleration_w, linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world, msg->orientation.w, 0 - msg->orientation.x, 0 - msg->orientation.y, 0 - msg->orientation.z, linear_acceleration_w, linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world);
+    //four_num_mult(msg->orientation.w, msg->orientation.x, msg->orientation.y, msg->orientation.z, 0, linear_acceleration_x_msg, linear_acceleration_y_msg, linear_acceleration_z_msg, linear_acceleration_w, linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world);
+    //four_num_mult(linear_acceleration_w, linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world, msg->orientation.w, 0 - msg->orientation.x, 0 - msg->orientation.y, 0 - msg->orientation.z, linear_acceleration_w, linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world);
 
     //调零
-    linear_acceleration_x_world -= 0.001 - 0.00068265913061043948;
+    //linear_acceleration_x_world -= 0.001 - 0.00068265913061043948;
     //linear_acceleration_y_world -= -0.0432535613068771;
-    linear_acceleration_z_world -= (9.75428169703640596708 + 0.00045785053283986787);
+    //linear_acceleration_z_world -= (9.75428169703640596708 + 0.00045785053283986787);
 
     //转回相机坐标系
-    four_num_mult(msg->orientation.w, 0 - msg->orientation.x, 0 - msg->orientation.y, 0 - msg->orientation.z, 0, linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world, linear_acceleration_w, linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world);
-    four_num_mult(linear_acceleration_w, linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world, msg->orientation.w, msg->orientation.x, msg->orientation.y, msg->orientation.z, linear_acceleration_w, linear_acceleration_x_car, linear_acceleration_y_car, linear_acceleration_z_car);
+    //four_num_mult(msg->orientation.w, 0 - msg->orientation.x, 0 - msg->orientation.y, 0 - msg->orientation.z, 0, linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world, linear_acceleration_w, linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world);
+    //four_num_mult(linear_acceleration_w, linear_acceleration_x_world, linear_acceleration_y_world, linear_acceleration_z_world, msg->orientation.w, msg->orientation.x, msg->orientation.y, msg->orientation.z, linear_acceleration_w, linear_acceleration_x_car, linear_acceleration_y_car, linear_acceleration_z_car);
 
     //计算时间间隔
+    /*
     int duration = 0, now_nsec = 0;
     static int last_nsec = 0;
     static double last_linear_acceleration_x;
@@ -221,6 +226,7 @@ void imuCallback(const sensor_msgs::ImuConstPtr& msg)
     static double linear_location_x = 0;
     linear_velocity_x_controller.insertData(linear_acceleration_x_car, 0.002);
     static location_controller linear_location_x_controller;
+    */
     //ROS_INFO("%lf", linear_acceleration_x_controller.getAverage());
 
 
@@ -231,7 +237,7 @@ void imuCallback(const sensor_msgs::ImuConstPtr& msg)
     //adj_z += linear_acceleration_z_world;
     //if(count > 200 && adj_x < linear_acceleration_x_controller.variance)adj_x = linear_acceleration_x_controller.variance;
     //ROS_INFO("count:%d, x:%.16lf, y:%.16lf, z:%.16lf", count, adj_x, adj_y, adj_z);
-
+/*
     if(flag_linearVelocity)
     {
         flag_linearVelocity = false;
@@ -283,13 +289,14 @@ void imuCallback(const sensor_msgs::ImuConstPtr& msg)
             }
         }
     }
+    */
     //ROS_INFO("%.12f", x);
-    std_msgs::Float64 testMsg;
-    testMsg.data = linear_location_x;
+    //std_msgs::Float64 testMsg;
+    //testMsg.data = linear_location_x;
     //count++;
     //if(count >= 10)
     //{
-    testx.publish(testMsg);
+    //testx.publish(testMsg);
         //count = 0;
     //}
     
@@ -298,7 +305,7 @@ void imuCallback(const sensor_msgs::ImuConstPtr& msg)
     //testMsg.data = linear_acceleration_z_car;
     //testz.publish(testMsg);
 }
-void paramCallback(const config::paramConstPtr& msg)
+/*void paramCallback(const config::paramConstPtr& msg)
 {
     k_x0 = msg->k_x0;
     k_x1 = msg->k_x1;
@@ -307,15 +314,16 @@ void paramCallback(const config::paramConstPtr& msg)
     k_z0 = msg->k_z0;
     k_z1 = msg->k_z1;
     k_test = msg->k_test;
-}
+}*/
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "imu_node");
     ros::NodeHandle n;
     ros::Subscriber sub = n.subscribe("/imu/data", 1, &imuCallback);
-    ros::Subscriber paramSub = n.subscribe("/param", 1, &paramCallback);
-    testx = n.advertise<std_msgs::Float64>("/testx", 1);
-    testy = n.advertise<std_msgs::Float64>("/testy", 1);
-    testz = n.advertise<std_msgs::Float64>("/testz", 1);
+
+    //ros::Subscriber paramSub = n.subscribe("/param", 1, &paramCallback);
+    //testx = n.advertise<std_msgs::Float64>("/testx", 1);
+    //testy = n.advertise<std_msgs::Float64>("/testy", 1);
+    //testz = n.advertise<std_msgs::Float64>("/testz", 1);
     ros::spin();
 }
