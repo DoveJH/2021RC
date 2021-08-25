@@ -8,13 +8,14 @@ import struct
 
 
 class result(genpy.Message):
-  _md5sum = "868f6f96866e086832cb94501f599dc0"
+  _md5sum = "7b8f97e1aab5db4dadbd6597afef2119"
   _type = "yolov5/result"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """int32 x
+int32 y
 int32 distance"""
-  __slots__ = ['x','distance']
-  _slot_types = ['int32','int32']
+  __slots__ = ['x','y','distance']
+  _slot_types = ['int32','int32','int32']
 
   def __init__(self, *args, **kwds):
     """
@@ -24,7 +25,7 @@ int32 distance"""
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       x,distance
+       x,y,distance
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -35,10 +36,13 @@ int32 distance"""
       # message fields cannot be None, assign default values for those that are
       if self.x is None:
         self.x = 0
+      if self.y is None:
+        self.y = 0
       if self.distance is None:
         self.distance = 0
     else:
       self.x = 0
+      self.y = 0
       self.distance = 0
 
   def _get_types(self):
@@ -54,7 +58,7 @@ int32 distance"""
     """
     try:
       _x = self
-      buff.write(_get_struct_2i().pack(_x.x, _x.distance))
+      buff.write(_get_struct_3i().pack(_x.x, _x.y, _x.distance))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -69,8 +73,8 @@ int32 distance"""
       end = 0
       _x = self
       start = end
-      end += 8
-      (_x.x, _x.distance,) = _get_struct_2i().unpack(str[start:end])
+      end += 12
+      (_x.x, _x.y, _x.distance,) = _get_struct_3i().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -84,7 +88,7 @@ int32 distance"""
     """
     try:
       _x = self
-      buff.write(_get_struct_2i().pack(_x.x, _x.distance))
+      buff.write(_get_struct_3i().pack(_x.x, _x.y, _x.distance))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -100,8 +104,8 @@ int32 distance"""
       end = 0
       _x = self
       start = end
-      end += 8
-      (_x.x, _x.distance,) = _get_struct_2i().unpack(str[start:end])
+      end += 12
+      (_x.x, _x.y, _x.distance,) = _get_struct_3i().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -110,9 +114,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_2i = None
-def _get_struct_2i():
-    global _struct_2i
-    if _struct_2i is None:
-        _struct_2i = struct.Struct("<2i")
-    return _struct_2i
+_struct_3i = None
+def _get_struct_3i():
+    global _struct_3i
+    if _struct_3i is None:
+        _struct_3i = struct.Struct("<3i")
+    return _struct_3i

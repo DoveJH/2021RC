@@ -19,6 +19,7 @@ class result {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
       this.x = null;
+      this.y = null;
       this.distance = null;
     }
     else {
@@ -27,6 +28,12 @@ class result {
       }
       else {
         this.x = 0;
+      }
+      if (initObj.hasOwnProperty('y')) {
+        this.y = initObj.y
+      }
+      else {
+        this.y = 0;
       }
       if (initObj.hasOwnProperty('distance')) {
         this.distance = initObj.distance
@@ -41,6 +48,8 @@ class result {
     // Serializes a message object of type result
     // Serialize message field [x]
     bufferOffset = _serializer.int32(obj.x, buffer, bufferOffset);
+    // Serialize message field [y]
+    bufferOffset = _serializer.int32(obj.y, buffer, bufferOffset);
     // Serialize message field [distance]
     bufferOffset = _serializer.int32(obj.distance, buffer, bufferOffset);
     return bufferOffset;
@@ -52,13 +61,15 @@ class result {
     let data = new result(null);
     // Deserialize message field [x]
     data.x = _deserializer.int32(buffer, bufferOffset);
+    // Deserialize message field [y]
+    data.y = _deserializer.int32(buffer, bufferOffset);
     // Deserialize message field [distance]
     data.distance = _deserializer.int32(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 8;
+    return 12;
   }
 
   static datatype() {
@@ -68,13 +79,14 @@ class result {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '868f6f96866e086832cb94501f599dc0';
+    return '7b8f97e1aab5db4dadbd6597afef2119';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
     int32 x
+    int32 y
     int32 distance
     `;
   }
@@ -90,6 +102,13 @@ class result {
     }
     else {
       resolved.x = 0
+    }
+
+    if (msg.y !== undefined) {
+      resolved.y = msg.y;
+    }
+    else {
+      resolved.y = 0
     }
 
     if (msg.distance !== undefined) {

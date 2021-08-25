@@ -6,12 +6,14 @@
 serial::Serial sp;
 void resultCallback(const yolov5::resultConstPtr& msg)
 {
-    uint8_t send[4];
-   send[1] = (uint8_t)msg->x;
+    uint8_t send[6];
+    send[1] = (uint8_t)msg->x;
     send[0] = (uint8_t)((msg->x) >> 8);
-    send[3] = (uint8_t)msg->distance;
-    send[2] = (uint8_t)((msg->distance) >> 8);
-    sp.write(send, 4);
+    send[3] = (uint8_t)msg->y;
+    send[2] = (uint8_t)((msg->y) >> 8);
+    send[5] = (uint8_t)msg->distance;
+    send[4] = (uint8_t)((msg->distance) >> 8);
+    sp.write(send, 6);
 }
 int main(int argc, char** argv)
 {

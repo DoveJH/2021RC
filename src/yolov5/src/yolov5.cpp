@@ -64,25 +64,27 @@ public:
     {
         bbox = re;
         center_x = (int)(bbox.x + 0.5 * bbox.width);
-        center_y = (int)(bbox.y - 0.5 * bbox.height);
-        //getDistance();
-        //getScore();
+        center_y = (int)(bbox.y + 0.5 * bbox.height);
+        getDistance();
+        getScore();
         roll = r;
         yaw = y;
         pitch = p;
-        //ROS_INFO("roll%.12lf, pitch%.12lf, yaw%.12lf", roll / PI * 180, pitch / PI * 180, yaw/ PI * 180);
+        ROS_INFO("roll%.12lf, pitch%.12lf, yaw%.12lf", roll / PI * 180, pitch / PI * 180, yaw/ PI * 180);
    }
     void getDistance()
     {
-        int k = 0;
-        int cameraDistance = 1;
-        if(class_id == 0 || class_id == 1)k = k_volleyball;
-        else if(class_id == 2 || class_id == 3)k = k_basketball;
+        double k = 20;
+        double cameraDistance = 1;
+        if(class_id == 0 || class_id == 1)k = 21.0084524;
+        else if(class_id == 2 || class_id == 3)k = 24.6;
         else if(class_id == 4)distance = exchange_distance;
-        else if(class_id == 5)k = k_mark;
         else if(class_id == 6)k = k_home;
-        distance = k * k * (bbox.x + 0.5 * bbox.x);
-        distance = 100;
+        distance = k * k * (center_x * center_x + center_y * center_y + cameraDistance * cameraDistance) / (bbox.width * bbox.width);
+        if(class_id == 5)
+        {
+            distance = exchange_distance;
+        }
     }
    
     void getScore()
@@ -274,13 +276,14 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
             pass_result.push_back(rd);
         }
     }
-    //if(!pass_result.empty() && pass_result[0].score != 0)
-    //{
-        //yolov5::result msg;
-        //msg.x = (int)(pass_result[0].bbox.x + 0.5 * pass_result[0].bbox.width);
-        //msg.distance = pass_result[0].distance;
-        //resultPub.publish(msg);
-    //}
+    if(!pass_result.empty() && pass_result[0].score != 0)
+    {
+        yolov5::result msg;
+        msg.x = pass_result[0].center_x;
+        msg.y = pass_result[0].center_y;
+        msg.distance = pass_result[0].distance;
+        resultPub.publish(msg);
+    }
     if(if_show)
     {
         for (int b = 0; b < batch_res.size(); b++) 
