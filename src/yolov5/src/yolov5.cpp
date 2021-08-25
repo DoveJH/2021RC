@@ -11,6 +11,7 @@
 #include <sensor_msgs/Imu.h>
 #include <std_msgs/UInt8.h>
 #include <tf/tf.h>
+#include <yolov5/result.h>
 #define USE_FP32  // set USE_INT8 or USE_FP16 or USE_FP32
 #define DEVICE 0  // GPU id
 #define PI 3.14159265
@@ -54,27 +55,33 @@ public:
     int class_id;
     int score;
     int distance;
+    int center_x;
+    int center_y;
     double yaw;
     double pitch;
     double roll;
     result_deal(cv::Rect re = cv::Rect(0, 0, 0, 0), double r = 0, double p = 0, double y = 0)
     {
         bbox = re;
-        getDistance();
+        center_x = (int)(bbox.x + 0.5 * bbox.width);
+        center_y = (int)(bbox.y - 0.5 * bbox.height);
+        //getDistance();
         //getScore();
         roll = r;
         yaw = y;
         pitch = p;
-        ROS_INFO("roll%.12lf, pitch%.12lf, yaw%.12lf", roll / PI * 180, pitch / PI * 180, yaw/ PI * 180);
+        //ROS_INFO("roll%.12lf, pitch%.12lf, yaw%.12lf", roll / PI * 180, pitch / PI * 180, yaw/ PI * 180);
    }
     void getDistance()
     {
         int k = 0;
+        int cameraDistance = 1;
         if(class_id == 0 || class_id == 1)k = k_volleyball;
         else if(class_id == 2 || class_id == 3)k = k_basketball;
         else if(class_id == 4)distance = exchange_distance;
         else if(class_id == 5)k = k_mark;
         else if(class_id == 6)k = k_home;
+        distance = k * k * (bbox.x + 0.5 * bbox.x);
         distance = 100;
     }
    
@@ -210,7 +217,7 @@ int main(int argc, char** argv)
     ros::Subscriber paramSub = n.subscribe("/param", 1, &paramCallback);
     ros::Subscriber modeSub = n.subscribe("/mode", 1, &modeCallback);
     detectingPub = n.advertise<sensor_msgs::Image>("/detectingResult", 1);
-   
+   resultPub = n.advertise<yolov5::result>("/target", 1);
     ros::spin();
 
     // Release stream and buffers
@@ -253,6 +260,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
     {
         cv::Rect r = get_rect(img, batch_res[b].bbox);
         result_deal rd(r, roll, pitch, yaw);
+        cv::circle(img, cv::Point(rd.center_x, rd.center_y), 4, cv::Scalar(0 , 0, 255));
         if(pass_result.empty())
         {
             pass_result.push_back(rd);
@@ -266,6 +274,13 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
             pass_result.push_back(rd);
         }
     }
+    //if(!pass_result.empty() && pass_result[0].score != 0)
+    //{
+        //yolov5::result msg;
+        //msg.x = (int)(pass_result[0].bbox.x + 0.5 * pass_result[0].bbox.width);
+        //msg.distance = pass_result[0].distance;
+        //resultPub.publish(msg);
+    //}
     if(if_show)
     {
         for (int b = 0; b < batch_res.size(); b++) 
