@@ -8,13 +8,13 @@ import struct
 
 
 class param(genpy.Message):
-  _md5sum = "4507b4f03a0f3c68cc9f0657404bb3a2"
+  _md5sum = "eb5de5e5d2fd7f2c45fa5a927466753a"
   _type = "config/param"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """float32 NMS_THRESH
 float32 CONF_THRESH
 int32 k_volleyball
-int32 k_basketball
+float64 k_basketball
 int32 k_basket
 int32 k_mark
 bool if_shot
@@ -27,7 +27,7 @@ float64 k_y1
 float64 k_z1
 float64 k_test"""
   __slots__ = ['NMS_THRESH','CONF_THRESH','k_volleyball','k_basketball','k_basket','k_mark','if_shot','if_show','k_x0','k_y0','k_z0','k_x1','k_y1','k_z1','k_test']
-  _slot_types = ['float32','float32','int32','int32','int32','int32','bool','bool','float64','float64','float64','float64','float64','float64','float64']
+  _slot_types = ['float32','float32','int32','float64','int32','int32','bool','bool','float64','float64','float64','float64','float64','float64','float64']
 
   def __init__(self, *args, **kwds):
     """
@@ -53,7 +53,7 @@ float64 k_test"""
       if self.k_volleyball is None:
         self.k_volleyball = 0
       if self.k_basketball is None:
-        self.k_basketball = 0
+        self.k_basketball = 0.
       if self.k_basket is None:
         self.k_basket = 0
       if self.k_mark is None:
@@ -80,7 +80,7 @@ float64 k_test"""
       self.NMS_THRESH = 0.
       self.CONF_THRESH = 0.
       self.k_volleyball = 0
-      self.k_basketball = 0
+      self.k_basketball = 0.
       self.k_basket = 0
       self.k_mark = 0
       self.if_shot = False
@@ -106,7 +106,7 @@ float64 k_test"""
     """
     try:
       _x = self
-      buff.write(_get_struct_2f4i2B7d().pack(_x.NMS_THRESH, _x.CONF_THRESH, _x.k_volleyball, _x.k_basketball, _x.k_basket, _x.k_mark, _x.if_shot, _x.if_show, _x.k_x0, _x.k_y0, _x.k_z0, _x.k_x1, _x.k_y1, _x.k_z1, _x.k_test))
+      buff.write(_get_struct_2fid2i2B7d().pack(_x.NMS_THRESH, _x.CONF_THRESH, _x.k_volleyball, _x.k_basketball, _x.k_basket, _x.k_mark, _x.if_shot, _x.if_show, _x.k_x0, _x.k_y0, _x.k_z0, _x.k_x1, _x.k_y1, _x.k_z1, _x.k_test))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -121,8 +121,8 @@ float64 k_test"""
       end = 0
       _x = self
       start = end
-      end += 82
-      (_x.NMS_THRESH, _x.CONF_THRESH, _x.k_volleyball, _x.k_basketball, _x.k_basket, _x.k_mark, _x.if_shot, _x.if_show, _x.k_x0, _x.k_y0, _x.k_z0, _x.k_x1, _x.k_y1, _x.k_z1, _x.k_test,) = _get_struct_2f4i2B7d().unpack(str[start:end])
+      end += 86
+      (_x.NMS_THRESH, _x.CONF_THRESH, _x.k_volleyball, _x.k_basketball, _x.k_basket, _x.k_mark, _x.if_shot, _x.if_show, _x.k_x0, _x.k_y0, _x.k_z0, _x.k_x1, _x.k_y1, _x.k_z1, _x.k_test,) = _get_struct_2fid2i2B7d().unpack(str[start:end])
       self.if_shot = bool(self.if_shot)
       self.if_show = bool(self.if_show)
       return self
@@ -138,7 +138,7 @@ float64 k_test"""
     """
     try:
       _x = self
-      buff.write(_get_struct_2f4i2B7d().pack(_x.NMS_THRESH, _x.CONF_THRESH, _x.k_volleyball, _x.k_basketball, _x.k_basket, _x.k_mark, _x.if_shot, _x.if_show, _x.k_x0, _x.k_y0, _x.k_z0, _x.k_x1, _x.k_y1, _x.k_z1, _x.k_test))
+      buff.write(_get_struct_2fid2i2B7d().pack(_x.NMS_THRESH, _x.CONF_THRESH, _x.k_volleyball, _x.k_basketball, _x.k_basket, _x.k_mark, _x.if_shot, _x.if_show, _x.k_x0, _x.k_y0, _x.k_z0, _x.k_x1, _x.k_y1, _x.k_z1, _x.k_test))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -154,8 +154,8 @@ float64 k_test"""
       end = 0
       _x = self
       start = end
-      end += 82
-      (_x.NMS_THRESH, _x.CONF_THRESH, _x.k_volleyball, _x.k_basketball, _x.k_basket, _x.k_mark, _x.if_shot, _x.if_show, _x.k_x0, _x.k_y0, _x.k_z0, _x.k_x1, _x.k_y1, _x.k_z1, _x.k_test,) = _get_struct_2f4i2B7d().unpack(str[start:end])
+      end += 86
+      (_x.NMS_THRESH, _x.CONF_THRESH, _x.k_volleyball, _x.k_basketball, _x.k_basket, _x.k_mark, _x.if_shot, _x.if_show, _x.k_x0, _x.k_y0, _x.k_z0, _x.k_x1, _x.k_y1, _x.k_z1, _x.k_test,) = _get_struct_2fid2i2B7d().unpack(str[start:end])
       self.if_shot = bool(self.if_shot)
       self.if_show = bool(self.if_show)
       return self
@@ -166,9 +166,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_2f4i2B7d = None
-def _get_struct_2f4i2B7d():
-    global _struct_2f4i2B7d
-    if _struct_2f4i2B7d is None:
-        _struct_2f4i2B7d = struct.Struct("<2f4i2B7d")
-    return _struct_2f4i2B7d
+_struct_2fid2i2B7d = None
+def _get_struct_2fid2i2B7d():
+    global _struct_2fid2i2B7d
+    if _struct_2fid2i2B7d is None:
+        _struct_2fid2i2B7d = struct.Struct("<2fid2i2B7d")
+    return _struct_2fid2i2B7d

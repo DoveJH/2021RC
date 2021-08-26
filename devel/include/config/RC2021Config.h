@@ -238,8 +238,8 @@ class DEFAULT
 
         if("NMS_THRESH"==(*_i)->name){NMS_THRESH = boost::any_cast<double>(val);}
         if("CONF_THRESH"==(*_i)->name){CONF_THRESH = boost::any_cast<double>(val);}
-        if("k_volleyball"==(*_i)->name){k_volleyball = boost::any_cast<int>(val);}
-        if("k_basketball"==(*_i)->name){k_basketball = boost::any_cast<int>(val);}
+        if("k_volleyball"==(*_i)->name){k_volleyball = boost::any_cast<double>(val);}
+        if("k_basketball"==(*_i)->name){k_basketball = boost::any_cast<double>(val);}
         if("k_basket"==(*_i)->name){k_basket = boost::any_cast<int>(val);}
         if("k_mark"==(*_i)->name){k_mark = boost::any_cast<int>(val);}
         if("if_shot"==(*_i)->name){if_shot = boost::any_cast<bool>(val);}
@@ -256,8 +256,8 @@ class DEFAULT
 
     double NMS_THRESH;
 double CONF_THRESH;
-int k_volleyball;
-int k_basketball;
+double k_volleyball;
+double k_basketball;
 int k_basket;
 int k_mark;
 bool if_shot;
@@ -283,9 +283,9 @@ double k_test;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       double CONF_THRESH;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      int k_volleyball;
+      double k_volleyball;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      int k_basketball;
+      double k_basketball;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       int k_basket;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
@@ -467,25 +467,25 @@ RC2021Config::GroupDescription<RC2021Config::DEFAULT, RC2021Config> Default("Def
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("CONF_THRESH", "double", 0, "The confidence below this will be ignored", "", &RC2021Config::CONF_THRESH)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __min__.k_volleyball = -2147483648;
+      __min__.k_volleyball = 0.001;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __max__.k_volleyball = 2147483647;
+      __max__.k_volleyball = 2.0;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.k_volleyball = 0;
+      __default__.k_volleyball = 100.0;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_volleyball", "int", 0, "Related to the distance of volleyball", "", &RC2021Config::k_volleyball)));
+      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_volleyball", "double", 0, "Related to the distance of volleyball", "", &RC2021Config::k_volleyball)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_volleyball", "int", 0, "Related to the distance of volleyball", "", &RC2021Config::k_volleyball)));
+      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_volleyball", "double", 0, "Related to the distance of volleyball", "", &RC2021Config::k_volleyball)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __min__.k_basketball = -2147483648;
+      __min__.k_basketball = 0.001;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __max__.k_basketball = 2147483647;
+      __max__.k_basketball = 1000.0;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.k_basketball = 0;
+      __default__.k_basketball = 1.0;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_basketball", "int", 0, "Related to the distance of basketball", "", &RC2021Config::k_basketball)));
+      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_basketball", "double", 0, "Related to the distance of basketball", "", &RC2021Config::k_basketball)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_basketball", "int", 0, "Related to the distance of basketball", "", &RC2021Config::k_basketball)));
+      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_basketball", "double", 0, "Related to the distance of basketball", "", &RC2021Config::k_basketball)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __min__.k_basket = -2147483648;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"

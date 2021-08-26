@@ -3,8 +3,8 @@
 <node name="config_node" pkg="config" type="config_node">
   <param name="NMS_THRESH" type="double" value="0.4" />
   <param name="CONF_THRESH" type="double" value="0.7" />
-  <param name="k_volleyball" type="int" value="0" />
-  <param name="k_basketball" type="int" value="0" />
+  <param name="k_volleyball" type="double" value="100.0" />
+  <param name="k_basketball" type="double" value="1.0" />
   <param name="k_basket" type="int" value="0" />
   <param name="k_mark" type="int" value="0" />
   <param name="if_shot" type="bool" value="False" />

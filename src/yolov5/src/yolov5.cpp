@@ -36,16 +36,12 @@ static float prob[ OUTPUT_SIZE];
 int exchange_distance;
 cudaStream_t stream;
 IExecutionContext* context;
-int k_volleyball = 0;
-int k_basketball = 0;
-int k_basket = 0;
-int k_mark = 0;
-int k_home = 0;
+double cameraDistance = 900;
 enum target
 {
     volleyball = 0, basketball, basket, mark, home
 };
-target aim = volleyball;
+target aim = (target)1;
 bool if_show = true;
 class result_deal
 {
@@ -60,8 +56,10 @@ public:
     double yaw;
     double pitch;
     double roll;
-    result_deal(cv::Rect re = cv::Rect(0, 0, 0, 0), double r = 0, double p = 0, double y = 0)
+    
+    result_deal(cv::Rect re = cv::Rect(0, 0, 0, 0), int id = 100, double r = 0, double p = 0, double y = 0)
     {
+        class_id = id;
         bbox = re;
         center_x = (int)(bbox.x + 0.5 * bbox.width);
         center_y = (int)(bbox.y + 0.5 * bbox.height);
@@ -70,21 +68,43 @@ public:
         roll = r;
         yaw = y;
         pitch = p;
-        ROS_INFO("roll%.12lf, pitch%.12lf, yaw%.12lf", roll / PI * 180, pitch / PI * 180, yaw/ PI * 180);
+        //ROS_INFO("roll%.12lf, pitch%.12lf, yaw%.12lf", roll / PI * 180, pitch / PI * 180, yaw/ PI * 180);
    }
     void getDistance()
     {
         double k = 20;
-        double cameraDistance = 1;
+        int size;
+        if(bbox.x <= 5 || (bbox.x + bbox.width) >= 635)
+        {
+            size = bbox.height;
+        }
+        else if(bbox.y <= 5 || (bbox.y + bbox.height) >= 507)
+        {
+            size = bbox.width;
+        }
+        else
+        {
+            size = bbox.width;
+        }
         if(class_id == 0 || class_id == 1)k = 21.0084524;
         else if(class_id == 2 || class_id == 3)k = 24.6;
         else if(class_id == 4)distance = exchange_distance;
-        else if(class_id == 6)k = k_home;
-        distance = k * k * (center_x * center_x + center_y * center_y + cameraDistance * cameraDistance) / (bbox.width * bbox.width);
+        else if(class_id == 6)k = 100;
+        distance = sqrt(k * k * ((center_x - 320) * (center_x - 320) + (center_y - 256) * (center_y - 256) + cameraDistance * cameraDistance) / (size * size));
         if(class_id == 5)
         {
             distance = exchange_distance;
         }
+        if(class_id == 6)
+        {
+            exchange_distance = distance;
+        }
+        if((bbox.x <= 5 || (bbox.x + bbox.width) >= 635) && (bbox.y <= 5 || (bbox.y + bbox.height) >= 507))
+        {
+            distance = 10000;
+            ROS_INFO("hello");
+        }
+        //ROS_INFO("%d, %d", bbox.x + bbox.width, bbox.y + bbox.height);
     }
    
     void getScore()
@@ -97,7 +117,7 @@ public:
             }
             else
             {
-                score = 10 / distance;
+                score = 1000 / distance;
             }
         }
         if(aim == basketball)
@@ -108,7 +128,7 @@ public:
             }
             else
             {
-                score = 10 / distance;
+                score = 1000 / distance;
             }
         }
         if(aim == basket)
@@ -119,7 +139,7 @@ public:
             }
             else
             {
-                score = 10;
+                score = 1000;
             }
         }
         if(aim == mark)
@@ -130,7 +150,7 @@ public:
             }
             else
             {
-                score = 10;
+                score = 1000;
             }
         }
         if(aim == home)
@@ -142,7 +162,7 @@ public:
             //else if(yaw)
             else
             {
-                score = 10;
+                score = 1000;
             }
         }
     }
@@ -159,10 +179,8 @@ void paramCallback(const config::param::ConstPtr& msg)
 {
     NMS_THRESH = msg->NMS_THRESH;
     CONF_THRESH = msg->CONF_THRESH;
-    k_basket = msg->k_basket;
-    k_basketball = msg->k_basketball;
-    k_volleyball = msg->k_volleyball;
-    k_mark = msg->k_mark;
+    cameraDistance = msg->k_basketball;
+    ROS_INFO("%f", cameraDistance);
     if_show = msg->if_show;
 }
 void modeCallback(const std_msgs::UInt8::ConstPtr& msg)
@@ -261,8 +279,9 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
     for (int b = 0; b < batch_res.size(); b++)
     {
         cv::Rect r = get_rect(img, batch_res[b].bbox);
-        result_deal rd(r, roll, pitch, yaw);
-        cv::circle(img, cv::Point(rd.center_x, rd.center_y), 4, cv::Scalar(0 , 0, 255));
+        result_deal rd(r, batch_res[b].class_id, roll, pitch, yaw);
+        cv::circle(img, cv::Point(r.x, r.y), 4, cv::Scalar(0 , 0, 255));
+        cv::putText(img, std::to_string(rd.distance), cvPoint(r.x, r.y - 29), cv::FONT_HERSHEY_PLAIN, 1.2, cv::Scalar(0xFF, 0xFF, 0xFF), 2);
         if(pass_result.empty())
         {
             pass_result.push_back(rd);
@@ -284,6 +303,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
         msg.distance = pass_result[0].distance;
         resultPub.publish(msg);
     }
+    pass_result.clear();
     if(if_show)
     {
         for (int b = 0; b < batch_res.size(); b++) 

@@ -14,9 +14,11 @@
     <param name="publish_debug_topics" value="false"/>
     <param name="publish_tf" value="true"/>
     </node>
-    <node pkg="imu" type="imu_node" name="imu_node" output="screen" respawn="true" />
+    <node pkg="imu" type="imu_node" name="imu_node" output="screen" respawn="false" />
     <node pkg="mv_driver" type="mv_driver_node" name="mv_driver_node" output="screen" respawn="true" />
     <node pkg="yolov5" type="yolov5_node" name="yolov5_node" output="screen" respawn="true" />
     <node pkg="serial_com" type="serial_com_node" name="serial_com_node" output="screen" respawn="false" />
+    <node pkg="config" type="config_node" name="config_node" output="screen" respawn="true" />
+    <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure" output="screen" respawn="false" />
 </launch>
 

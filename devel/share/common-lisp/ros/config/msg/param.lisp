@@ -25,8 +25,8 @@
    (k_basketball
     :reader k_basketball
     :initarg :k_basketball
-    :type cl:integer
-    :initform 0)
+    :type cl:float
+    :initform 0.0)
    (k_basket
     :reader k_basket
     :initarg :k_basket
@@ -184,12 +184,15 @@
     (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
     )
-  (cl:let* ((signed (cl:slot-value msg 'k_basketball)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
-    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
-    )
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'k_basketball))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
   (cl:let* ((signed (cl:slot-value msg 'k_basket)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
@@ -288,12 +291,16 @@
       (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
       (cl:setf (cl:slot-value msg 'k_volleyball) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296))))
-    (cl:let ((unsigned 0))
-      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:slot-value msg 'k_basketball) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296))))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'k_basketball) (roslisp-utils:decode-double-float-bits bits)))
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
@@ -388,22 +395,22 @@
   "config/param")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<param>)))
   "Returns md5sum for a message object of type '<param>"
-  "4507b4f03a0f3c68cc9f0657404bb3a2")
+  "eb5de5e5d2fd7f2c45fa5a927466753a")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'param)))
   "Returns md5sum for a message object of type 'param"
-  "4507b4f03a0f3c68cc9f0657404bb3a2")
+  "eb5de5e5d2fd7f2c45fa5a927466753a")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<param>)))
   "Returns full string definition for message of type '<param>"
-  (cl:format cl:nil "float32 NMS_THRESH~%float32 CONF_THRESH~%int32 k_volleyball~%int32 k_basketball~%int32 k_basket~%int32 k_mark~%bool if_shot~%bool if_show~%float64 k_x0~%float64 k_y0~%float64 k_z0~%float64 k_x1~%float64 k_y1~%float64 k_z1~%float64 k_test~%~%"))
+  (cl:format cl:nil "float32 NMS_THRESH~%float32 CONF_THRESH~%int32 k_volleyball~%float64 k_basketball~%int32 k_basket~%int32 k_mark~%bool if_shot~%bool if_show~%float64 k_x0~%float64 k_y0~%float64 k_z0~%float64 k_x1~%float64 k_y1~%float64 k_z1~%float64 k_test~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'param)))
   "Returns full string definition for message of type 'param"
-  (cl:format cl:nil "float32 NMS_THRESH~%float32 CONF_THRESH~%int32 k_volleyball~%int32 k_basketball~%int32 k_basket~%int32 k_mark~%bool if_shot~%bool if_show~%float64 k_x0~%float64 k_y0~%float64 k_z0~%float64 k_x1~%float64 k_y1~%float64 k_z1~%float64 k_test~%~%"))
+  (cl:format cl:nil "float32 NMS_THRESH~%float32 CONF_THRESH~%int32 k_volleyball~%float64 k_basketball~%int32 k_basket~%int32 k_mark~%bool if_shot~%bool if_show~%float64 k_x0~%float64 k_y0~%float64 k_z0~%float64 k_x1~%float64 k_y1~%float64 k_z1~%float64 k_test~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <param>))
   (cl:+ 0
      4
      4
      4
-     4
+     8
      4
      4
      1

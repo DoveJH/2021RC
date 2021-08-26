@@ -6,14 +6,17 @@
 serial::Serial sp;
 void resultCallback(const yolov5::resultConstPtr& msg)
 {
-    uint8_t send[6];
-    send[1] = (uint8_t)msg->x;
-    send[0] = (uint8_t)((msg->x) >> 8);
-    send[3] = (uint8_t)msg->y;
-    send[2] = (uint8_t)((msg->y) >> 8);
-    send[5] = (uint8_t)msg->distance;
-    send[4] = (uint8_t)((msg->distance) >> 8);
-    sp.write(send, 6);
+    uint8_t send[8];
+    send[0] = (uint8_t)msg->x;
+    send[1] = (uint8_t)((msg->x) >> 8);
+    send[2] = (uint8_t)msg->y;
+    send[3] = (uint8_t)((msg->y) >> 8);
+    send[4] = (uint8_t)msg->distance;
+    send[5] = (uint8_t)((msg->distance) >> 8);
+    send[6] = 0xff;
+    send[7] = 0xff;
+    sp.write(send, 8);
+    //ROS_INFO_STREAM(send);
 }
 int main(int argc, char** argv)
 {
@@ -27,7 +30,7 @@ int main(int argc, char** argv)
    
     last_receive[0] = 255;
     serial::Timeout to = serial::Timeout::simpleTimeout(1000);
-    sp.setPort("/dev/ttyUSB1");
+    sp.setPort("/dev/ttyUSB0");
     sp.setBaudrate(115200);
     sp.setTimeout(to);
     try
@@ -41,7 +44,7 @@ int main(int argc, char** argv)
     }
     if(sp.isOpen())
     {
-        ROS_WARN("/dev/ttyUSB1 is opened");
+        ROS_WARN("/dev/ttyUSB0 is opened");
     }
     else 
     {

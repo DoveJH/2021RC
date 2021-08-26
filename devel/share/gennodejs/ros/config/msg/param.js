@@ -57,7 +57,7 @@ class param {
         this.k_basketball = initObj.k_basketball
       }
       else {
-        this.k_basketball = 0;
+        this.k_basketball = 0.0;
       }
       if (initObj.hasOwnProperty('k_basket')) {
         this.k_basket = initObj.k_basket
@@ -137,7 +137,7 @@ class param {
     // Serialize message field [k_volleyball]
     bufferOffset = _serializer.int32(obj.k_volleyball, buffer, bufferOffset);
     // Serialize message field [k_basketball]
-    bufferOffset = _serializer.int32(obj.k_basketball, buffer, bufferOffset);
+    bufferOffset = _serializer.float64(obj.k_basketball, buffer, bufferOffset);
     // Serialize message field [k_basket]
     bufferOffset = _serializer.int32(obj.k_basket, buffer, bufferOffset);
     // Serialize message field [k_mark]
@@ -174,7 +174,7 @@ class param {
     // Deserialize message field [k_volleyball]
     data.k_volleyball = _deserializer.int32(buffer, bufferOffset);
     // Deserialize message field [k_basketball]
-    data.k_basketball = _deserializer.int32(buffer, bufferOffset);
+    data.k_basketball = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [k_basket]
     data.k_basket = _deserializer.int32(buffer, bufferOffset);
     // Deserialize message field [k_mark]
@@ -201,7 +201,7 @@ class param {
   }
 
   static getMessageSize(object) {
-    return 82;
+    return 86;
   }
 
   static datatype() {
@@ -211,7 +211,7 @@ class param {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '4507b4f03a0f3c68cc9f0657404bb3a2';
+    return 'eb5de5e5d2fd7f2c45fa5a927466753a';
   }
 
   static messageDefinition() {
@@ -220,7 +220,7 @@ class param {
     float32 NMS_THRESH
     float32 CONF_THRESH
     int32 k_volleyball
-    int32 k_basketball
+    float64 k_basketball
     int32 k_basket
     int32 k_mark
     bool if_shot
@@ -266,7 +266,7 @@ class param {
       resolved.k_basketball = msg.k_basketball;
     }
     else {
-      resolved.k_basketball = 0
+      resolved.k_basketball = 0.0
     }
 
     if (msg.k_basket !== undefined) {

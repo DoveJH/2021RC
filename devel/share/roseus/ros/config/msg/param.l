@@ -22,7 +22,7 @@
     ((:NMS_THRESH __NMS_THRESH) 0.0)
     ((:CONF_THRESH __CONF_THRESH) 0.0)
     ((:k_volleyball __k_volleyball) 0)
-    ((:k_basketball __k_basketball) 0)
+    ((:k_basketball __k_basketball) 0.0)
     ((:k_basket __k_basket) 0)
     ((:k_mark __k_mark) 0)
     ((:if_shot __if_shot) nil)
@@ -39,7 +39,7 @@
    (setq _NMS_THRESH (float __NMS_THRESH))
    (setq _CONF_THRESH (float __CONF_THRESH))
    (setq _k_volleyball (round __k_volleyball))
-   (setq _k_basketball (round __k_basketball))
+   (setq _k_basketball (float __k_basketball))
    (setq _k_basket (round __k_basket))
    (setq _k_mark (round __k_mark))
    (setq _if_shot __if_shot)
@@ -106,8 +106,8 @@
     4
     ;; int32 _k_volleyball
     4
-    ;; int32 _k_basketball
-    4
+    ;; float64 _k_basketball
+    8
     ;; int32 _k_basket
     4
     ;; int32 _k_mark
@@ -141,8 +141,8 @@
        (sys::poke _CONF_THRESH (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
      ;; int32 _k_volleyball
        (write-long _k_volleyball s)
-     ;; int32 _k_basketball
-       (write-long _k_basketball s)
+     ;; float64 _k_basketball
+       (sys::poke _k_basketball (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
      ;; int32 _k_basket
        (write-long _k_basket s)
      ;; int32 _k_mark
@@ -175,8 +175,8 @@
      (setq _CONF_THRESH (sys::peek buf ptr- :float)) (incf ptr- 4)
    ;; int32 _k_volleyball
      (setq _k_volleyball (sys::peek buf ptr- :integer)) (incf ptr- 4)
-   ;; int32 _k_basketball
-     (setq _k_basketball (sys::peek buf ptr- :integer)) (incf ptr- 4)
+   ;; float64 _k_basketball
+     (setq _k_basketball (sys::peek buf ptr- :double)) (incf ptr- 8)
    ;; int32 _k_basket
      (setq _k_basket (sys::peek buf ptr- :integer)) (incf ptr- 4)
    ;; int32 _k_mark
@@ -203,13 +203,13 @@
    self)
   )
 
-(setf (get config::param :md5sum-) "4507b4f03a0f3c68cc9f0657404bb3a2")
+(setf (get config::param :md5sum-) "eb5de5e5d2fd7f2c45fa5a927466753a")
 (setf (get config::param :datatype-) "config/param")
 (setf (get config::param :definition-)
       "float32 NMS_THRESH
 float32 CONF_THRESH
 int32 k_volleyball
-int32 k_basketball
+float64 k_basketball
 int32 k_basket
 int32 k_mark
 bool if_shot
@@ -225,6 +225,6 @@ float64 k_test
 
 
 
-(provide :config/param "4507b4f03a0f3c68cc9f0657404bb3a2")
+(provide :config/param "eb5de5e5d2fd7f2c45fa5a927466753a")
 
 

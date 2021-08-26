@@ -27,7 +27,7 @@ struct param_
     : NMS_THRESH(0.0)
     , CONF_THRESH(0.0)
     , k_volleyball(0)
-    , k_basketball(0)
+    , k_basketball(0.0)
     , k_basket(0)
     , k_mark(0)
     , if_shot(false)
@@ -44,7 +44,7 @@ struct param_
     : NMS_THRESH(0.0)
     , CONF_THRESH(0.0)
     , k_volleyball(0)
-    , k_basketball(0)
+    , k_basketball(0.0)
     , k_basket(0)
     , k_mark(0)
     , if_shot(false)
@@ -70,7 +70,7 @@ struct param_
    typedef int32_t _k_volleyball_type;
   _k_volleyball_type k_volleyball;
 
-   typedef int32_t _k_basketball_type;
+   typedef double _k_basketball_type;
   _k_basketball_type k_basketball;
 
    typedef int32_t _k_basket_type;
@@ -206,12 +206,12 @@ struct MD5Sum< ::config::param_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "4507b4f03a0f3c68cc9f0657404bb3a2";
+    return "eb5de5e5d2fd7f2c45fa5a927466753a";
   }
 
   static const char* value(const ::config::param_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x4507b4f03a0f3c68ULL;
-  static const uint64_t static_value2 = 0xcc9f0657404bb3a2ULL;
+  static const uint64_t static_value1 = 0xeb5de5e5d2fd7f2cULL;
+  static const uint64_t static_value2 = 0x45fa5a927466753aULL;
 };
 
 template<class ContainerAllocator>
@@ -233,7 +233,7 @@ struct Definition< ::config::param_<ContainerAllocator> >
     return "float32 NMS_THRESH\n"
 "float32 CONF_THRESH\n"
 "int32 k_volleyball\n"
-"int32 k_basketball\n"
+"float64 k_basketball\n"
 "int32 k_basket\n"
 "int32 k_mark\n"
 "bool if_shot\n"
@@ -303,7 +303,7 @@ struct Printer< ::config::param_<ContainerAllocator> >
     s << indent << "k_volleyball: ";
     Printer<int32_t>::stream(s, indent + "  ", v.k_volleyball);
     s << indent << "k_basketball: ";
-    Printer<int32_t>::stream(s, indent + "  ", v.k_basketball);
+    Printer<double>::stream(s, indent + "  ", v.k_basketball);
     s << indent << "k_basket: ";
     Printer<int32_t>::stream(s, indent + "  ", v.k_basket);
     s << indent << "k_mark: ";
