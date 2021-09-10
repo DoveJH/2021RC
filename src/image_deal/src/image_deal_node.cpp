@@ -11,7 +11,7 @@ void imageDealCallback(const sensor_msgs::ImageConstPtr& msg)
     if (if_shot)
     {
         cv::Mat img = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8)->image;
-        static int d = 1000;
+        static int d = 9999;
         cv::imshow("shot", img);
         int k = cv::waitKey(30);
         if(k == 's' && !img.empty())

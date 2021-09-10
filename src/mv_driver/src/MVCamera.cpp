@@ -317,7 +317,7 @@ int MVCamera::GetFrame_B(Mat &frame,bool is_color)
           // the problem that camera failed to grab img often occurs when in high speed mode(USB3.0)
 
             if (frame.cols != sFrameInfo.iWidth || frame.rows != sFrameInfo.iHeight) {
-                printf("GetFrame: resize frame !\n");
+                //printf("GetFrame: resize frame !\n");
                 if(is_color)
                 {
                     frame.create(sFrameInfo.iHeight, sFrameInfo.iWidth, CV_8UC3);

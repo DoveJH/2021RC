@@ -16,7 +16,7 @@
 #define DEVICE 0  // GPU id
 #define PI 3.14159265
 float NMS_THRESH = 0.4;
-float CONF_THRESH = 0.7;
+float CONF_THRESH = 0.5;
 
 // stuff we know about the network and the input/output blobs
 static const int INPUT_H = Yolo::INPUT_H;
@@ -41,7 +41,7 @@ enum target
 {
     volleyball = 0, basketball, basket, mark, home
 };
-target aim = (target)1;
+target aim = (target)0;
 bool if_show = true;
 class result_deal
 {
@@ -102,7 +102,6 @@ public:
         if((bbox.x <= 5 || (bbox.x + bbox.width) >= 635) && (bbox.y <= 5 || (bbox.y + bbox.height) >= 507))
         {
             distance = 10000;
-            ROS_INFO("hello");
         }
         //ROS_INFO("%d, %d", bbox.x + bbox.width, bbox.y + bbox.height);
     }
@@ -308,6 +307,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
     {
         for (int b = 0; b < batch_res.size(); b++) 
         {
+            ROS_INFO("hello");
             //auto& res = batch_res[b];
             for (size_t j = 0; j < batch_res.size(); j++) 
             {
