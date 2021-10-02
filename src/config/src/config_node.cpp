@@ -37,34 +37,6 @@ void dynamicCallback(config::RC2021Config &config, uint32_t level)
         param_pub.publish(param_msg);
     }
 
-    param_msg.k_basket = 0;
-    if(param_msg.k_basket != config.k_basket)
-    {
-        param_msg.k_basket = config.k_basket;
-        param_pub.publish(param_msg);
-    }
-
-    param_msg.k_basketball = 0;
-    if(param_msg.k_basketball != config.k_basketball)
-    {
-        param_msg.k_basketball = config.k_basketball;
-        param_pub.publish(param_msg);
-    }
-
-    param_msg.k_volleyball = 0;
-    if(param_msg.k_volleyball != config.k_volleyball)
-    {
-        param_msg.k_volleyball = config.k_volleyball;
-        param_pub.publish(param_msg);
-    }
-   
-   param_msg.k_mark = 0;
-    if(param_msg.k_mark != config.k_mark)
-    {
-        param_msg.k_mark = config.k_mark;
-        param_pub.publish(param_msg);
-    }
-
     param_msg.if_shot = 0;
     if(param_msg.if_shot != config.if_shot)
     {
@@ -79,52 +51,46 @@ void dynamicCallback(config::RC2021Config &config, uint32_t level)
         param_pub.publish(param_msg);
     }
 
-    param_msg.k_x0 = 0.5;
+    param_msg.k_x0 = 0;
     if(param_msg.k_x0 != config.k_x0)
     {
         param_msg.k_x0 = config.k_x0;
         param_pub.publish(param_msg);
     }
 
-    param_msg.k_y0 = 0.5;
+    param_msg.k_y0 = 0;
     if(param_msg.k_y0 != config.k_y0)
     {
         param_msg.k_y0 = config.k_y0;
         param_pub.publish(param_msg);
     }
 
-    param_msg.k_z0 = 0.5;
+    param_msg.k_z0 = 0;
     if(param_msg.k_z0 != config.k_z0)
     {
         param_msg.k_z0 = config.k_z0;
         param_pub.publish(param_msg);
     }
 
-    param_msg.k_x1 = 1;
+    param_msg.k_x1 = 255;
     if(param_msg.k_x1 != config.k_x1)
     {
         param_msg.k_x1 = config.k_x1;
         param_pub.publish(param_msg);
     }
 
-    param_msg.k_y1 = 1;
+    param_msg.k_y1 = 255;
     if(param_msg.k_y1 != config.k_y1)
     {
         param_msg.k_y1 = config.k_y1;
         param_pub.publish(param_msg);
     }
 
-    param_msg.k_z1 = 1;
+    param_msg.k_z1 = 255;
     if(param_msg.k_z1 != config.k_z1)
     {
         param_msg.k_z1 = config.k_z1;
         param_pub.publish(param_msg);
     }
 
-    param_msg.k_test = 1;
-    if(param_msg.k_test != config.k_test)
-    {
-        param_msg.k_test = config.k_test;
-        param_pub.publish(param_msg);
-    }
 }

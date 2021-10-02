@@ -12,6 +12,7 @@
 #include <std_msgs/UInt8.h>
 #include <tf/tf.h>
 #include <yolov5/result.h>
+using namespace cv;
 #define USE_FP32  // set USE_INT8 or USE_FP16 or USE_FP32
 #define DEVICE 0  // GPU id
 #define PI 3.14159265
@@ -25,7 +26,7 @@ static const int CLASS_NUM = Yolo::CLASS_NUM;
 static const int OUTPUT_SIZE = Yolo::MAX_OUTPUT_BBOX_COUNT * sizeof(Yolo::Detection) / sizeof(float) + 1;  // we assume the yololayer outputs no more than MAX_OUTPUT_BBOX_COUNT boxes that conf >= 0.1
 const char* INPUT_BLOB_NAME = "data";
 const char* OUTPUT_BLOB_NAME = "prob";
-double yaw, pitch, roll;
+int yaw, pitch, roll;
 static Logger gLogger;
 ros::Publisher detectingPub;
 ros::Publisher resultPub;
@@ -36,7 +37,7 @@ static float prob[ OUTPUT_SIZE];
 int exchange_distance;
 cudaStream_t stream;
 IExecutionContext* context;
-double cameraDistance = 900;
+double cameraDistance = 450;
 enum target
 {
     volleyball = 0, basketball, basket, mark, home
@@ -53,11 +54,11 @@ public:
     int distance;
     int center_x;
     int center_y;
-    double yaw;
-    double pitch;
-    double roll;
+    int yaw;
+    //double pitch;
+    //double roll;
     
-    result_deal(cv::Rect re = cv::Rect(0, 0, 0, 0), int id = 100, double r = 0, double p = 0, double y = 0)
+    result_deal(cv::Rect re = cv::Rect(0, 0, 0, 0), int id = 100, int y = 0)
     {
         class_id = id;
         bbox = re;
@@ -65,16 +66,32 @@ public:
         center_y = (int)(bbox.y + 0.5 * bbox.height);
         getDistance();
         getScore();
-        roll = r;
         yaw = y;
-        pitch = p;
         //ROS_INFO("roll%.12lf, pitch%.12lf, yaw%.12lf", roll / PI * 180, pitch / PI * 180, yaw/ PI * 180);
    }
     void getDistance()
     {
         double k = 20;
         int size;
-        if(bbox.x <= 5 || (bbox.x + bbox.width) >= 635)
+        if(class_id == 5)
+        {
+            if(bbox.x <= 5 || (bbox.x + bbox.width) >= 635)
+            {
+                size = bbox.height;
+                k = 100;
+            }
+            else if(bbox.y <= 5 || (bbox.y + bbox.height) >= 507)
+            {
+                size = bbox.width;
+                k = 20;
+            }
+            else
+            {
+                size = bbox.width;
+                k = 20;
+            }
+        }
+        else if(bbox.x <= 5 || (bbox.x + bbox.width) >= 635)
         {
             size = bbox.height;
         }
@@ -91,11 +108,11 @@ public:
         else if(class_id == 4)distance = exchange_distance;
         else if(class_id == 6)k = 100;
         distance = sqrt(k * k * ((center_x - 320) * (center_x - 320) + (center_y - 256) * (center_y - 256) + cameraDistance * cameraDistance) / (size * size));
-        if(class_id == 5)
+        if(class_id == 4)
         {
             distance = exchange_distance;
         }
-        if(class_id == 6)
+        if(class_id == 5)
         {
             exchange_distance = distance;
         }
@@ -143,7 +160,7 @@ public:
         }
         if(aim == mark)
         {
-            if(class_id == 0 || class_id == 1 || class_id == 2 ||class_id == 3 ||class_id == 6 || class_id == 4)
+            if(class_id == 0 || class_id == 1 || class_id == 2 ||class_id == 3 ||class_id == 6 || class_id == 4 || abs(yaw) < 60)
             {
                 score = 0;
             }
@@ -178,14 +195,71 @@ void paramCallback(const config::param::ConstPtr& msg)
 {
     NMS_THRESH = msg->NMS_THRESH;
     CONF_THRESH = msg->CONF_THRESH;
-    cameraDistance = msg->k_basketball;
-    ROS_INFO("%f", cameraDistance);
     if_show = msg->if_show;
 }
 void modeCallback(const std_msgs::UInt8::ConstPtr& msg)
 {
     aim = (target)msg->data;
     ROS_INFO("%d", aim);
+}
+void drawapp(Mat result, Mat img2)
+{
+	for (int i = 0; i < result.rows; i++)
+	{
+		//最后一个坐标点与第一个坐标点连接
+		if (i == result.rows - 1)
+		{
+			Vec2i point1 = result.at<Vec2i>(i);
+			Vec2i point2 = result.at<Vec2i>(0);
+			line(img2, point1, point2, Scalar(0, 0, 255), 2, 8, 0);
+			break;
+		}
+		Vec2i point1 = result.at<Vec2i>(i);
+		Vec2i point2 = result.at<Vec2i>(i + 1);
+		line(img2, point1, point2, Scalar(0, 0, 255), 2, 8, 0);
+	}
+}
+void findSquares(Mat& img)
+{
+    Mat canny;
+	Canny(img, canny, 80, 160, 3, false);
+	//膨胀运算
+	Mat kernel = getStructuringElement(0, Size(3, 3));
+	dilate(canny, canny, kernel);
+
+	// 轮廓发现与绘制
+	std::vector<std::vector<Point>> contours;
+	std::vector<Vec4i> hierarchy;
+	findContours(canny, contours, hierarchy, 0, 2, Point());
+    int t;
+	//绘制多边形
+	for (t = 0; t < contours.size(); t++)
+	{
+        if(contourArea(contours[t]) < 10000)continue;
+		//用最小外接矩形求取轮廓中心
+		RotatedRect rrect = minAreaRect(contours[t]);
+		Point2f center = rrect.center;
+		circle(img, center, 2, Scalar(0, 255, 0), 2, 8, 0);
+
+		Mat result;
+		approxPolyDP(contours[t], result, 4, true);  //多边形拟合
+		drawapp(result, img);
+
+		//判断形状和绘制轮廓
+		if (result.rows == 4)
+		{
+			putText(img, "rectangle", center, 0, 1, Scalar(0, 255, 0), 1, 8);
+            int dis1, dis2, dis3, dis4;
+            double d1, d2;
+            dis1 = (result.at<Vec2i>(0)[0] - result.at<Vec2i>(1)[0]) * (result.at<Vec2i>(0)[0] - result.at<Vec2i>(1)[0]) + (result.at<Vec2i>(0)[1] - result.at<Vec2i>(1)[1]) * (result.at<Vec2i>(0)[1] - result.at<Vec2i>(1)[1]);
+            dis2 = (result.at<Vec2i>(1)[0] - result.at<Vec2i>(2)[0]) * (result.at<Vec2i>(1)[0] - result.at<Vec2i>(2)[0]) + (result.at<Vec2i>(1)[1] - result.at<Vec2i>(2)[1]) * (result.at<Vec2i>(1)[1] - result.at<Vec2i>(2)[1]);
+            dis3 = (result.at<Vec2i>(2)[0] - result.at<Vec2i>(3)[0]) * (result.at<Vec2i>(2)[0] - result.at<Vec2i>(3)[0]) + (result.at<Vec2i>(2)[1] - result.at<Vec2i>(3)[1]) * (result.at<Vec2i>(2)[1] - result.at<Vec2i>(3)[1]);
+            dis4 = (result.at<Vec2i>(3)[0] - result.at<Vec2i>(0)[0]) * (result.at<Vec2i>(3)[0] - result.at<Vec2i>(0)[0]) + (result.at<Vec2i>(3)[1] - result.at<Vec2i>(0)[1]) * (result.at<Vec2i>(3)[1] - result.at<Vec2i>(0)[1]);
+            d1 = sqrt(dis1+dis3);
+            d2 = sqrt(dis2+dis4);
+            ROS_INFO("%lf %lf",d1, d2 );
+		}
+	}
 }
 int main(int argc, char** argv)
 {
@@ -268,18 +342,24 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
         }
     }
     // Run inference
-    doInference(*context, stream, buffers, data, prob, 1);
+    if(aim != 4)
+    {
+        doInference(*context, stream, buffers, data, prob, 1);
+    }
+    else
+    {
+        Mat img_gray;
+        cv::cvtColor(img, img_gray, cv::COLOR_BGR2GRAY);
+        findSquares(img_gray);
+    }
     std::vector<Yolo::Detection> batch_res;
     std::vector<result_deal> pass_result;
     nms(batch_res, &prob[0], CONF_THRESH, NMS_THRESH);
     ros::param::get("/yaw", yaw);
-    ros::param::get("/pitch", pitch);
-    ros::param::get("/roll", roll);
     for (int b = 0; b < batch_res.size(); b++)
     {
         cv::Rect r = get_rect(img, batch_res[b].bbox);
-        result_deal rd(r, batch_res[b].class_id, roll, pitch, yaw);
-        cv::circle(img, cv::Point(r.x, r.y), 4, cv::Scalar(0 , 0, 255));
+        result_deal rd(r, batch_res[b].class_id, yaw);
         cv::putText(img, std::to_string(rd.distance), cvPoint(r.x, r.y - 29), cv::FONT_HERSHEY_PLAIN, 1.2, cv::Scalar(0xFF, 0xFF, 0xFF), 2);
         if(pass_result.empty())
         {
@@ -300,6 +380,8 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
         msg.x = pass_result[0].center_x;
         msg.y = pass_result[0].center_y;
         msg.distance = pass_result[0].distance;
+        msg.direction = pass_result[0].yaw;
+        //ROS_INFO("%lf",pass_result[0].yaw );
         resultPub.publish(msg);
     }
     pass_result.clear();
@@ -307,13 +389,12 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
     {
         for (int b = 0; b < batch_res.size(); b++) 
         {
-            ROS_INFO("hello");
             //auto& res = batch_res[b];
             for (size_t j = 0; j < batch_res.size(); j++) 
             {
                 cv::Rect r = get_rect(img, batch_res[j].bbox);
                 cv::rectangle(img, r, cv::Scalar(0x27, 0xC1, 0x36), 2);
-                cv::putText(img, std::to_string((int)batch_res[j].class_id + 1), cv::Point(r.x, r.y - 1), cv::FONT_HERSHEY_PLAIN, 1.2, cv::Scalar(0xFF, 0xFF, 0xFF), 2);
+                cv::putText(img, std::to_string((int)batch_res[j].class_id), cv::Point(r.x, r.y - 1), cv::FONT_HERSHEY_PLAIN, 1.2, cv::Scalar(0xFF, 0xFF, 0xFF), 2);
                 cv::putText(img, std::to_string(batch_res[j].conf), cvPoint(r.x, r.y - 15), cv::FONT_HERSHEY_PLAIN, 1.2, cv::Scalar(0xFF, 0xFF, 0xFF), 2);
             }
         }

@@ -16,6 +16,7 @@ using namespace std;
 using namespace cv;
 MVCamera *mv_driver=NULL;
 Size dist_size=Size(640,512);
+bool from_camera = true;
 class MVCamNode
 {
 public:
@@ -25,9 +26,9 @@ public:
     Mat rawImg;
     sensor_msgs::ImagePtr msg;
     image_transport::Publisher image_pub_;
-    int image_width_, image_height_, framerate_, fps_mode=1, exposure = 40000;
+    int image_width_, image_height_, framerate_, fps_mode=1, exposure = 30000;
     
-    bool large_resolution_=false, autoexposure_=false;
+    bool large_resolution_=true, autoexposure_=false;
     MVCamNode():
         node_("~")
     {
@@ -51,6 +52,31 @@ public:
         mv_driver->Stop();
         mv_driver->Uninit();
     }
+    void readVideo()
+    {
+        cv::VideoCapture video("/home/dovejh/project/RC/video/1.mp4");
+        if(video.isOpened())
+        {
+            ROS_WARN("Video load done!");
+        }
+        else
+        {
+            ROS_ERROR("Can't open video!");
+        }
+        while(1)
+        {
+            cv::Mat frame;
+            video >> frame;
+            if(frame.empty())
+            {
+                break;
+            }
+            cv::waitKey(1000 / video.get(cv::CAP_PROP_FPS));
+            msg= cv_bridge::CvImage(std_msgs::Header(), "bgr8", frame).toImageMsg();
+            // publish the image
+            image_pub_.publish(msg);
+        }
+    }
     bool take_and_send_image()
     {
         // grab the image
@@ -73,7 +99,14 @@ public:
         while (node_.ok())
         {
             if (!mv_driver->stopped) {
-                if (!take_and_send_image()) ROS_WARN("MVcamera did not respond in time.");
+                if(from_camera)
+                {
+                    if (!take_and_send_image()) ROS_WARN("MVcamera did not respond in time.");
+                }
+                else
+                {
+                    readVideo();
+                }
             }
             ros::spinOnce();
             loop_rate.sleep();

@@ -67,7 +67,6 @@ image_deal/CMakeFiles/image_deal_node.dir/src/image_deal_node.cpp.o: /opt/ros/me
 image_deal/CMakeFiles/image_deal_node.dir/src/image_deal_node.cpp.o: /opt/ros/melodic/include/std_msgs/Header.h
 image_deal/CMakeFiles/image_deal_node.dir/src/image_deal_node.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
 image_deal/CMakeFiles/image_deal_node.dir/src/image_deal_node.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h
-image_deal/CMakeFiles/image_deal_node.dir/src/image_deal_node.cpp.o: /usr/include/opencv/cxcore.h
 image_deal/CMakeFiles/image_deal_node.dir/src/image_deal_node.cpp.o: /usr/local/opencv4/include/opencv4/opencv2/./imgproc/segmentation.hpp
 image_deal/CMakeFiles/image_deal_node.dir/src/image_deal_node.cpp.o: /usr/local/opencv4/include/opencv4/opencv2/calib3d.hpp
 image_deal/CMakeFiles/image_deal_node.dir/src/image_deal_node.cpp.o: /usr/local/opencv4/include/opencv4/opencv2/core.hpp

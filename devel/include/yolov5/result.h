@@ -26,12 +26,14 @@ struct result_
   result_()
     : x(0)
     , y(0)
-    , distance(0)  {
+    , distance(0)
+    , direction(0)  {
     }
   result_(const ContainerAllocator& _alloc)
     : x(0)
     , y(0)
-    , distance(0)  {
+    , distance(0)
+    , direction(0)  {
   (void)_alloc;
     }
 
@@ -45,6 +47,9 @@ struct result_
 
    typedef int32_t _distance_type;
   _distance_type distance;
+
+   typedef int32_t _direction_type;
+  _direction_type direction;
 
 
 
@@ -77,7 +82,8 @@ bool operator==(const ::yolov5::result_<ContainerAllocator1> & lhs, const ::yolo
 {
   return lhs.x == rhs.x &&
     lhs.y == rhs.y &&
-    lhs.distance == rhs.distance;
+    lhs.distance == rhs.distance &&
+    lhs.direction == rhs.direction;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -134,12 +140,12 @@ struct MD5Sum< ::yolov5::result_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "7b8f97e1aab5db4dadbd6597afef2119";
+    return "90b7e125295cde88a6db9e2d5a13049c";
   }
 
   static const char* value(const ::yolov5::result_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x7b8f97e1aab5db4dULL;
-  static const uint64_t static_value2 = 0xadbd6597afef2119ULL;
+  static const uint64_t static_value1 = 0x90b7e125295cde88ULL;
+  static const uint64_t static_value2 = 0xa6db9e2d5a13049cULL;
 };
 
 template<class ContainerAllocator>
@@ -161,6 +167,7 @@ struct Definition< ::yolov5::result_<ContainerAllocator> >
     return "int32 x\n"
 "int32 y\n"
 "int32 distance\n"
+"int32 direction\n"
 ;
   }
 
@@ -182,6 +189,7 @@ namespace serialization
       stream.next(m.x);
       stream.next(m.y);
       stream.next(m.distance);
+      stream.next(m.direction);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -206,6 +214,8 @@ struct Printer< ::yolov5::result_<ContainerAllocator> >
     Printer<int32_t>::stream(s, indent + "  ", v.y);
     s << indent << "distance: ";
     Printer<int32_t>::stream(s, indent + "  ", v.distance);
+    s << indent << "direction: ";
+    Printer<int32_t>::stream(s, indent + "  ", v.direction);
   }
 };
 

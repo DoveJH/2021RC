@@ -1446,10 +1446,6 @@ vector
 time.h
 -
 
-/usr/include/opencv/cxcore.h
-opencv2/core/core_c.h
-/usr/include/opencv/opencv2/core/core_c.h
-
 /usr/include/x86_64-linux-gnu/bits/select.h
 bits/wordsize.h
 -

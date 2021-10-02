@@ -3,19 +3,14 @@
 <node name="config_node" pkg="config" type="config_node">
   <param name="NMS_THRESH" type="double" value="0.4" />
   <param name="CONF_THRESH" type="double" value="0.7" />
-  <param name="k_volleyball" type="double" value="100.0" />
-  <param name="k_basketball" type="double" value="1.0" />
-  <param name="k_basket" type="int" value="0" />
-  <param name="k_mark" type="int" value="0" />
   <param name="if_shot" type="bool" value="False" />
   <param name="if_show" type="bool" value="True" />
-  <param name="k_x0" type="double" value="0.4" />
-  <param name="k_y0" type="double" value="0.4" />
-  <param name="k_z0" type="double" value="0.4" />
-  <param name="k_x1" type="double" value="0.99293" />
-  <param name="k_y1" type="double" value="0.9766" />
-  <param name="k_z1" type="double" value="1.0" />
-  <param name="k_test" type="double" value="0.5" />
+  <param name="k_x0" type="int" value="0" />
+  <param name="k_y0" type="int" value="0" />
+  <param name="k_z0" type="int" value="0" />
+  <param name="k_x1" type="int" value="255" />
+  <param name="k_y1" type="int" value="255" />
+  <param name="k_z1" type="int" value="255" />
 </node>
 \endverbatim
 

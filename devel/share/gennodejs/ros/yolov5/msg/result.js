@@ -21,6 +21,7 @@ class result {
       this.x = null;
       this.y = null;
       this.distance = null;
+      this.direction = null;
     }
     else {
       if (initObj.hasOwnProperty('x')) {
@@ -41,6 +42,12 @@ class result {
       else {
         this.distance = 0;
       }
+      if (initObj.hasOwnProperty('direction')) {
+        this.direction = initObj.direction
+      }
+      else {
+        this.direction = 0;
+      }
     }
   }
 
@@ -52,6 +59,8 @@ class result {
     bufferOffset = _serializer.int32(obj.y, buffer, bufferOffset);
     // Serialize message field [distance]
     bufferOffset = _serializer.int32(obj.distance, buffer, bufferOffset);
+    // Serialize message field [direction]
+    bufferOffset = _serializer.int32(obj.direction, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -65,11 +74,13 @@ class result {
     data.y = _deserializer.int32(buffer, bufferOffset);
     // Deserialize message field [distance]
     data.distance = _deserializer.int32(buffer, bufferOffset);
+    // Deserialize message field [direction]
+    data.direction = _deserializer.int32(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 12;
+    return 16;
   }
 
   static datatype() {
@@ -79,7 +90,7 @@ class result {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '7b8f97e1aab5db4dadbd6597afef2119';
+    return '90b7e125295cde88a6db9e2d5a13049c';
   }
 
   static messageDefinition() {
@@ -88,6 +99,7 @@ class result {
     int32 x
     int32 y
     int32 distance
+    int32 direction
     `;
   }
 
@@ -116,6 +128,13 @@ class result {
     }
     else {
       resolved.distance = 0
+    }
+
+    if (msg.direction !== undefined) {
+      resolved.direction = msg.direction;
+    }
+    else {
+      resolved.direction = 0
     }
 
     return resolved;

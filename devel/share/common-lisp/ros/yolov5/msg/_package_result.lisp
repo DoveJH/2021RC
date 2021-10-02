@@ -5,4 +5,6 @@
           Y
           DISTANCE-VAL
           DISTANCE
+          DIRECTION-VAL
+          DIRECTION
 ))

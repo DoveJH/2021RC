@@ -3,14 +3,6 @@
           NMS_THRESH
           CONF_THRESH-VAL
           CONF_THRESH
-          K_VOLLEYBALL-VAL
-          K_VOLLEYBALL
-          K_BASKETBALL-VAL
-          K_BASKETBALL
-          K_BASKET-VAL
-          K_BASKET
-          K_MARK-VAL
-          K_MARK
           IF_SHOT-VAL
           IF_SHOT
           IF_SHOW-VAL
@@ -27,6 +19,4 @@
           K_Y1
           K_Z1-VAL
           K_Z1
-          K_TEST-VAL
-          K_TEST
 ))

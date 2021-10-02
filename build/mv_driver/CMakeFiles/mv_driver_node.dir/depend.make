@@ -63,7 +63,6 @@ mv_driver/CMakeFiles/mv_driver_node.dir/src/MVCamera.cpp.o: /opt/ros/melodic/inc
 mv_driver/CMakeFiles/mv_driver_node.dir/src/MVCamera.cpp.o: /opt/ros/melodic/include/rosconsole/macros_generated.h
 mv_driver/CMakeFiles/mv_driver_node.dir/src/MVCamera.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
 mv_driver/CMakeFiles/mv_driver_node.dir/src/MVCamera.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h
-mv_driver/CMakeFiles/mv_driver_node.dir/src/MVCamera.cpp.o: /usr/include/opencv/cxcore.h
 mv_driver/CMakeFiles/mv_driver_node.dir/src/MVCamera.cpp.o: /usr/local/opencv4/include/opencv4/opencv2/./imgproc/segmentation.hpp
 mv_driver/CMakeFiles/mv_driver_node.dir/src/MVCamera.cpp.o: /usr/local/opencv4/include/opencv4/opencv2/calib3d.hpp
 mv_driver/CMakeFiles/mv_driver_node.dir/src/MVCamera.cpp.o: /usr/local/opencv4/include/opencv4/opencv2/core.hpp
@@ -252,7 +251,6 @@ mv_driver/CMakeFiles/mv_driver_node.dir/src/MVCamera_node.cpp.o: /opt/ros/melodi
 mv_driver/CMakeFiles/mv_driver_node.dir/src/MVCamera_node.cpp.o: /opt/ros/melodic/include/std_msgs/Int16.h
 mv_driver/CMakeFiles/mv_driver_node.dir/src/MVCamera_node.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
 mv_driver/CMakeFiles/mv_driver_node.dir/src/MVCamera_node.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h
-mv_driver/CMakeFiles/mv_driver_node.dir/src/MVCamera_node.cpp.o: /usr/include/opencv/cxcore.h
 mv_driver/CMakeFiles/mv_driver_node.dir/src/MVCamera_node.cpp.o: /usr/local/opencv4/include/opencv4/opencv2/./imgproc/segmentation.hpp
 mv_driver/CMakeFiles/mv_driver_node.dir/src/MVCamera_node.cpp.o: /usr/local/opencv4/include/opencv4/opencv2/calib3d.hpp
 mv_driver/CMakeFiles/mv_driver_node.dir/src/MVCamera_node.cpp.o: /usr/local/opencv4/include/opencv4/opencv2/core.hpp

@@ -64,7 +64,6 @@ mv_driver/CMakeFiles/mv_driver_node.dir/src/MVCamera.cpp.o
  /opt/ros/melodic/include/rosconsole/macros_generated.h
  /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
  /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h
- /usr/include/opencv/cxcore.h
  /usr/local/opencv4/include/opencv4/opencv2/./imgproc/segmentation.hpp
  /usr/local/opencv4/include/opencv4/opencv2/calib3d.hpp
  /usr/local/opencv4/include/opencv4/opencv2/core.hpp
@@ -253,7 +252,6 @@ mv_driver/CMakeFiles/mv_driver_node.dir/src/MVCamera_node.cpp.o
  /opt/ros/melodic/include/std_msgs/Int16.h
  /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
  /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h
- /usr/include/opencv/cxcore.h
  /usr/local/opencv4/include/opencv4/opencv2/./imgproc/segmentation.hpp
  /usr/local/opencv4/include/opencv4/opencv2/calib3d.hpp
  /usr/local/opencv4/include/opencv4/opencv2/core.hpp

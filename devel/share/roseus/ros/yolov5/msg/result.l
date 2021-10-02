@@ -14,7 +14,7 @@
 
 (defclass yolov5::result
   :super ros::object
-  :slots (_x _y _distance ))
+  :slots (_x _y _distance _direction ))
 
 (defmethod yolov5::result
   (:init
@@ -22,11 +22,13 @@
     ((:x __x) 0)
     ((:y __y) 0)
     ((:distance __distance) 0)
+    ((:direction __direction) 0)
     )
    (send-super :init)
    (setq _x (round __x))
    (setq _y (round __y))
    (setq _distance (round __distance))
+   (setq _direction (round __direction))
    self)
   (:x
    (&optional __x)
@@ -37,6 +39,9 @@
   (:distance
    (&optional __distance)
    (if __distance (setq _distance __distance)) _distance)
+  (:direction
+   (&optional __direction)
+   (if __direction (setq _direction __direction)) _direction)
   (:serialization-length
    ()
    (+
@@ -45,6 +50,8 @@
     ;; int32 _y
     4
     ;; int32 _distance
+    4
+    ;; int32 _direction
     4
     ))
   (:serialize
@@ -57,6 +64,8 @@
        (write-long _y s)
      ;; int32 _distance
        (write-long _distance s)
+     ;; int32 _direction
+       (write-long _direction s)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -67,20 +76,23 @@
      (setq _y (sys::peek buf ptr- :integer)) (incf ptr- 4)
    ;; int32 _distance
      (setq _distance (sys::peek buf ptr- :integer)) (incf ptr- 4)
+   ;; int32 _direction
+     (setq _direction (sys::peek buf ptr- :integer)) (incf ptr- 4)
    ;;
    self)
   )
 
-(setf (get yolov5::result :md5sum-) "7b8f97e1aab5db4dadbd6597afef2119")
+(setf (get yolov5::result :md5sum-) "90b7e125295cde88a6db9e2d5a13049c")
 (setf (get yolov5::result :datatype-) "yolov5/result")
 (setf (get yolov5::result :definition-)
       "int32 x
 int32 y
 int32 distance
+int32 direction
 ")
 
 
 
-(provide :yolov5/result "7b8f97e1aab5db4dadbd6597afef2119")
+(provide :yolov5/result "90b7e125295cde88a6db9e2d5a13049c")
 
 

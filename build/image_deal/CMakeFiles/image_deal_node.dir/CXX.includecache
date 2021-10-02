@@ -51,6 +51,8 @@ sensor_msgs/Image.h
 -
 config/param.h
 -
+vector
+-
 
 /opt/ros/melodic/include/cv_bridge/cv_bridge.h
 sensor_msgs/Image.h
@@ -791,10 +793,6 @@ vector
 -
 time.h
 -
-
-/usr/include/opencv/cxcore.h
-opencv2/core/core_c.h
-/usr/include/opencv/opencv2/core/core_c.h
 
 /usr/local/opencv4/include/opencv4/opencv2/./imgproc/segmentation.hpp
 opencv2/imgproc.hpp

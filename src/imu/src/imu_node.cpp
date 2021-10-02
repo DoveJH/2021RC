@@ -145,9 +145,9 @@ void imuCallback(const sensor_msgs::ImuConstPtr& msg)
     tf::Matrix3x3(q).getRPY(roll, pitch, yaw);
     roll -= 0.01865829194179713113;
     pitch -= 0.00279585943802088437;
-    ros::param::set("/yaw", yaw);
-    ros::param::set("/pitch", pitch);
-    ros::param::set("/roll", roll);
+    ros::param::set("/yaw", yaw / 3.14159265 * 180);
+    //ros::param::set("/pitch", pitch);
+    //ros::param::set("/roll", roll);
     //ROS_INFO("roll%.12lf, pitch%.12lf, yaw%.12lf", roll / PI * 180, pitch / PI * 180, yaw/ PI * 180);
 /*
     //低通滤波

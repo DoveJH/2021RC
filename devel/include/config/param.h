@@ -26,36 +26,26 @@ struct param_
   param_()
     : NMS_THRESH(0.0)
     , CONF_THRESH(0.0)
-    , k_volleyball(0)
-    , k_basketball(0.0)
-    , k_basket(0)
-    , k_mark(0)
     , if_shot(false)
     , if_show(false)
-    , k_x0(0.0)
-    , k_y0(0.0)
-    , k_z0(0.0)
-    , k_x1(0.0)
-    , k_y1(0.0)
-    , k_z1(0.0)
-    , k_test(0.0)  {
+    , k_x0(0)
+    , k_y0(0)
+    , k_z0(0)
+    , k_x1(0)
+    , k_y1(0)
+    , k_z1(0)  {
     }
   param_(const ContainerAllocator& _alloc)
     : NMS_THRESH(0.0)
     , CONF_THRESH(0.0)
-    , k_volleyball(0)
-    , k_basketball(0.0)
-    , k_basket(0)
-    , k_mark(0)
     , if_shot(false)
     , if_show(false)
-    , k_x0(0.0)
-    , k_y0(0.0)
-    , k_z0(0.0)
-    , k_x1(0.0)
-    , k_y1(0.0)
-    , k_z1(0.0)
-    , k_test(0.0)  {
+    , k_x0(0)
+    , k_y0(0)
+    , k_z0(0)
+    , k_x1(0)
+    , k_y1(0)
+    , k_z1(0)  {
   (void)_alloc;
     }
 
@@ -67,44 +57,29 @@ struct param_
    typedef float _CONF_THRESH_type;
   _CONF_THRESH_type CONF_THRESH;
 
-   typedef int32_t _k_volleyball_type;
-  _k_volleyball_type k_volleyball;
-
-   typedef double _k_basketball_type;
-  _k_basketball_type k_basketball;
-
-   typedef int32_t _k_basket_type;
-  _k_basket_type k_basket;
-
-   typedef int32_t _k_mark_type;
-  _k_mark_type k_mark;
-
    typedef uint8_t _if_shot_type;
   _if_shot_type if_shot;
 
    typedef uint8_t _if_show_type;
   _if_show_type if_show;
 
-   typedef double _k_x0_type;
+   typedef int32_t _k_x0_type;
   _k_x0_type k_x0;
 
-   typedef double _k_y0_type;
+   typedef int32_t _k_y0_type;
   _k_y0_type k_y0;
 
-   typedef double _k_z0_type;
+   typedef int32_t _k_z0_type;
   _k_z0_type k_z0;
 
-   typedef double _k_x1_type;
+   typedef int32_t _k_x1_type;
   _k_x1_type k_x1;
 
-   typedef double _k_y1_type;
+   typedef int32_t _k_y1_type;
   _k_y1_type k_y1;
 
-   typedef double _k_z1_type;
+   typedef int32_t _k_z1_type;
   _k_z1_type k_z1;
-
-   typedef double _k_test_type;
-  _k_test_type k_test;
 
 
 
@@ -137,10 +112,6 @@ bool operator==(const ::config::param_<ContainerAllocator1> & lhs, const ::confi
 {
   return lhs.NMS_THRESH == rhs.NMS_THRESH &&
     lhs.CONF_THRESH == rhs.CONF_THRESH &&
-    lhs.k_volleyball == rhs.k_volleyball &&
-    lhs.k_basketball == rhs.k_basketball &&
-    lhs.k_basket == rhs.k_basket &&
-    lhs.k_mark == rhs.k_mark &&
     lhs.if_shot == rhs.if_shot &&
     lhs.if_show == rhs.if_show &&
     lhs.k_x0 == rhs.k_x0 &&
@@ -148,8 +119,7 @@ bool operator==(const ::config::param_<ContainerAllocator1> & lhs, const ::confi
     lhs.k_z0 == rhs.k_z0 &&
     lhs.k_x1 == rhs.k_x1 &&
     lhs.k_y1 == rhs.k_y1 &&
-    lhs.k_z1 == rhs.k_z1 &&
-    lhs.k_test == rhs.k_test;
+    lhs.k_z1 == rhs.k_z1;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -206,12 +176,12 @@ struct MD5Sum< ::config::param_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "eb5de5e5d2fd7f2c45fa5a927466753a";
+    return "1411ae11535e1135c0228980116d734a";
   }
 
   static const char* value(const ::config::param_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xeb5de5e5d2fd7f2cULL;
-  static const uint64_t static_value2 = 0x45fa5a927466753aULL;
+  static const uint64_t static_value1 = 0x1411ae11535e1135ULL;
+  static const uint64_t static_value2 = 0xc0228980116d734aULL;
 };
 
 template<class ContainerAllocator>
@@ -232,19 +202,14 @@ struct Definition< ::config::param_<ContainerAllocator> >
   {
     return "float32 NMS_THRESH\n"
 "float32 CONF_THRESH\n"
-"int32 k_volleyball\n"
-"float64 k_basketball\n"
-"int32 k_basket\n"
-"int32 k_mark\n"
 "bool if_shot\n"
 "bool if_show\n"
-"float64 k_x0\n"
-"float64 k_y0\n"
-"float64 k_z0\n"
-"float64 k_x1\n"
-"float64 k_y1\n"
-"float64 k_z1\n"
-"float64 k_test\n"
+"int32 k_x0\n"
+"int32 k_y0\n"
+"int32 k_z0\n"
+"int32 k_x1\n"
+"int32 k_y1\n"
+"int32 k_z1\n"
 ;
   }
 
@@ -265,10 +230,6 @@ namespace serialization
     {
       stream.next(m.NMS_THRESH);
       stream.next(m.CONF_THRESH);
-      stream.next(m.k_volleyball);
-      stream.next(m.k_basketball);
-      stream.next(m.k_basket);
-      stream.next(m.k_mark);
       stream.next(m.if_shot);
       stream.next(m.if_show);
       stream.next(m.k_x0);
@@ -277,7 +238,6 @@ namespace serialization
       stream.next(m.k_x1);
       stream.next(m.k_y1);
       stream.next(m.k_z1);
-      stream.next(m.k_test);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -300,32 +260,22 @@ struct Printer< ::config::param_<ContainerAllocator> >
     Printer<float>::stream(s, indent + "  ", v.NMS_THRESH);
     s << indent << "CONF_THRESH: ";
     Printer<float>::stream(s, indent + "  ", v.CONF_THRESH);
-    s << indent << "k_volleyball: ";
-    Printer<int32_t>::stream(s, indent + "  ", v.k_volleyball);
-    s << indent << "k_basketball: ";
-    Printer<double>::stream(s, indent + "  ", v.k_basketball);
-    s << indent << "k_basket: ";
-    Printer<int32_t>::stream(s, indent + "  ", v.k_basket);
-    s << indent << "k_mark: ";
-    Printer<int32_t>::stream(s, indent + "  ", v.k_mark);
     s << indent << "if_shot: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.if_shot);
     s << indent << "if_show: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.if_show);
     s << indent << "k_x0: ";
-    Printer<double>::stream(s, indent + "  ", v.k_x0);
+    Printer<int32_t>::stream(s, indent + "  ", v.k_x0);
     s << indent << "k_y0: ";
-    Printer<double>::stream(s, indent + "  ", v.k_y0);
+    Printer<int32_t>::stream(s, indent + "  ", v.k_y0);
     s << indent << "k_z0: ";
-    Printer<double>::stream(s, indent + "  ", v.k_z0);
+    Printer<int32_t>::stream(s, indent + "  ", v.k_z0);
     s << indent << "k_x1: ";
-    Printer<double>::stream(s, indent + "  ", v.k_x1);
+    Printer<int32_t>::stream(s, indent + "  ", v.k_x1);
     s << indent << "k_y1: ";
-    Printer<double>::stream(s, indent + "  ", v.k_y1);
+    Printer<int32_t>::stream(s, indent + "  ", v.k_y1);
     s << indent << "k_z1: ";
-    Printer<double>::stream(s, indent + "  ", v.k_z1);
-    s << indent << "k_test: ";
-    Printer<double>::stream(s, indent + "  ", v.k_test);
+    Printer<int32_t>::stream(s, indent + "  ", v.k_z1);
   }
 };
 

@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++11
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"image_deal\"
 
-CXX_INCLUDES = -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/opencv -I/home/dovejh/project/RC/RC2021/src/image_deal/../../devel/include -I/home/dovejh/project/RC/RC2021/src/image_deal/OpenCV_INCLUDE_DIRS -isystem /usr/local/opencv4/include/opencv4 
+CXX_INCLUDES = -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/local/lib -isystem /usr/local/opencv4/include/opencv4 -I/usr/local/opencv4/include -I/usr/local/include -I/home/dovejh/project/RC/RC2021/src/image_deal/../../devel/include -I/home/dovejh/project/RC/RC2021/src/image_deal/OpenCV_INCLUDE_DIRS 
 

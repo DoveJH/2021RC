@@ -238,37 +238,27 @@ class DEFAULT
 
         if("NMS_THRESH"==(*_i)->name){NMS_THRESH = boost::any_cast<double>(val);}
         if("CONF_THRESH"==(*_i)->name){CONF_THRESH = boost::any_cast<double>(val);}
-        if("k_volleyball"==(*_i)->name){k_volleyball = boost::any_cast<double>(val);}
-        if("k_basketball"==(*_i)->name){k_basketball = boost::any_cast<double>(val);}
-        if("k_basket"==(*_i)->name){k_basket = boost::any_cast<int>(val);}
-        if("k_mark"==(*_i)->name){k_mark = boost::any_cast<int>(val);}
         if("if_shot"==(*_i)->name){if_shot = boost::any_cast<bool>(val);}
         if("if_show"==(*_i)->name){if_show = boost::any_cast<bool>(val);}
-        if("k_x0"==(*_i)->name){k_x0 = boost::any_cast<double>(val);}
-        if("k_y0"==(*_i)->name){k_y0 = boost::any_cast<double>(val);}
-        if("k_z0"==(*_i)->name){k_z0 = boost::any_cast<double>(val);}
-        if("k_x1"==(*_i)->name){k_x1 = boost::any_cast<double>(val);}
-        if("k_y1"==(*_i)->name){k_y1 = boost::any_cast<double>(val);}
-        if("k_z1"==(*_i)->name){k_z1 = boost::any_cast<double>(val);}
-        if("k_test"==(*_i)->name){k_test = boost::any_cast<double>(val);}
+        if("k_x0"==(*_i)->name){k_x0 = boost::any_cast<int>(val);}
+        if("k_y0"==(*_i)->name){k_y0 = boost::any_cast<int>(val);}
+        if("k_z0"==(*_i)->name){k_z0 = boost::any_cast<int>(val);}
+        if("k_x1"==(*_i)->name){k_x1 = boost::any_cast<int>(val);}
+        if("k_y1"==(*_i)->name){k_y1 = boost::any_cast<int>(val);}
+        if("k_z1"==(*_i)->name){k_z1 = boost::any_cast<int>(val);}
       }
     }
 
     double NMS_THRESH;
 double CONF_THRESH;
-double k_volleyball;
-double k_basketball;
-int k_basket;
-int k_mark;
 bool if_shot;
 bool if_show;
-double k_x0;
-double k_y0;
-double k_z0;
-double k_x1;
-double k_y1;
-double k_z1;
-double k_test;
+int k_x0;
+int k_y0;
+int k_z0;
+int k_x1;
+int k_y1;
+int k_z1;
 
     bool state;
     std::string name;
@@ -283,31 +273,21 @@ double k_test;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       double CONF_THRESH;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      double k_volleyball;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      double k_basketball;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      int k_basket;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      int k_mark;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       bool if_shot;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       bool if_show;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      double k_x0;
+      int k_x0;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      double k_y0;
+      int k_y0;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      double k_z0;
+      int k_z0;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      double k_x1;
+      int k_x1;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      double k_y1;
+      int k_y1;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      double k_z1;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      double k_test;
+      int k_z1;
 //#line 228 "/opt/ros/melodic/share/dynamic_reconfigure/cmake/../templates/ConfigType.h.template"
 
     bool __fromMessage__(dynamic_reconfigure::Config &msg)
@@ -467,46 +447,6 @@ RC2021Config::GroupDescription<RC2021Config::DEFAULT, RC2021Config> Default("Def
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("CONF_THRESH", "double", 0, "The confidence below this will be ignored", "", &RC2021Config::CONF_THRESH)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __min__.k_volleyball = 0.001;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __max__.k_volleyball = 2.0;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.k_volleyball = 100.0;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_volleyball", "double", 0, "Related to the distance of volleyball", "", &RC2021Config::k_volleyball)));
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_volleyball", "double", 0, "Related to the distance of volleyball", "", &RC2021Config::k_volleyball)));
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __min__.k_basketball = 0.001;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __max__.k_basketball = 1000.0;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.k_basketball = 1.0;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_basketball", "double", 0, "Related to the distance of basketball", "", &RC2021Config::k_basketball)));
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_basketball", "double", 0, "Related to the distance of basketball", "", &RC2021Config::k_basketball)));
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __min__.k_basket = -2147483648;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __max__.k_basket = 2147483647;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.k_basket = 0;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_basket", "int", 0, "Related to the distance of basket", "", &RC2021Config::k_basket)));
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_basket", "int", 0, "Related to the distance of basket", "", &RC2021Config::k_basket)));
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __min__.k_mark = -2147483648;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __max__.k_mark = 2147483647;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.k_mark = 0;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_mark", "int", 0, "Related to the distance of mark", "", &RC2021Config::k_mark)));
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_mark", "int", 0, "Related to the distance of mark", "", &RC2021Config::k_mark)));
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __min__.if_shot = 0;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __max__.if_shot = 1;
@@ -527,75 +467,65 @@ RC2021Config::GroupDescription<RC2021Config::DEFAULT, RC2021Config> Default("Def
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<bool>("if_show", "bool", 0, "If true press s to take a picture", "", &RC2021Config::if_show)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __min__.k_x0 = 0.0;
+      __min__.k_x0 = 0;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __max__.k_x0 = 1.0;
+      __max__.k_x0 = 255;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.k_x0 = 0.4;
+      __default__.k_x0 = 0;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_x0", "double", 0, "k_x0", "", &RC2021Config::k_x0)));
+      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_x0", "int", 0, "k_x0", "", &RC2021Config::k_x0)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_x0", "double", 0, "k_x0", "", &RC2021Config::k_x0)));
+      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_x0", "int", 0, "k_x0", "", &RC2021Config::k_x0)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __min__.k_y0 = 0.0;
+      __min__.k_y0 = 0;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __max__.k_y0 = 1.0;
+      __max__.k_y0 = 255;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.k_y0 = 0.4;
+      __default__.k_y0 = 0;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_y0", "double", 0, "k_y0", "", &RC2021Config::k_y0)));
+      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_y0", "int", 0, "k_y0", "", &RC2021Config::k_y0)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_y0", "double", 0, "k_y0", "", &RC2021Config::k_y0)));
+      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_y0", "int", 0, "k_y0", "", &RC2021Config::k_y0)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __min__.k_z0 = 0.0;
+      __min__.k_z0 = 0;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __max__.k_z0 = 1.0;
+      __max__.k_z0 = 255;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.k_z0 = 0.4;
+      __default__.k_z0 = 0;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_z0", "double", 0, "k_z0", "", &RC2021Config::k_z0)));
+      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_z0", "int", 0, "k_z0", "", &RC2021Config::k_z0)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_z0", "double", 0, "k_z0", "", &RC2021Config::k_z0)));
+      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_z0", "int", 0, "k_z0", "", &RC2021Config::k_z0)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __min__.k_x1 = 0.9;
+      __min__.k_x1 = 0;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __max__.k_x1 = 1.1;
+      __max__.k_x1 = 255;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.k_x1 = 0.99293;
+      __default__.k_x1 = 255;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_x1", "double", 0, "k_x1", "", &RC2021Config::k_x1)));
+      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_x1", "int", 0, "k_x1", "", &RC2021Config::k_x1)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_x1", "double", 0, "k_x1", "", &RC2021Config::k_x1)));
+      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_x1", "int", 0, "k_x1", "", &RC2021Config::k_x1)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __min__.k_y1 = 0.9;
+      __min__.k_y1 = 0;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __max__.k_y1 = 1.1;
+      __max__.k_y1 = 255;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.k_y1 = 0.9766;
+      __default__.k_y1 = 255;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_y1", "double", 0, "k_y1", "", &RC2021Config::k_y1)));
+      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_y1", "int", 0, "k_y1", "", &RC2021Config::k_y1)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_y1", "double", 0, "k_y1", "", &RC2021Config::k_y1)));
+      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_y1", "int", 0, "k_y1", "", &RC2021Config::k_y1)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __min__.k_z1 = 0.9;
+      __min__.k_z1 = 0;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __max__.k_z1 = 1.1;
+      __max__.k_z1 = 255;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.k_z1 = 1.0;
+      __default__.k_z1 = 255;
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_z1", "double", 0, "k_z1", "", &RC2021Config::k_z1)));
+      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_z1", "int", 0, "k_z1", "", &RC2021Config::k_z1)));
 //#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_z1", "double", 0, "k_z1", "", &RC2021Config::k_z1)));
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __min__.k_test = 0.0;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __max__.k_test = 1.0;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.k_test = 0.5;
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      Default.abstract_parameters.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_test", "double", 0, "k_test", "", &RC2021Config::k_test)));
-//#line 291 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<double>("k_test", "double", 0, "k_test", "", &RC2021Config::k_test)));
+      __param_descriptions__.push_back(RC2021Config::AbstractParamDescriptionConstPtr(new RC2021Config::ParamDescription<int>("k_z1", "int", 0, "k_z1", "", &RC2021Config::k_z1)));
 //#line 246 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.convertParams();
 //#line 246 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"

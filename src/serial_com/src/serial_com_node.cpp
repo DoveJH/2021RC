@@ -13,8 +13,8 @@ void resultCallback(const yolov5::resultConstPtr& msg)
     send[3] = (uint8_t)((msg->y) >> 8);
     send[4] = (uint8_t)msg->distance;
     send[5] = (uint8_t)((msg->distance) >> 8);
-    send[6] = 0xff;
-    send[7] = 0xff;
+    send[6] = (uint8_t)msg->direction;
+    send[7] = (uint8_t)((msg->direction) >> 8);
     sp.write(send, 8);
     //ROS_INFO_STREAM(send);
 }

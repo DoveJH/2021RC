@@ -21,6 +21,11 @@
     :reader distance
     :initarg :distance
     :type cl:integer
+    :initform 0)
+   (direction
+    :reader direction
+    :initarg :direction
+    :type cl:integer
     :initform 0))
 )
 
@@ -46,6 +51,11 @@
 (cl:defmethod distance-val ((m <result>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader yolov5-msg:distance-val is deprecated.  Use yolov5-msg:distance instead.")
   (distance m))
+
+(cl:ensure-generic-function 'direction-val :lambda-list '(m))
+(cl:defmethod direction-val ((m <result>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader yolov5-msg:direction-val is deprecated.  Use yolov5-msg:direction instead.")
+  (direction m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <result>) ostream)
   "Serializes a message object of type '<result>"
   (cl:let* ((signed (cl:slot-value msg 'x)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
@@ -61,6 +71,12 @@
     (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
     )
   (cl:let* ((signed (cl:slot-value msg 'distance)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
+    )
+  (cl:let* ((signed (cl:slot-value msg 'direction)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
@@ -87,6 +103,12 @@
       (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
       (cl:setf (cl:slot-value msg 'distance) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296))))
+    (cl:let ((unsigned 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'direction) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296))))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<result>)))
@@ -97,18 +119,19 @@
   "yolov5/result")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<result>)))
   "Returns md5sum for a message object of type '<result>"
-  "7b8f97e1aab5db4dadbd6597afef2119")
+  "90b7e125295cde88a6db9e2d5a13049c")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'result)))
   "Returns md5sum for a message object of type 'result"
-  "7b8f97e1aab5db4dadbd6597afef2119")
+  "90b7e125295cde88a6db9e2d5a13049c")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<result>)))
   "Returns full string definition for message of type '<result>"
-  (cl:format cl:nil "int32 x~%int32 y~%int32 distance~%~%"))
+  (cl:format cl:nil "int32 x~%int32 y~%int32 distance~%int32 direction~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'result)))
   "Returns full string definition for message of type 'result"
-  (cl:format cl:nil "int32 x~%int32 y~%int32 distance~%~%"))
+  (cl:format cl:nil "int32 x~%int32 y~%int32 distance~%int32 direction~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <result>))
   (cl:+ 0
+     4
      4
      4
      4
@@ -119,4 +142,5 @@
     (cl:cons ':x (x msg))
     (cl:cons ':y (y msg))
     (cl:cons ':distance (distance msg))
+    (cl:cons ':direction (direction msg))
 ))

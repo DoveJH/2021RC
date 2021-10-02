@@ -117,9 +117,9 @@ mv_driver_node_EXTERNAL_OBJECTS =
 /home/dovejh/project/RC/RC2021/devel/lib/mv_driver/mv_driver_node: mv_driver/CMakeFiles/mv_driver_node.dir/src/MVCamera.cpp.o
 /home/dovejh/project/RC/RC2021/devel/lib/mv_driver/mv_driver_node: mv_driver/CMakeFiles/mv_driver_node.dir/build.make
 /home/dovejh/project/RC/RC2021/devel/lib/mv_driver/mv_driver_node: /opt/ros/melodic/lib/libcv_bridge.so
-/home/dovejh/project/RC/RC2021/devel/lib/mv_driver/mv_driver_node: /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0
-/home/dovejh/project/RC/RC2021/devel/lib/mv_driver/mv_driver_node: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.3.2.0
-/home/dovejh/project/RC/RC2021/devel/lib/mv_driver/mv_driver_node: /usr/lib/x86_64-linux-gnu/libopencv_imgcodecs.so.3.2.0
+/home/dovejh/project/RC/RC2021/devel/lib/mv_driver/mv_driver_node: /usr/local/opencv4/lib/libopencv_core.so.4.5.3
+/home/dovejh/project/RC/RC2021/devel/lib/mv_driver/mv_driver_node: /usr/local/opencv4/lib/libopencv_imgproc.so.4.5.3
+/home/dovejh/project/RC/RC2021/devel/lib/mv_driver/mv_driver_node: /usr/local/opencv4/lib/libopencv_imgcodecs.so.4.5.3
 /home/dovejh/project/RC/RC2021/devel/lib/mv_driver/mv_driver_node: /opt/ros/melodic/lib/libimage_transport.so
 /home/dovejh/project/RC/RC2021/devel/lib/mv_driver/mv_driver_node: /opt/ros/melodic/lib/libmessage_filters.so
 /home/dovejh/project/RC/RC2021/devel/lib/mv_driver/mv_driver_node: /opt/ros/melodic/lib/libclass_loader.so

@@ -239,7 +239,6 @@ yolov5/CMakeFiles/yolov5_node.dir/src/yolov5.cpp.o
  /opt/ros/melodic/include/tf2_ros/buffer_interface.h
  /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
  /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h
- /usr/include/opencv/cxcore.h
  /usr/include/x86_64-linux-gnu/bits/select.h
  /usr/include/x86_64-linux-gnu/bits/select2.h
  /usr/include/x86_64-linux-gnu/bits/types.h

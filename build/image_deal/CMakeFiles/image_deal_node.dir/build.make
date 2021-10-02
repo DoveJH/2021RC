@@ -95,9 +95,9 @@ image_deal_node_EXTERNAL_OBJECTS =
 /home/dovejh/project/RC/RC2021/devel/lib/image_deal/image_deal_node: /opt/ros/melodic/lib/libxmlrpcpp.so
 /home/dovejh/project/RC/RC2021/devel/lib/image_deal/image_deal_node: /opt/ros/melodic/lib/libserial.so
 /home/dovejh/project/RC/RC2021/devel/lib/image_deal/image_deal_node: /opt/ros/melodic/lib/libcv_bridge.so
-/home/dovejh/project/RC/RC2021/devel/lib/image_deal/image_deal_node: /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0
-/home/dovejh/project/RC/RC2021/devel/lib/image_deal/image_deal_node: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.3.2.0
-/home/dovejh/project/RC/RC2021/devel/lib/image_deal/image_deal_node: /usr/lib/x86_64-linux-gnu/libopencv_imgcodecs.so.3.2.0
+/home/dovejh/project/RC/RC2021/devel/lib/image_deal/image_deal_node: /usr/local/opencv4/lib/libopencv_core.so.4.5.3
+/home/dovejh/project/RC/RC2021/devel/lib/image_deal/image_deal_node: /usr/local/opencv4/lib/libopencv_imgproc.so.4.5.3
+/home/dovejh/project/RC/RC2021/devel/lib/image_deal/image_deal_node: /usr/local/opencv4/lib/libopencv_imgcodecs.so.4.5.3
 /home/dovejh/project/RC/RC2021/devel/lib/image_deal/image_deal_node: /opt/ros/melodic/lib/librosconsole.so
 /home/dovejh/project/RC/RC2021/devel/lib/image_deal/image_deal_node: /opt/ros/melodic/lib/librosconsole_log4cxx.so
 /home/dovejh/project/RC/RC2021/devel/lib/image_deal/image_deal_node: /opt/ros/melodic/lib/librosconsole_backend_interface.so

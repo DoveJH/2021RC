@@ -21,9 +21,11 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/dovejh/project/RC/RC2021/src/mv_driver/include"
   "/opt/ros/melodic/include"
   "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
-  "/usr/include/opencv"
-  "/home/dovejh/project/RC/RC2021/src/mv_driver/../../devel/include"
+  "/usr/local/lib"
   "/usr/local/opencv4/include/opencv4"
+  "/usr/local/opencv4/include"
+  "/usr/local/include"
+  "/home/dovejh/project/RC/RC2021/src/mv_driver/../../devel/include"
   )
 
 # Targets to which this target links.
