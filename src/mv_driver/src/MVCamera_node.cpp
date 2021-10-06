@@ -16,7 +16,7 @@ using namespace std;
 using namespace cv;
 MVCamera *mv_driver=NULL;
 Size dist_size=Size(640,512);
-bool from_camera = true;
+bool from_camera = false;
 class MVCamNode
 {
 public:

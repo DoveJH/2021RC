@@ -140,21 +140,21 @@ int main(int argc, char **argv)
     ros::NodeHandle n;
     ros::Subscriber sub = n.subscribe("/MVCamera/image_raw", 1, &imageDealCallback);
     ros::Subscriber paramSub = n.subscribe("/param", 1, &paramCallback);
-    cv::Mat img = cv::imread("/home/dovejh/project/RC/train/images/1281.jpg"), img2;
-    cv::imshow("raw", img);
-    namedWindow("Trackbar");
-    createTrackbar("hs", "Trackbar", &hsv, 255, callback1);
-    createTrackbar("ss", "Trackbar", &ssv, 255, callback2);
-    createTrackbar("vs", "Trackbar", &vsv, 255, callback3);
+    //cv::Mat img = cv::imread("/home/dovejh/project/RC/train/images/1281.jpg"), img2;
+    //cv::imshow("raw", img);
+    //namedWindow("Trackbar");
+    //createTrackbar("hs", "Trackbar", &hsv, 255, callback1);
+    //createTrackbar("ss", "Trackbar", &ssv, 255, callback2);
+    //createTrackbar("vs", "Trackbar", &vsv, 255, callback3);
     //img.convertTo(img, CV_32F, 1.0 / 255);
-    cv::cvtColor(img, img, cv::COLOR_BGR2GRAY);
+    //cv::cvtColor(img, img, cv::COLOR_BGR2GRAY);
         //cv::threshold(imgs1[0], imgs1[0], hs, 255, cv::THRESH_BINARY);
         //cv::threshold(imgs1[1], imgs1[1], vs, 255, cv::THRESH_BINARY);
         //cv::threshold(imgs1[2], imgs1[2], ss, 255, cv::THRESH_BINARY);
         //cv::bitwise_and(imgs1[0], imgs1[1], img_bin);
         //cv::bitwise_and(img_bin, imgs1[2], img_bin);
-        std::vector<Vec2f> lines;
-        findSquares(img);
+        //std::vector<Vec2f> lines;
+        //findSquares(img);
         
         /*HoughLines(img_bin, lines,1, CV_PI / 180,  50, 0, 0);
         for(size_t i = 0; i < lines.size(); i++)
@@ -166,10 +166,10 @@ int main(int argc, char **argv)
         //ROS_INFO("%d, %d, %d", hb, sb, vb);
         
         //ros::spinOnce();
-        while(1)
-        {
-            cv::imshow("bindary", img);
-            cv::waitKey(30);
-        }
+        //while(1)
+        //{
+            //cv::imshow("bindary", img);
+            //cv::waitKey(30);
+        //}
     ros::spin();
 }

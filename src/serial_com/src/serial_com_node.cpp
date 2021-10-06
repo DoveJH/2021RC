@@ -3,19 +3,20 @@
 #include <std_msgs/UInt8.h>
 #include <yolov5/result.h>
 //#include <yolov5/result.h>
+uint8_t send[8];
 serial::Serial sp;
+int direction;
 void resultCallback(const yolov5::resultConstPtr& msg)
 {
-    uint8_t send[8];
     send[0] = (uint8_t)msg->x;
     send[1] = (uint8_t)((msg->x) >> 8);
     send[2] = (uint8_t)msg->y;
     send[3] = (uint8_t)((msg->y) >> 8);
     send[4] = (uint8_t)msg->distance;
     send[5] = (uint8_t)((msg->distance) >> 8);
-    send[6] = (uint8_t)msg->direction;
-    send[7] = (uint8_t)((msg->direction) >> 8);
-    sp.write(send, 8);
+    send[6] = (uint8_t)(msg->direction + 180);
+    send[7] = (uint8_t)((msg->direction + 180) >> 8);
+    //sp.write(send, 8);
     //ROS_INFO_STREAM(send);
 }
 int main(int argc, char** argv)
@@ -66,6 +67,10 @@ int main(int argc, char** argv)
                 last_receive[0] = receive[0];
             }
         }
+        ros::param::get("/yaw", direction);
+        send[6] = (uint8_t)(direction + 180);
+        send[7] = (uint8_t)((direction + 180) >> 8);
+        sp.write(send, 8);
         ros::spinOnce();
         loop_rate.sleep();
     }

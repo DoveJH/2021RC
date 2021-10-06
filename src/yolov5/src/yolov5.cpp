@@ -42,7 +42,7 @@ enum target
 {
     volleyball = 0, basketball, basket, mark, home
 };
-target aim = (target)0;
+target aim = (target)4;
 bool if_show = true;
 class result_deal
 {
@@ -120,6 +120,10 @@ public:
         {
             distance = 10000;
         }
+        if(class_id == 6)
+        {
+            distance = 10;
+        }
         //ROS_INFO("%d, %d", bbox.x + bbox.width, bbox.y + bbox.height);
     }
    
@@ -171,7 +175,7 @@ public:
         }
         if(aim == home)
         {
-             if(class_id == 0 || class_id == 1 || class_id == 2 ||class_id == 3 ||class_id == 5 || class_id == 4)
+             if(class_id == 0 || class_id == 1 || class_id == 2 ||class_id == 3 ||class_id == 5 || class_id == 4 || abs(yaw) < 60)
             {
                 score = 0;
             }
@@ -219,7 +223,7 @@ void drawapp(Mat result, Mat img2)
 		line(img2, point1, point2, Scalar(0, 0, 255), 2, 8, 0);
 	}
 }
-void findSquares(Mat& img)
+void findSquares(Mat& img, std::vector<Yolo::Detection> br )
 {
     Mat canny;
 	Canny(img, canny, 80, 160, 3, false);
@@ -244,11 +248,10 @@ void findSquares(Mat& img)
 		Mat result;
 		approxPolyDP(contours[t], result, 4, true);  //多边形拟合
 		drawapp(result, img);
-
 		//判断形状和绘制轮廓
 		if (result.rows == 4)
 		{
-			putText(img, "rectangle", center, 0, 1, Scalar(0, 255, 0), 1, 8);
+			//putText(img, "rectangle", center, 0, 1, Scalar(0, 255, 0), 1, 8);
             int dis1, dis2, dis3, dis4;
             double d1, d2;
             dis1 = (result.at<Vec2i>(0)[0] - result.at<Vec2i>(1)[0]) * (result.at<Vec2i>(0)[0] - result.at<Vec2i>(1)[0]) + (result.at<Vec2i>(0)[1] - result.at<Vec2i>(1)[1]) * (result.at<Vec2i>(0)[1] - result.at<Vec2i>(1)[1]);
@@ -257,7 +260,18 @@ void findSquares(Mat& img)
             dis4 = (result.at<Vec2i>(3)[0] - result.at<Vec2i>(0)[0]) * (result.at<Vec2i>(3)[0] - result.at<Vec2i>(0)[0]) + (result.at<Vec2i>(3)[1] - result.at<Vec2i>(0)[1]) * (result.at<Vec2i>(3)[1] - result.at<Vec2i>(0)[1]);
             d1 = sqrt(dis1+dis3);
             d2 = sqrt(dis2+dis4);
-            ROS_INFO("%lf %lf",d1, d2 );
+            float a = d1 / (d1 + d2);
+            if(a > 0.3 && a < 0.7)
+            {
+                Yolo::Detection yd;
+                yd.bbox[0] = center.x;
+                yd.bbox[1] = center.y;
+                yd.bbox[2] = 10;
+                yd.bbox[3] = 10;
+                yd.conf = 1;
+                yd.class_id = 6;
+            }
+            //ROS_INFO("%lf %lf",d1, d2 );
 		}
 	}
 }
@@ -342,19 +356,19 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
         }
     }
     // Run inference
+    std::vector<result_deal> pass_result;
+    std::vector<Yolo::Detection> batch_res;
     if(aim != 4)
     {
         doInference(*context, stream, buffers, data, prob, 1);
+        nms(batch_res, &prob[0], CONF_THRESH, NMS_THRESH);
     }
     else
     {
         Mat img_gray;
         cv::cvtColor(img, img_gray, cv::COLOR_BGR2GRAY);
-        findSquares(img_gray);
+        findSquares(img_gray, batch_res);
     }
-    std::vector<Yolo::Detection> batch_res;
-    std::vector<result_deal> pass_result;
-    nms(batch_res, &prob[0], CONF_THRESH, NMS_THRESH);
     ros::param::get("/yaw", yaw);
     for (int b = 0; b < batch_res.size(); b++)
     {
