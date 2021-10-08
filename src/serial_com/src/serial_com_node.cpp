@@ -16,7 +16,7 @@ void resultCallback(const yolov5::resultConstPtr& msg)
     send[5] = (uint8_t)((msg->distance) >> 8);
     send[6] = (uint8_t)(msg->direction + 180);
     send[7] = (uint8_t)((msg->direction + 180) >> 8);
-    //sp.write(send, 8);
+    sp.write(send, 8);
     //ROS_INFO_STREAM(send);
 }
 int main(int argc, char** argv)
@@ -59,7 +59,7 @@ int main(int argc, char** argv)
         {
             n = sp.read(receive, n);
             int a = receive[0];
-            ROS_INFO("%d", a);
+            //ROS_INFO("%d", a);
             if(last_receive[0] != receive[0])
             {
                 modeMsg.data = receive[0];
@@ -67,10 +67,10 @@ int main(int argc, char** argv)
                 last_receive[0] = receive[0];
             }
         }
-        ros::param::get("/yaw", direction);
-        send[6] = (uint8_t)(direction + 180);
-        send[7] = (uint8_t)((direction + 180) >> 8);
-        sp.write(send, 8);
+        //ros::param::get("/yaw", direction);
+        //send[6] = (uint8_t)(direction + 180);
+        //send[7] = (uint8_t)((direction + 180) >> 8);
+        //sp.write(send, 8);
         ros::spinOnce();
         loop_rate.sleep();
     }

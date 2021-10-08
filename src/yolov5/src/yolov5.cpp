@@ -388,6 +388,13 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
             pass_result.push_back(rd);
         }
     }
+    if(pass_result.empty() || pass_result[0].score == 0)
+    {
+        pass_result[0].center_x = 0xFF;
+        pass_result[0].center_y = 0xFF;
+        pass_result[0].distance = 0xFF;
+        pass_result[0].yaw = 0xFF;
+    }
     if(!pass_result.empty() && pass_result[0].score != 0)
     {
         yolov5::result msg;
