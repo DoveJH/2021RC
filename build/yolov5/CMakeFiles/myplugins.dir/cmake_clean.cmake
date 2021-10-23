@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o"
-  "/home/dovejh/project/RC/RC2021/devel/lib/libmyplugins.pdb"
-  "/home/dovejh/project/RC/RC2021/devel/lib/libmyplugins.so"
+  "/home/nuaa/dovejh/2021RC/devel/lib/libmyplugins.pdb"
+  "/home/nuaa/dovejh/2021RC/devel/lib/libmyplugins.so"
 )
 
 # Per-language clean rules from dependency scanning.

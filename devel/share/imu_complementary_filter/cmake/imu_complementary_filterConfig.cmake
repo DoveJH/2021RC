@@ -67,14 +67,14 @@ set(imu_complementary_filter_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(imu_complementary_filter_SOURCE_PREFIX /home/dovejh/project/RC/RC2021/src/imu_complementary_filter)
-  set(imu_complementary_filter_DEVEL_PREFIX /home/dovejh/project/RC/RC2021/devel)
+  set(imu_complementary_filter_SOURCE_PREFIX /home/nuaa/dovejh/2021RC/src/imu_complementary_filter)
+  set(imu_complementary_filter_DEVEL_PREFIX /home/nuaa/dovejh/2021RC/devel)
   set(imu_complementary_filter_INSTALL_PREFIX "")
   set(imu_complementary_filter_PREFIX ${imu_complementary_filter_DEVEL_PREFIX})
 else()
   set(imu_complementary_filter_SOURCE_PREFIX "")
   set(imu_complementary_filter_DEVEL_PREFIX "")
-  set(imu_complementary_filter_INSTALL_PREFIX /home/dovejh/project/RC/RC2021/install)
+  set(imu_complementary_filter_INSTALL_PREFIX /home/nuaa/dovejh/2021RC/install)
   set(imu_complementary_filter_PREFIX ${imu_complementary_filter_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(imu_complementary_filter_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/dovejh/project/RC/RC2021/src/imu_complementary_filter/include " STREQUAL " ")
+if(NOT "/home/nuaa/dovejh/2021RC/src/imu_complementary_filter/include " STREQUAL " ")
   set(imu_complementary_filter_INCLUDE_DIRS "")
-  set(_include_dirs "/home/dovejh/project/RC/RC2021/src/imu_complementary_filter/include")
+  set(_include_dirs "/home/nuaa/dovejh/2021RC/src/imu_complementary_filter/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT "http://www.mdpi.com/1424-8220/15/8/19302 " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/home/dovejh/project/RC/RC2021/src/imu_complementary_filter/include " ST
         message(FATAL_ERROR "Project 'imu_complementary_filter' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'imu_complementary_filter' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/dovejh/project/RC/RC2021/src/imu_complementary_filter/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'imu_complementary_filter' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/nuaa/dovejh/2021RC/src/imu_complementary_filter/${idir}'.  ${_report}")
     endif()
     _list_append_unique(imu_complementary_filter_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/dovejh/project/RC/RC2021/devel/lib;/home/dovejh/project/RC/RC2021/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/nuaa/dovejh/2021RC/devel/lib;/home/nuaa/dovejh/2021RC/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

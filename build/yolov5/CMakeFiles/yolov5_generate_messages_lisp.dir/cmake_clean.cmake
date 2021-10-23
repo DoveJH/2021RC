@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/yolov5_generate_messages_lisp"
-  "/home/dovejh/project/RC/RC2021/devel/share/common-lisp/ros/yolov5/msg/result.lisp"
+  "/home/nuaa/dovejh/2021RC/devel/share/common-lisp/ros/yolov5/msg/result.lisp"
 )
 
 # Per-language clean rules from dependency scanning.

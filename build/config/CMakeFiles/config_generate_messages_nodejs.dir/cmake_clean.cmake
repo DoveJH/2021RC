@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/config_generate_messages_nodejs"
-  "/home/dovejh/project/RC/RC2021/devel/share/gennodejs/ros/config/msg/param.js"
+  "/home/nuaa/dovejh/2021RC/devel/share/gennodejs/ros/config/msg/param.js"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,8 +1,8 @@
-prefix=/home/dovejh/project/RC/RC2021/devel
+prefix=/home/nuaa/dovejh/2021RC/devel
 
 Name: config
 Description: Description of config
 Version: 0.0.0
-Cflags: -I/home/dovejh/project/RC/RC2021/devel/include -I/home/dovejh/project/RC/RC2021/src/config/include
+Cflags: -I/home/nuaa/dovejh/2021RC/devel/include -I/home/nuaa/dovejh/2021RC/src/config/include
 Libs: -L${prefix}/lib -lconfig
 Requires: dynamic_reconfigure roscpp rospy message_runtime

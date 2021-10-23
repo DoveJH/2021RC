@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++11 -Wall -Ofast -Wfatal-errors -D_MWAITXINTRIN_H_INCLUDED  
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"yolov5\"
 
-CXX_INCLUDES = -I/home/dovejh/project/RC/RC2021/devel/include -I/home/dovejh/project/RC/RC2021/src/yolov5/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/local/lib -isystem /usr/local/opencv4/include/opencv4 -I/usr/local/opencv4/include -I/usr/local/include -I/home/dovejh/project/RC/RC2021/src/yolov5/../../devel/include -I/usr/local/cuda/include -I/usr/include/x86_64-linux-gnu -I/home/dovejh/TensorRT-8.0.1.6.Linux.x86_64-gnu.cuda-10.2.cudnn8.2/TensorRT-8.0.1.6/include -I/home/dovejh/project/RC/RC2021/src/yolov5/OpenCV_INCLUDE_DIRS 
+CXX_INCLUDES = -I/home/nuaa/dovejh/2021RC/devel/include -I/home/nuaa/dovejh/2021RC/src/yolov5/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /usr/include/opencv4 -I/home/nuaa/dovejh/2021RC/src/yolov5/../../devel/include -I/usr/local/cuda/include -I/usr/include/x86_64-linux-gnu -I/home/dovejh/TensorRT-8.0.1.6.Linux.x86_64-gnu.cuda-10.2.cudnn8.2/TensorRT-8.0.1.6/include -I/usr/local/cuda-10.2/include -I/home/nuaa/dovejh/2021RC/src/yolov5/OpenCV_INCLUDE_DIRS 
 

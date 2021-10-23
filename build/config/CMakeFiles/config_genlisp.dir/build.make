@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dovejh/project/RC/RC2021/src
+CMAKE_SOURCE_DIR = /home/nuaa/dovejh/2021RC/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dovejh/project/RC/RC2021/build
+CMAKE_BINARY_DIR = /home/nuaa/dovejh/2021RC/build
 
 # Utility rule file for config_genlisp.
 
@@ -63,10 +63,10 @@ config/CMakeFiles/config_genlisp.dir/build: config_genlisp
 .PHONY : config/CMakeFiles/config_genlisp.dir/build
 
 config/CMakeFiles/config_genlisp.dir/clean:
-	cd /home/dovejh/project/RC/RC2021/build/config && $(CMAKE_COMMAND) -P CMakeFiles/config_genlisp.dir/cmake_clean.cmake
+	cd /home/nuaa/dovejh/2021RC/build/config && $(CMAKE_COMMAND) -P CMakeFiles/config_genlisp.dir/cmake_clean.cmake
 .PHONY : config/CMakeFiles/config_genlisp.dir/clean
 
 config/CMakeFiles/config_genlisp.dir/depend:
-	cd /home/dovejh/project/RC/RC2021/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dovejh/project/RC/RC2021/src /home/dovejh/project/RC/RC2021/src/config /home/dovejh/project/RC/RC2021/build /home/dovejh/project/RC/RC2021/build/config /home/dovejh/project/RC/RC2021/build/config/CMakeFiles/config_genlisp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/nuaa/dovejh/2021RC/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nuaa/dovejh/2021RC/src /home/nuaa/dovejh/2021RC/src/config /home/nuaa/dovejh/2021RC/build /home/nuaa/dovejh/2021RC/build/config /home/nuaa/dovejh/2021RC/build/config/CMakeFiles/config_genlisp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : config/CMakeFiles/config_genlisp.dir/depend
 

@@ -6,23 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/dovejh/project/RC/RC2021/src/imu/../../devel/include/config/param.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-
-/home/dovejh/project/RC/RC2021/src/imu/src/imu_node.cpp
+/home/nuaa/dovejh/2021RC/src/imu/src/imu_node.cpp
 ros/ros.h
 -
 tf/tf.h

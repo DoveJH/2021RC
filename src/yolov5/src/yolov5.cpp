@@ -13,7 +13,7 @@
 #include <tf/tf.h>
 #include <yolov5/result.h>
 using namespace cv;
-#define USE_FP32  // set USE_INT8 or USE_FP16 or USE_FP32
+#define USE_FP16 // set USE_INT8 or USE_FP16 or USE_FP32
 #define DEVICE 0  // GPU id
 #define PI 3.14159265
 float NMS_THRESH = 0.4;
@@ -42,7 +42,7 @@ enum target
 {
     volleyball = 0, basketball, basket, mark, home
 };
-target aim = (target)4;
+target aim = (target)0;
 bool if_show = true;
 class result_deal
 {
@@ -369,7 +369,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
         cv::cvtColor(img, img_gray, cv::COLOR_BGR2GRAY);
         findSquares(img_gray, batch_res);
     }
-    ros::param::get("/yaw", yaw);
+    //ros::param::get("/yaw", yaw);
     for (int b = 0; b < batch_res.size(); b++)
     {
         cv::Rect r = get_rect(img, batch_res[b].bbox);
@@ -390,10 +390,13 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
     }
     if(pass_result.empty() || pass_result[0].score == 0)
     {
-        pass_result[0].center_x = 0xFF;
-        pass_result[0].center_y = 0xFF;
-        pass_result[0].distance = 0xFF;
-        pass_result[0].yaw = 0xFF;
+        yolov5::result msg;
+        msg.x = 0xFF;
+        msg.y = 0xFF;
+        msg.distance = 0xFF;
+        msg.direction = 0xFF;
+        //ROS_INFO("%lf",pass_result[0].yaw );
+        resultPub.publish(msg);
     }
     if(!pass_result.empty() && pass_result[0].score != 0)
     {

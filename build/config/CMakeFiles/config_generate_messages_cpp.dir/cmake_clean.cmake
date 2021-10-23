@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/config_generate_messages_cpp"
-  "/home/dovejh/project/RC/RC2021/devel/include/config/param.h"
+  "/home/nuaa/dovejh/2021RC/devel/include/config/param.h"
 )
 
 # Per-language clean rules from dependency scanning.

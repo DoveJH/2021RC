@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dovejh/project/RC/RC2021/src
+CMAKE_SOURCE_DIR = /home/nuaa/dovejh/2021RC/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dovejh/project/RC/RC2021/build
+CMAKE_BINARY_DIR = /home/nuaa/dovejh/2021RC/build
 
 # Utility rule file for yolov5_gennodejs.
 
@@ -63,10 +63,10 @@ yolov5/CMakeFiles/yolov5_gennodejs.dir/build: yolov5_gennodejs
 .PHONY : yolov5/CMakeFiles/yolov5_gennodejs.dir/build
 
 yolov5/CMakeFiles/yolov5_gennodejs.dir/clean:
-	cd /home/dovejh/project/RC/RC2021/build/yolov5 && $(CMAKE_COMMAND) -P CMakeFiles/yolov5_gennodejs.dir/cmake_clean.cmake
+	cd /home/nuaa/dovejh/2021RC/build/yolov5 && $(CMAKE_COMMAND) -P CMakeFiles/yolov5_gennodejs.dir/cmake_clean.cmake
 .PHONY : yolov5/CMakeFiles/yolov5_gennodejs.dir/clean
 
 yolov5/CMakeFiles/yolov5_gennodejs.dir/depend:
-	cd /home/dovejh/project/RC/RC2021/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dovejh/project/RC/RC2021/src /home/dovejh/project/RC/RC2021/src/yolov5 /home/dovejh/project/RC/RC2021/build /home/dovejh/project/RC/RC2021/build/yolov5 /home/dovejh/project/RC/RC2021/build/yolov5/CMakeFiles/yolov5_gennodejs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/nuaa/dovejh/2021RC/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nuaa/dovejh/2021RC/src /home/nuaa/dovejh/2021RC/src/yolov5 /home/nuaa/dovejh/2021RC/build /home/nuaa/dovejh/2021RC/build/yolov5 /home/nuaa/dovejh/2021RC/build/yolov5/CMakeFiles/yolov5_gennodejs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : yolov5/CMakeFiles/yolov5_gennodejs.dir/depend
 

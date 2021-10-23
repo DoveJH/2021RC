@@ -1,8 +1,8 @@
-# Install script for directory: /home/dovejh/project/RC/RC2021/src
+# Install script for directory: /home/nuaa/dovejh/2021RC/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/dovejh/project/RC/RC2021/install")
+  set(CMAKE_INSTALL_PREFIX "/home/nuaa/dovejh/2021RC/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -49,95 +49,95 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/dovejh/project/RC/RC2021/install/_setup_util.py")
+   "/home/nuaa/dovejh/2021RC/install/_setup_util.py")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/dovejh/project/RC/RC2021/install" TYPE PROGRAM FILES "/home/dovejh/project/RC/RC2021/build/catkin_generated/installspace/_setup_util.py")
+file(INSTALL DESTINATION "/home/nuaa/dovejh/2021RC/install" TYPE PROGRAM FILES "/home/nuaa/dovejh/2021RC/build/catkin_generated/installspace/_setup_util.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/dovejh/project/RC/RC2021/install/env.sh")
+   "/home/nuaa/dovejh/2021RC/install/env.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/dovejh/project/RC/RC2021/install" TYPE PROGRAM FILES "/home/dovejh/project/RC/RC2021/build/catkin_generated/installspace/env.sh")
+file(INSTALL DESTINATION "/home/nuaa/dovejh/2021RC/install" TYPE PROGRAM FILES "/home/nuaa/dovejh/2021RC/build/catkin_generated/installspace/env.sh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/dovejh/project/RC/RC2021/install/setup.bash;/home/dovejh/project/RC/RC2021/install/local_setup.bash")
+   "/home/nuaa/dovejh/2021RC/install/setup.bash;/home/nuaa/dovejh/2021RC/install/local_setup.bash")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/dovejh/project/RC/RC2021/install" TYPE FILE FILES
-    "/home/dovejh/project/RC/RC2021/build/catkin_generated/installspace/setup.bash"
-    "/home/dovejh/project/RC/RC2021/build/catkin_generated/installspace/local_setup.bash"
+file(INSTALL DESTINATION "/home/nuaa/dovejh/2021RC/install" TYPE FILE FILES
+    "/home/nuaa/dovejh/2021RC/build/catkin_generated/installspace/setup.bash"
+    "/home/nuaa/dovejh/2021RC/build/catkin_generated/installspace/local_setup.bash"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/dovejh/project/RC/RC2021/install/setup.sh;/home/dovejh/project/RC/RC2021/install/local_setup.sh")
+   "/home/nuaa/dovejh/2021RC/install/setup.sh;/home/nuaa/dovejh/2021RC/install/local_setup.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/dovejh/project/RC/RC2021/install" TYPE FILE FILES
-    "/home/dovejh/project/RC/RC2021/build/catkin_generated/installspace/setup.sh"
-    "/home/dovejh/project/RC/RC2021/build/catkin_generated/installspace/local_setup.sh"
+file(INSTALL DESTINATION "/home/nuaa/dovejh/2021RC/install" TYPE FILE FILES
+    "/home/nuaa/dovejh/2021RC/build/catkin_generated/installspace/setup.sh"
+    "/home/nuaa/dovejh/2021RC/build/catkin_generated/installspace/local_setup.sh"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/dovejh/project/RC/RC2021/install/setup.zsh;/home/dovejh/project/RC/RC2021/install/local_setup.zsh")
+   "/home/nuaa/dovejh/2021RC/install/setup.zsh;/home/nuaa/dovejh/2021RC/install/local_setup.zsh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/dovejh/project/RC/RC2021/install" TYPE FILE FILES
-    "/home/dovejh/project/RC/RC2021/build/catkin_generated/installspace/setup.zsh"
-    "/home/dovejh/project/RC/RC2021/build/catkin_generated/installspace/local_setup.zsh"
+file(INSTALL DESTINATION "/home/nuaa/dovejh/2021RC/install" TYPE FILE FILES
+    "/home/nuaa/dovejh/2021RC/build/catkin_generated/installspace/setup.zsh"
+    "/home/nuaa/dovejh/2021RC/build/catkin_generated/installspace/local_setup.zsh"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/dovejh/project/RC/RC2021/install/.rosinstall")
+   "/home/nuaa/dovejh/2021RC/install/.rosinstall")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/dovejh/project/RC/RC2021/install" TYPE FILE FILES "/home/dovejh/project/RC/RC2021/build/catkin_generated/installspace/.rosinstall")
+file(INSTALL DESTINATION "/home/nuaa/dovejh/2021RC/install" TYPE FILE FILES "/home/nuaa/dovejh/2021RC/build/catkin_generated/installspace/.rosinstall")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/dovejh/project/RC/RC2021/build/gtest/cmake_install.cmake")
-  include("/home/dovejh/project/RC/RC2021/build/image_deal/cmake_install.cmake")
-  include("/home/dovejh/project/RC/RC2021/build/imu/cmake_install.cmake")
-  include("/home/dovejh/project/RC/RC2021/build/serial_com/cmake_install.cmake")
-  include("/home/dovejh/project/RC/RC2021/build/config/cmake_install.cmake")
-  include("/home/dovejh/project/RC/RC2021/build/mv_driver/cmake_install.cmake")
-  include("/home/dovejh/project/RC/RC2021/build/imu_complementary_filter/cmake_install.cmake")
-  include("/home/dovejh/project/RC/RC2021/build/yolov5/cmake_install.cmake")
+  include("/home/nuaa/dovejh/2021RC/build/gtest/cmake_install.cmake")
+  include("/home/nuaa/dovejh/2021RC/build/image_deal/cmake_install.cmake")
+  include("/home/nuaa/dovejh/2021RC/build/imu/cmake_install.cmake")
+  include("/home/nuaa/dovejh/2021RC/build/serial_com/cmake_install.cmake")
+  include("/home/nuaa/dovejh/2021RC/build/config/cmake_install.cmake")
+  include("/home/nuaa/dovejh/2021RC/build/mv_driver/cmake_install.cmake")
+  include("/home/nuaa/dovejh/2021RC/build/imu_complementary_filter/cmake_install.cmake")
+  include("/home/nuaa/dovejh/2021RC/build/yolov5/cmake_install.cmake")
 
 endif()
 
@@ -149,5 +149,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/dovejh/project/RC/RC2021/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/nuaa/dovejh/2021RC/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

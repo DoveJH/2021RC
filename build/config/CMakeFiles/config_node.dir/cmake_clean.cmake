@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/config_node.dir/src/config_node.cpp.o"
-  "/home/dovejh/project/RC/RC2021/devel/lib/config/config_node.pdb"
-  "/home/dovejh/project/RC/RC2021/devel/lib/config/config_node"
+  "/home/nuaa/dovejh/2021RC/devel/lib/config/config_node.pdb"
+  "/home/nuaa/dovejh/2021RC/devel/lib/config/config_node"
 )
 
 # Per-language clean rules from dependency scanning.

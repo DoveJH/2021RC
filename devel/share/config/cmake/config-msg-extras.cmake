@@ -1,2 +1,2 @@
-set(config_MESSAGE_FILES "/home/dovejh/project/RC/RC2021/src/config/msg/param.msg")
+set(config_MESSAGE_FILES "/home/nuaa/dovejh/2021RC/src/config/msg/param.msg")
 set(config_SERVICE_FILES "")

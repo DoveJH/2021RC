@@ -1,4 +1,4 @@
-prefix=/home/dovejh/project/RC/RC2021/install
+prefix=/home/nuaa/dovejh/2021RC/install
 
 Name: yolov5
 Description: Description of yolov5

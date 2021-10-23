@@ -6,5 +6,5 @@ CXX_FLAGS =
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"imu_complementary_filter\"
 
-CXX_INCLUDES = -I/home/dovejh/project/RC/RC2021/src/imu_complementary_filter/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/home/dovejh/project/RC/RC2021/src/imu_complementary_filter/../../devel/include 
+CXX_INCLUDES = -I/home/nuaa/dovejh/2021RC/src/imu_complementary_filter/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/home/nuaa/dovejh/2021RC/src/imu_complementary_filter/../../devel/include 
 

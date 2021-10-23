@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dovejh/project/RC/RC2021/src
+CMAKE_SOURCE_DIR = /home/nuaa/dovejh/2021RC/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dovejh/project/RC/RC2021/build
+CMAKE_BINARY_DIR = /home/nuaa/dovejh/2021RC/build
 
 # Utility rule file for clean_test_results.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/dovejh/project/RC/RC2021/build
 include CMakeFiles/clean_test_results.dir/progress.make
 
 CMakeFiles/clean_test_results:
-	/usr/bin/python2 /opt/ros/melodic/share/catkin/cmake/test/remove_test_results.py /home/dovejh/project/RC/RC2021/build/test_results
+	/usr/bin/python2 /opt/ros/melodic/share/catkin/cmake/test/remove_test_results.py /home/nuaa/dovejh/2021RC/build/test_results
 
 clean_test_results: CMakeFiles/clean_test_results
 clean_test_results: CMakeFiles/clean_test_results.dir/build.make
@@ -71,6 +71,6 @@ CMakeFiles/clean_test_results.dir/clean:
 .PHONY : CMakeFiles/clean_test_results.dir/clean
 
 CMakeFiles/clean_test_results.dir/depend:
-	cd /home/dovejh/project/RC/RC2021/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dovejh/project/RC/RC2021/src /home/dovejh/project/RC/RC2021/src /home/dovejh/project/RC/RC2021/build /home/dovejh/project/RC/RC2021/build /home/dovejh/project/RC/RC2021/build/CMakeFiles/clean_test_results.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/nuaa/dovejh/2021RC/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nuaa/dovejh/2021RC/src /home/nuaa/dovejh/2021RC/src /home/nuaa/dovejh/2021RC/build /home/nuaa/dovejh/2021RC/build /home/nuaa/dovejh/2021RC/build/CMakeFiles/clean_test_results.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/clean_test_results.dir/depend
 

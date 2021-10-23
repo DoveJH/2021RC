@@ -1,8 +1,8 @@
-# Install script for directory: /home/dovejh/project/RC/RC2021/src/yolov5
+# Install script for directory: /home/nuaa/dovejh/2021RC/src/yolov5
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/dovejh/project/RC/RC2021/install")
+  set(CMAKE_INSTALL_PREFIX "/home/nuaa/dovejh/2021RC/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,53 +38,53 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/yolov5/msg" TYPE FILE FILES "/home/dovejh/project/RC/RC2021/src/yolov5/msg/result.msg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/yolov5/msg" TYPE FILE FILES "/home/nuaa/dovejh/2021RC/src/yolov5/msg/result.msg")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/yolov5/cmake" TYPE FILE FILES "/home/dovejh/project/RC/RC2021/build/yolov5/catkin_generated/installspace/yolov5-msg-paths.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/yolov5/cmake" TYPE FILE FILES "/home/nuaa/dovejh/2021RC/build/yolov5/catkin_generated/installspace/yolov5-msg-paths.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/dovejh/project/RC/RC2021/devel/include/yolov5")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/nuaa/dovejh/2021RC/devel/include/yolov5")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/dovejh/project/RC/RC2021/devel/share/roseus/ros/yolov5")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/nuaa/dovejh/2021RC/devel/share/roseus/ros/yolov5")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/dovejh/project/RC/RC2021/devel/share/common-lisp/ros/yolov5")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/nuaa/dovejh/2021RC/devel/share/common-lisp/ros/yolov5")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gennodejs/ros" TYPE DIRECTORY FILES "/home/dovejh/project/RC/RC2021/devel/share/gennodejs/ros/yolov5")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gennodejs/ros" TYPE DIRECTORY FILES "/home/nuaa/dovejh/2021RC/devel/share/gennodejs/ros/yolov5")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  execute_process(COMMAND "/usr/bin/python2" -m compileall "/home/dovejh/project/RC/RC2021/devel/lib/python2.7/dist-packages/yolov5")
+  execute_process(COMMAND "/usr/bin/python2" -m compileall "/home/nuaa/dovejh/2021RC/devel/lib/python2.7/dist-packages/yolov5")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/dovejh/project/RC/RC2021/devel/lib/python2.7/dist-packages/yolov5")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/nuaa/dovejh/2021RC/devel/lib/python2.7/dist-packages/yolov5")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/dovejh/project/RC/RC2021/build/yolov5/catkin_generated/installspace/yolov5.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nuaa/dovejh/2021RC/build/yolov5/catkin_generated/installspace/yolov5.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/yolov5/cmake" TYPE FILE FILES "/home/dovejh/project/RC/RC2021/build/yolov5/catkin_generated/installspace/yolov5-msg-extras.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/yolov5/cmake" TYPE FILE FILES "/home/nuaa/dovejh/2021RC/build/yolov5/catkin_generated/installspace/yolov5-msg-extras.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/yolov5/cmake" TYPE FILE FILES
-    "/home/dovejh/project/RC/RC2021/build/yolov5/catkin_generated/installspace/yolov5Config.cmake"
-    "/home/dovejh/project/RC/RC2021/build/yolov5/catkin_generated/installspace/yolov5Config-version.cmake"
+    "/home/nuaa/dovejh/2021RC/build/yolov5/catkin_generated/installspace/yolov5Config.cmake"
+    "/home/nuaa/dovejh/2021RC/build/yolov5/catkin_generated/installspace/yolov5Config-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/yolov5" TYPE FILE FILES "/home/dovejh/project/RC/RC2021/src/yolov5/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/yolov5" TYPE FILE FILES "/home/nuaa/dovejh/2021RC/src/yolov5/package.xml")
 endif()
 

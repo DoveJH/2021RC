@@ -1,4 +1,4 @@
-prefix=/home/dovejh/project/RC/RC2021/devel
+prefix=/home/nuaa/dovejh/2021RC/devel
 
 Name: imu
 Description: Description of imu

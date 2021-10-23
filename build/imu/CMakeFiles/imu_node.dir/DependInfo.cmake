@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/dovejh/project/RC/RC2021/src/imu/src/imu_node.cpp" "/home/dovejh/project/RC/RC2021/build/imu/CMakeFiles/imu_node.dir/src/imu_node.cpp.o"
+  "/home/nuaa/dovejh/2021RC/src/imu/src/imu_node.cpp" "/home/nuaa/dovejh/2021RC/build/imu/CMakeFiles/imu_node.dir/src/imu_node.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -19,7 +19,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/ros/melodic/include"
   "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
-  "/home/dovejh/project/RC/RC2021/src/imu/../../devel/include"
+  "/home/nuaa/dovejh/2021RC/src/imu/../../devel/include"
   )
 
 # Targets to which this target links.

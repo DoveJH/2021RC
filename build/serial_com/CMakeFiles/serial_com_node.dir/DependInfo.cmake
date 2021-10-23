@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/dovejh/project/RC/RC2021/src/serial_com/src/serial_com_node.cpp" "/home/dovejh/project/RC/RC2021/build/serial_com/CMakeFiles/serial_com_node.dir/src/serial_com_node.cpp.o"
+  "/home/nuaa/dovejh/2021RC/src/serial_com/src/serial_com_node.cpp" "/home/nuaa/dovejh/2021RC/build/serial_com/CMakeFiles/serial_com_node.dir/src/serial_com_node.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -19,7 +19,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/ros/melodic/include"
   "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
-  "/home/dovejh/project/RC/RC2021/src/serial_com/../../devel/include"
+  "/home/nuaa/dovejh/2021RC/src/serial_com/../../devel/include"
   )
 
 # Targets to which this target links.

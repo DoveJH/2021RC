@@ -1,8 +1,8 @@
-# Install script for directory: /home/dovejh/project/RC/RC2021/src/image_deal
+# Install script for directory: /home/nuaa/dovejh/2021RC/src/image_deal
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/dovejh/project/RC/RC2021/install")
+  set(CMAKE_INSTALL_PREFIX "/home/nuaa/dovejh/2021RC/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/dovejh/project/RC/RC2021/build/image_deal/catkin_generated/installspace/image_deal.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nuaa/dovejh/2021RC/build/image_deal/catkin_generated/installspace/image_deal.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/image_deal/cmake" TYPE FILE FILES
-    "/home/dovejh/project/RC/RC2021/build/image_deal/catkin_generated/installspace/image_dealConfig.cmake"
-    "/home/dovejh/project/RC/RC2021/build/image_deal/catkin_generated/installspace/image_dealConfig-version.cmake"
+    "/home/nuaa/dovejh/2021RC/build/image_deal/catkin_generated/installspace/image_dealConfig.cmake"
+    "/home/nuaa/dovejh/2021RC/build/image_deal/catkin_generated/installspace/image_dealConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/image_deal" TYPE FILE FILES "/home/dovejh/project/RC/RC2021/src/image_deal/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/image_deal" TYPE FILE FILES "/home/nuaa/dovejh/2021RC/src/image_deal/package.xml")
 endif()
 

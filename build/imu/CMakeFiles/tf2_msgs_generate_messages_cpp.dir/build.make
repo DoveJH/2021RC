@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dovejh/project/RC/RC2021/src
+CMAKE_SOURCE_DIR = /home/nuaa/dovejh/2021RC/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dovejh/project/RC/RC2021/build
+CMAKE_BINARY_DIR = /home/nuaa/dovejh/2021RC/build
 
 # Utility rule file for tf2_msgs_generate_messages_cpp.
 
@@ -63,10 +63,10 @@ imu/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build: tf2_msgs_generate_messa
 .PHONY : imu/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build
 
 imu/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/clean:
-	cd /home/dovejh/project/RC/RC2021/build/imu && $(CMAKE_COMMAND) -P CMakeFiles/tf2_msgs_generate_messages_cpp.dir/cmake_clean.cmake
+	cd /home/nuaa/dovejh/2021RC/build/imu && $(CMAKE_COMMAND) -P CMakeFiles/tf2_msgs_generate_messages_cpp.dir/cmake_clean.cmake
 .PHONY : imu/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/clean
 
 imu/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/depend:
-	cd /home/dovejh/project/RC/RC2021/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dovejh/project/RC/RC2021/src /home/dovejh/project/RC/RC2021/src/imu /home/dovejh/project/RC/RC2021/build /home/dovejh/project/RC/RC2021/build/imu /home/dovejh/project/RC/RC2021/build/imu/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/nuaa/dovejh/2021RC/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nuaa/dovejh/2021RC/src /home/nuaa/dovejh/2021RC/src/imu /home/nuaa/dovejh/2021RC/build /home/nuaa/dovejh/2021RC/build/imu /home/nuaa/dovejh/2021RC/build/imu/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : imu/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/depend
 

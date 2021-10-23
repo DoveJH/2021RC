@@ -58,20 +58,20 @@ endif()
 
 # Set these up as variables to make reading the generated file easier
 set(CMAKE_COMMAND "/usr/bin/cmake") # path
-set(source_file "/home/dovejh/project/RC/RC2021/src/yolov5/src/yololayer.cu") # path
-set(NVCC_generated_dependency_file "/home/dovejh/project/RC/RC2021/build/yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o.NVCC-depend") # path
-set(cmake_dependency_file "/home/dovejh/project/RC/RC2021/build/yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o.depend") # path
+set(source_file "/home/nuaa/dovejh/2021RC/src/yolov5/src/yololayer.cu") # path
+set(NVCC_generated_dependency_file "/home/nuaa/dovejh/2021RC/build/yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o.NVCC-depend") # path
+set(cmake_dependency_file "/home/nuaa/dovejh/2021RC/build/yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o.depend") # path
 set(CUDA_make2cmake "/usr/share/cmake-3.10/Modules/FindCUDA/make2cmake.cmake") # path
 set(CUDA_parse_cubin "/usr/share/cmake-3.10/Modules/FindCUDA/parse_cubin.cmake") # path
 set(build_cubin OFF) # bool
 set(CUDA_HOST_COMPILER "/usr/bin/cc") # path
 # We won't actually use these variables for now, but we need to set this, in
 # order to force this file to be run again if it changes.
-set(generated_file_path "/home/dovejh/project/RC/RC2021/build/yolov5/CMakeFiles/myplugins.dir/src/.") # path
-set(generated_file_internal "/home/dovejh/project/RC/RC2021/build/yolov5/CMakeFiles/myplugins.dir/src/./myplugins_generated_yololayer.cu.o") # path
-set(generated_cubin_file_internal "/home/dovejh/project/RC/RC2021/build/yolov5/CMakeFiles/myplugins.dir/src/./myplugins_generated_yololayer.cu.o.cubin.txt") # path
+set(generated_file_path "/home/nuaa/dovejh/2021RC/build/yolov5/CMakeFiles/myplugins.dir/src/.") # path
+set(generated_file_internal "/home/nuaa/dovejh/2021RC/build/yolov5/CMakeFiles/myplugins.dir/src/./myplugins_generated_yololayer.cu.o") # path
+set(generated_cubin_file_internal "/home/nuaa/dovejh/2021RC/build/yolov5/CMakeFiles/myplugins.dir/src/./myplugins_generated_yololayer.cu.o.cubin.txt") # path
 
-set(CUDA_NVCC_EXECUTABLE "/usr/local/cuda/bin/nvcc") # path
+set(CUDA_NVCC_EXECUTABLE "/usr/local/cuda-10.2/bin/nvcc") # path
 set(CUDA_NVCC_FLAGS  ;; ) # list
 # Build specific configuration flags
 set(CUDA_NVCC_FLAGS_DEBUG  ; )
@@ -79,7 +79,7 @@ set(CUDA_NVCC_FLAGS_MINSIZEREL  ; )
 set(CUDA_NVCC_FLAGS_RELEASE  ; )
 set(CUDA_NVCC_FLAGS_RELWITHDEBINFO  ; )
 set(nvcc_flags -m64;--std;c++11;-Dmyplugins_EXPORTS) # list
-set(CUDA_NVCC_INCLUDE_DIRS "/usr/local/cuda/include;/home/dovejh/project/RC/RC2021/devel/include;/home/dovejh/project/RC/RC2021/src/yolov5/include;/opt/ros/melodic/include;/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp;/usr/include;/usr/local/lib;/usr/local/opencv4/include/opencv4;/usr/local/opencv4/include;/usr/local/include;/home/dovejh/project/RC/RC2021/src/yolov5/../../devel/include;/usr/local/cuda/include;/usr/include/x86_64-linux-gnu;/usr/local/cuda/include;/home/dovejh/TensorRT-8.0.1.6.Linux.x86_64-gnu.cuda-10.2.cudnn8.2/TensorRT-8.0.1.6/include;/usr/include/x86_64-linux-gnu;/opt/ros/melodic/include;/home/dovejh/project/RC/RC2021/src/yolov5/OpenCV_INCLUDE_DIRS") # list (needs to be in quotes to handle spaces properly).
+set(CUDA_NVCC_INCLUDE_DIRS "/usr/local/cuda-10.2/include;/home/nuaa/dovejh/2021RC/devel/include;/home/nuaa/dovejh/2021RC/src/yolov5/include;/opt/ros/melodic/include;/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp;/usr/include;/usr/include/opencv4;/home/nuaa/dovejh/2021RC/src/yolov5/../../devel/include;/usr/local/cuda/include;/usr/include/x86_64-linux-gnu;/usr/local/cuda/include;/home/dovejh/TensorRT-8.0.1.6.Linux.x86_64-gnu.cuda-10.2.cudnn8.2/TensorRT-8.0.1.6/include;/usr/include/x86_64-linux-gnu;/opt/ros/melodic/include;/usr/local/cuda-10.2/include;/home/nuaa/dovejh/2021RC/src/yolov5/OpenCV_INCLUDE_DIRS") # list (needs to be in quotes to handle spaces properly).
 set(CUDA_NVCC_COMPILE_DEFINITIONS [==[ROS_BUILD_SHARED_LIBS=1;ROS_BUILD_SHARED_LIBS=1;ROS_PACKAGE_NAME="yolov5";ROSCONSOLE_BACKEND_LOG4CXX]==]) # list (needs to be in lua quotes see #16510 ).
 set(format_flag "-c") # string
 set(cuda_language_flag ) # list

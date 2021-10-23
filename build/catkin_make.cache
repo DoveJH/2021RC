@@ -1,2 +1,2 @@
 config:image_deal:imu:imu_complementary_filter:mv_driver:serial_com:yolov5
--DCATKIN_DEVEL_PREFIX=/home/dovejh/project/RC/RC2021/devel -DCMAKE_INSTALL_PREFIX=/home/dovejh/project/RC/RC2021/install -G Unix Makefiles
+-DCATKIN_DEVEL_PREFIX=/home/nuaa/dovejh/2021RC/devel -DCMAKE_INSTALL_PREFIX=/home/nuaa/dovejh/2021RC/install -G Unix Makefiles

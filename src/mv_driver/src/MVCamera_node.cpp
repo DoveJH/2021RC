@@ -16,7 +16,7 @@ using namespace std;
 using namespace cv;
 MVCamera *mv_driver=NULL;
 Size dist_size=Size(640,512);
-bool from_camera = false;
+bool from_camera = true;
 class MVCamNode
 {
 public:
@@ -77,10 +77,21 @@ public:
             image_pub_.publish(msg);
         }
     }
+    bool auto_whiteBalance(Mat& img)
+	{
+		vector<Mat>imageRGB;
+		split(img, imageRGB);
+		double KG;
+		KG = 0.8;
+		imageRGB[1] = imageRGB[1] * KG;
+		merge(imageRGB, img);
+		return true;
+	}
     bool take_and_send_image()
     {
         // grab the image
         mv_driver->GetFrame_B(rawImg,1);
+		auto_whiteBalance(rawImg);
         if(rawImg.empty())
         {
             ROS_WARN("NO IMG GOT FROM MV");

@@ -1,8 +1,8 @@
-# Install script for directory: /home/dovejh/project/RC/RC2021/src/serial_com
+# Install script for directory: /home/nuaa/dovejh/2021RC/src/serial_com
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/dovejh/project/RC/RC2021/install")
+  set(CMAKE_INSTALL_PREFIX "/home/nuaa/dovejh/2021RC/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/dovejh/project/RC/RC2021/build/serial_com/catkin_generated/installspace/serial_com.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nuaa/dovejh/2021RC/build/serial_com/catkin_generated/installspace/serial_com.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/serial_com/cmake" TYPE FILE FILES
-    "/home/dovejh/project/RC/RC2021/build/serial_com/catkin_generated/installspace/serial_comConfig.cmake"
-    "/home/dovejh/project/RC/RC2021/build/serial_com/catkin_generated/installspace/serial_comConfig-version.cmake"
+    "/home/nuaa/dovejh/2021RC/build/serial_com/catkin_generated/installspace/serial_comConfig.cmake"
+    "/home/nuaa/dovejh/2021RC/build/serial_com/catkin_generated/installspace/serial_comConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/serial_com" TYPE FILE FILES "/home/dovejh/project/RC/RC2021/src/serial_com/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/serial_com" TYPE FILE FILES "/home/nuaa/dovejh/2021RC/src/serial_com/package.xml")
 endif()
 

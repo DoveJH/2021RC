@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/dovejh/project/RC/RC2021/src/serial_com/../../devel/include/yolov5/result.h
+/home/nuaa/dovejh/2021RC/src/serial_com/../../devel/include/yolov5/result.h
 string
 -
 vector
@@ -22,7 +22,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/dovejh/project/RC/RC2021/src/serial_com/src/serial_com_node.cpp
+/home/nuaa/dovejh/2021RC/src/serial_com/src/serial_com_node.cpp
 ros/ros.h
 -
 serial/serial.h

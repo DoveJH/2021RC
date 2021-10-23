@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/dovejh/project/RC/RC2021/devel/include/config/RC2021Config.h
+/home/nuaa/dovejh/2021RC/devel/include/config/RC2021Config.h
 dynamic_reconfigure/config_tools.h
 -
 limits
@@ -24,23 +24,7 @@ dynamic_reconfigure/config_init_mutex.h
 boost/any.hpp
 -
 
-/home/dovejh/project/RC/RC2021/devel/include/config/param.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-
-/home/dovejh/project/RC/RC2021/src/config/src/config_node.cpp
+/home/nuaa/dovejh/2021RC/src/config/src/config_node.cpp
 ros/ros.h
 -
 dynamic_reconfigure/server.h

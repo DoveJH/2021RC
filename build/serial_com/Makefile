@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dovejh/project/RC/RC2021/src
+CMAKE_SOURCE_DIR = /home/nuaa/dovejh/2021RC/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dovejh/project/RC/RC2021/build
+CMAKE_BINARY_DIR = /home/nuaa/dovejh/2021RC/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -137,14 +137,14 @@ install/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/dovejh/project/RC/RC2021/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/dovejh/project/RC/RC2021/build/CMakeFiles /home/dovejh/project/RC/RC2021/build/serial_com/CMakeFiles/progress.marks
-	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f CMakeFiles/Makefile2 serial_com/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dovejh/project/RC/RC2021/build/CMakeFiles 0
+	cd /home/nuaa/dovejh/2021RC/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/nuaa/dovejh/2021RC/build/CMakeFiles /home/nuaa/dovejh/2021RC/build/serial_com/CMakeFiles/progress.marks
+	cd /home/nuaa/dovejh/2021RC/build && $(MAKE) -f CMakeFiles/Makefile2 serial_com/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nuaa/dovejh/2021RC/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f CMakeFiles/Makefile2 serial_com/clean
+	cd /home/nuaa/dovejh/2021RC/build && $(MAKE) -f CMakeFiles/Makefile2 serial_com/clean
 .PHONY : clean
 
 # The main clean target
@@ -154,22 +154,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f CMakeFiles/Makefile2 serial_com/preinstall
+	cd /home/nuaa/dovejh/2021RC/build && $(MAKE) -f CMakeFiles/Makefile2 serial_com/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f CMakeFiles/Makefile2 serial_com/preinstall
+	cd /home/nuaa/dovejh/2021RC/build && $(MAKE) -f CMakeFiles/Makefile2 serial_com/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/dovejh/project/RC/RC2021/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/nuaa/dovejh/2021RC/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 serial_com/CMakeFiles/serial_com_node.dir/rule:
-	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f CMakeFiles/Makefile2 serial_com/CMakeFiles/serial_com_node.dir/rule
+	cd /home/nuaa/dovejh/2021RC/build && $(MAKE) -f CMakeFiles/Makefile2 serial_com/CMakeFiles/serial_com_node.dir/rule
 .PHONY : serial_com/CMakeFiles/serial_com_node.dir/rule
 
 # Convenience name for target.
@@ -179,7 +179,7 @@ serial_com_node: serial_com/CMakeFiles/serial_com_node.dir/rule
 
 # fast build rule for target.
 serial_com_node/fast:
-	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f serial_com/CMakeFiles/serial_com_node.dir/build.make serial_com/CMakeFiles/serial_com_node.dir/build
+	cd /home/nuaa/dovejh/2021RC/build && $(MAKE) -f serial_com/CMakeFiles/serial_com_node.dir/build.make serial_com/CMakeFiles/serial_com_node.dir/build
 .PHONY : serial_com_node/fast
 
 src/serial_com_node.o: src/serial_com_node.cpp.o
@@ -188,7 +188,7 @@ src/serial_com_node.o: src/serial_com_node.cpp.o
 
 # target to build an object file
 src/serial_com_node.cpp.o:
-	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f serial_com/CMakeFiles/serial_com_node.dir/build.make serial_com/CMakeFiles/serial_com_node.dir/src/serial_com_node.cpp.o
+	cd /home/nuaa/dovejh/2021RC/build && $(MAKE) -f serial_com/CMakeFiles/serial_com_node.dir/build.make serial_com/CMakeFiles/serial_com_node.dir/src/serial_com_node.cpp.o
 .PHONY : src/serial_com_node.cpp.o
 
 src/serial_com_node.i: src/serial_com_node.cpp.i
@@ -197,7 +197,7 @@ src/serial_com_node.i: src/serial_com_node.cpp.i
 
 # target to preprocess a source file
 src/serial_com_node.cpp.i:
-	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f serial_com/CMakeFiles/serial_com_node.dir/build.make serial_com/CMakeFiles/serial_com_node.dir/src/serial_com_node.cpp.i
+	cd /home/nuaa/dovejh/2021RC/build && $(MAKE) -f serial_com/CMakeFiles/serial_com_node.dir/build.make serial_com/CMakeFiles/serial_com_node.dir/src/serial_com_node.cpp.i
 .PHONY : src/serial_com_node.cpp.i
 
 src/serial_com_node.s: src/serial_com_node.cpp.s
@@ -206,7 +206,7 @@ src/serial_com_node.s: src/serial_com_node.cpp.s
 
 # target to generate assembly for a file
 src/serial_com_node.cpp.s:
-	cd /home/dovejh/project/RC/RC2021/build && $(MAKE) -f serial_com/CMakeFiles/serial_com_node.dir/build.make serial_com/CMakeFiles/serial_com_node.dir/src/serial_com_node.cpp.s
+	cd /home/nuaa/dovejh/2021RC/build && $(MAKE) -f serial_com/CMakeFiles/serial_com_node.dir/build.make serial_com/CMakeFiles/serial_com_node.dir/src/serial_com_node.cpp.s
 .PHONY : src/serial_com_node.cpp.s
 
 # Help Target
@@ -237,6 +237,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/dovejh/project/RC/RC2021/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/nuaa/dovejh/2021RC/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

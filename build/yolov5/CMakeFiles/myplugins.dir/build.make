@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dovejh/project/RC/RC2021/src
+CMAKE_SOURCE_DIR = /home/nuaa/dovejh/2021RC/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dovejh/project/RC/RC2021/build
+CMAKE_BINARY_DIR = /home/nuaa/dovejh/2021RC/build
 
 # Include any dependencies generated for this target.
 include yolov5/CMakeFiles/myplugins.dir/depend.make
@@ -57,15 +57,107 @@ include yolov5/CMakeFiles/myplugins.dir/progress.make
 # Include the compile flags for this target's objects.
 include yolov5/CMakeFiles/myplugins.dir/flags.make
 
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /home/dovejh/TensorRT-8.0.1.6.Linux.x86_64-gnu.cuda-10.2.cudnn8.2/TensorRT-8.0.1.6/include/NvInfer.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /home/dovejh/TensorRT-8.0.1.6.Linux.x86_64-gnu.cuda-10.2.cudnn8.2/TensorRT-8.0.1.6/include/NvInferImpl.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /home/dovejh/TensorRT-8.0.1.6.Linux.x86_64-gnu.cuda-10.2.cudnn8.2/TensorRT-8.0.1.6/include/NvInferLegacyDims.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /home/dovejh/TensorRT-8.0.1.6.Linux.x86_64-gnu.cuda-10.2.cudnn8.2/TensorRT-8.0.1.6/include/NvInferRuntime.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /home/dovejh/TensorRT-8.0.1.6.Linux.x86_64-gnu.cuda-10.2.cudnn8.2/TensorRT-8.0.1.6/include/NvInferRuntimeCommon.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /home/dovejh/TensorRT-8.0.1.6.Linux.x86_64-gnu.cuda-10.2.cudnn8.2/TensorRT-8.0.1.6/include/NvInferVersion.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /home/dovejh/project/RC/RC2021/src/yolov5/include/cuda_utils.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /home/dovejh/project/RC/RC2021/src/yolov5/include/yololayer.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /home/dovejh/project/RC/RC2021/src/yolov5/src/yololayer.cu
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /home/nuaa/dovejh/2021RC/src/yolov5/include/cuda_utils.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /home/nuaa/dovejh/2021RC/src/yolov5/include/yololayer.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /home/nuaa/dovejh/2021RC/src/yolov5/src/yololayer.cu
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/NvInfer.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/NvInferImpl.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/NvInferLegacyDims.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/NvInferRuntime.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/NvInferRuntimeCommon.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/NvInferVersion.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/asm/errno.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/_G_config.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/byteswap-16.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/byteswap.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/cpu-set.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/endian.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/errno.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/floatn-common.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/floatn.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/flt-eval-method.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/fp-fast.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/fp-logb.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/iscanonical.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/libc-header-start.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/libio.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/local_lim.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/locale.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/long-double.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/math-finite.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/math-vector.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/mathcalls-helper-functions.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/mathcalls.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/mathinline.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/posix1_lim.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/posix2_lim.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/pthreadtypes-arch.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/pthreadtypes.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/sched.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/select.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/select2.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/setjmp.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/stdint-intn.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/stdint-uintn.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/stdio.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/stdio2.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/stdio_lim.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/stdlib-bsearch.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/stdlib-float.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/stdlib.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/string_fortified.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/strings_fortified.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/sys_errlist.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/sysmacros.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/thread-shared-types.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/time.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/timex.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/types.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/types/FILE.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/types/__FILE.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/types/__locale_t.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/types/__mbstate_t.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/types/__sigset_t.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/types/clock_t.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/types/clockid_t.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/types/locale_t.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/types/mbstate_t.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/types/sigset_t.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/types/struct_itimerspec.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/types/struct_timespec.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/types/struct_timeval.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/types/struct_tm.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/types/time_t.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/types/timer_t.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/types/wint_t.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/typesizes.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/uintn-identity.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/uio_lim.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/waitflags.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/waitstatus.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/wchar.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/wchar2.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/wctype-wchar.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/wordsize.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/bits/xopen_lim.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/c++/7/bits/atomic_word.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/c++/7/bits/c++allocator.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/c++/7/bits/c++config.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/c++/7/bits/c++locale.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/c++/7/bits/cpu_defines.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/c++/7/bits/ctype_base.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/c++/7/bits/ctype_inline.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/c++/7/bits/error_constants.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/c++/7/bits/gthr-default.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/c++/7/bits/gthr.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/c++/7/bits/os_defines.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/gnu/stubs-lp64.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/gnu/stubs.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/sys/cdefs.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/sys/select.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/sys/sysmacros.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/aarch64-linux-gnu/sys/types.h
 yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/alloca.h
 yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/asm-generic/errno-base.h
 yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/asm-generic/errno.h
@@ -174,175 +266,83 @@ yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/inc
 yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/time.h
 yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/wchar.h
 yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/wctype.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/asm/errno.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/_G_config.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/byteswap-16.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/byteswap.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/cpu-set.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/endian.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/errno.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/floatn-common.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/floatn.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/fp-fast.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/fp-logb.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/iscanonical.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/libc-header-start.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/libio.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/local_lim.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/locale.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/long-double.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/math-finite.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/math-vector.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/mathcalls.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/mathinline.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/posix1_lim.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/posix2_lim.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/sched.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/select.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/select2.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/setjmp.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/stdint-intn.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/stdio.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/stdio2.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/stdio_lim.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/stdlib-float.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/stdlib.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/string_fortified.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/strings_fortified.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/sys_errlist.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/sysmacros.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/time.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/timex.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/types.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/types/FILE.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/types/__FILE.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/types/clock_t.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/types/locale_t.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/types/time_t.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/types/timer_t.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/types/wint_t.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/typesizes.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/uio_lim.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/waitflags.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/waitstatus.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/wchar.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/wchar2.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/wordsize.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/bits/xopen_lim.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/c++/7/bits/atomic_word.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/c++/7/bits/c++allocator.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/c++/7/bits/c++locale.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/c++/7/bits/cpu_defines.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/c++/7/bits/ctype_base.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/c++/7/bits/ctype_inline.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/c++/7/bits/error_constants.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/c++/7/bits/gthr-default.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/c++/7/bits/gthr.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/gnu/stubs-64.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/gnu/stubs.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/sys/cdefs.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/sys/select.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/sys/sysmacros.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/include/x86_64-linux-gnu/sys/types.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/builtin_types.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/channel_descriptor.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/crt/common_functions.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/crt/device_double_functions.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/crt/device_double_functions.hpp
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/crt/device_functions.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/crt/device_functions.hpp
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/crt/host_config.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/crt/host_defines.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/crt/math_functions.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/crt/math_functions.hpp
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/crt/sm_70_rt.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/crt/sm_70_rt.hpp
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/cuda_device_runtime_api.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/cuda_runtime.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/cuda_runtime_api.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/cuda_surface_types.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/cuda_texture_types.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/device_atomic_functions.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/device_atomic_functions.hpp
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/device_launch_parameters.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/device_types.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/driver_functions.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/driver_types.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/library_types.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/sm_20_atomic_functions.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/sm_20_atomic_functions.hpp
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/sm_20_intrinsics.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/sm_20_intrinsics.hpp
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/sm_30_intrinsics.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/sm_30_intrinsics.hpp
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/sm_32_atomic_functions.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/sm_32_atomic_functions.hpp
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/sm_32_intrinsics.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/sm_32_intrinsics.hpp
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/sm_35_atomic_functions.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/sm_35_intrinsics.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/sm_60_atomic_functions.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/sm_60_atomic_functions.hpp
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/sm_61_intrinsics.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/sm_61_intrinsics.hpp
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/surface_functions.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/surface_indirect_functions.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/surface_types.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/texture_fetch_functions.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/texture_indirect_functions.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/texture_types.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/vector_functions.h
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/vector_functions.hpp
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda/include/vector_types.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/lib/gcc/aarch64-linux-gnu/7/include-fixed/limits.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/lib/gcc/aarch64-linux-gnu/7/include-fixed/syslimits.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/lib/gcc/aarch64-linux-gnu/7/include/stdarg.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/lib/gcc/aarch64-linux-gnu/7/include/stddef.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/lib/gcc/aarch64-linux-gnu/7/include/stdint.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/builtin_types.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/channel_descriptor.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/crt/common_functions.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/crt/device_double_functions.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/crt/device_double_functions.hpp
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/crt/device_functions.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/crt/device_functions.hpp
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/crt/host_config.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/crt/host_defines.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/crt/math_functions.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/crt/math_functions.hpp
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/crt/sm_70_rt.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/crt/sm_70_rt.hpp
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/cuda_device_runtime_api.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/cuda_runtime.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/cuda_runtime_api.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/cuda_surface_types.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/cuda_texture_types.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/device_atomic_functions.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/device_atomic_functions.hpp
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/device_launch_parameters.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/device_types.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/driver_functions.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/driver_types.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/library_types.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/sm_20_atomic_functions.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/sm_20_atomic_functions.hpp
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/sm_20_intrinsics.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/sm_20_intrinsics.hpp
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/sm_30_intrinsics.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/sm_30_intrinsics.hpp
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/sm_32_atomic_functions.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/sm_32_atomic_functions.hpp
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/sm_32_intrinsics.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/sm_32_intrinsics.hpp
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/sm_35_atomic_functions.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/sm_35_intrinsics.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/sm_60_atomic_functions.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/sm_60_atomic_functions.hpp
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/sm_61_intrinsics.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/sm_61_intrinsics.hpp
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/surface_functions.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/surface_indirect_functions.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/surface_types.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/texture_fetch_functions.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/texture_indirect_functions.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/texture_types.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/vector_functions.h
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/vector_functions.hpp
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /usr/local/cuda-10.2/include/vector_types.h
 yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o.cmake
-yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /home/dovejh/project/RC/RC2021/src/yolov5/src/yololayer.cu
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/dovejh/project/RC/RC2021/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building NVCC (Device) object yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o"
-	cd /home/dovejh/project/RC/RC2021/build/yolov5/CMakeFiles/myplugins.dir/src && /usr/bin/cmake -E make_directory /home/dovejh/project/RC/RC2021/build/yolov5/CMakeFiles/myplugins.dir/src/.
-	cd /home/dovejh/project/RC/RC2021/build/yolov5/CMakeFiles/myplugins.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/dovejh/project/RC/RC2021/build/yolov5/CMakeFiles/myplugins.dir/src/./myplugins_generated_yololayer.cu.o -D generated_cubin_file:STRING=/home/dovejh/project/RC/RC2021/build/yolov5/CMakeFiles/myplugins.dir/src/./myplugins_generated_yololayer.cu.o.cubin.txt -P /home/dovejh/project/RC/RC2021/build/yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o.cmake
+yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o: /home/nuaa/dovejh/2021RC/src/yolov5/src/yololayer.cu
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/nuaa/dovejh/2021RC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building NVCC (Device) object yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o"
+	cd /home/nuaa/dovejh/2021RC/build/yolov5/CMakeFiles/myplugins.dir/src && /usr/bin/cmake -E make_directory /home/nuaa/dovejh/2021RC/build/yolov5/CMakeFiles/myplugins.dir/src/.
+	cd /home/nuaa/dovejh/2021RC/build/yolov5/CMakeFiles/myplugins.dir/src && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/nuaa/dovejh/2021RC/build/yolov5/CMakeFiles/myplugins.dir/src/./myplugins_generated_yololayer.cu.o -D generated_cubin_file:STRING=/home/nuaa/dovejh/2021RC/build/yolov5/CMakeFiles/myplugins.dir/src/./myplugins_generated_yololayer.cu.o.cubin.txt -P /home/nuaa/dovejh/2021RC/build/yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o.cmake
 
 # Object files for target myplugins
 myplugins_OBJECTS =
 
 # External object files for target myplugins
 myplugins_EXTERNAL_OBJECTS = \
-"/home/dovejh/project/RC/RC2021/build/yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o"
+"/home/nuaa/dovejh/2021RC/build/yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o"
 
-/home/dovejh/project/RC/RC2021/devel/lib/libmyplugins.so: yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o
-/home/dovejh/project/RC/RC2021/devel/lib/libmyplugins.so: yolov5/CMakeFiles/myplugins.dir/build.make
-/home/dovejh/project/RC/RC2021/devel/lib/libmyplugins.so: /usr/local/cuda/lib64/libcudart.so
-/home/dovejh/project/RC/RC2021/devel/lib/libmyplugins.so: yolov5/CMakeFiles/myplugins.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dovejh/project/RC/RC2021/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library /home/dovejh/project/RC/RC2021/devel/lib/libmyplugins.so"
-	cd /home/dovejh/project/RC/RC2021/build/yolov5 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/myplugins.dir/link.txt --verbose=$(VERBOSE)
+/home/nuaa/dovejh/2021RC/devel/lib/libmyplugins.so: yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o
+/home/nuaa/dovejh/2021RC/devel/lib/libmyplugins.so: yolov5/CMakeFiles/myplugins.dir/build.make
+/home/nuaa/dovejh/2021RC/devel/lib/libmyplugins.so: /usr/local/cuda-10.2/lib64/libcudart.so
+/home/nuaa/dovejh/2021RC/devel/lib/libmyplugins.so: yolov5/CMakeFiles/myplugins.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nuaa/dovejh/2021RC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library /home/nuaa/dovejh/2021RC/devel/lib/libmyplugins.so"
+	cd /home/nuaa/dovejh/2021RC/build/yolov5 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/myplugins.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-yolov5/CMakeFiles/myplugins.dir/build: /home/dovejh/project/RC/RC2021/devel/lib/libmyplugins.so
+yolov5/CMakeFiles/myplugins.dir/build: /home/nuaa/dovejh/2021RC/devel/lib/libmyplugins.so
 
 .PHONY : yolov5/CMakeFiles/myplugins.dir/build
 
@@ -351,10 +351,10 @@ yolov5/CMakeFiles/myplugins.dir/requires:
 .PHONY : yolov5/CMakeFiles/myplugins.dir/requires
 
 yolov5/CMakeFiles/myplugins.dir/clean:
-	cd /home/dovejh/project/RC/RC2021/build/yolov5 && $(CMAKE_COMMAND) -P CMakeFiles/myplugins.dir/cmake_clean.cmake
+	cd /home/nuaa/dovejh/2021RC/build/yolov5 && $(CMAKE_COMMAND) -P CMakeFiles/myplugins.dir/cmake_clean.cmake
 .PHONY : yolov5/CMakeFiles/myplugins.dir/clean
 
 yolov5/CMakeFiles/myplugins.dir/depend: yolov5/CMakeFiles/myplugins.dir/src/myplugins_generated_yololayer.cu.o
-	cd /home/dovejh/project/RC/RC2021/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dovejh/project/RC/RC2021/src /home/dovejh/project/RC/RC2021/src/yolov5 /home/dovejh/project/RC/RC2021/build /home/dovejh/project/RC/RC2021/build/yolov5 /home/dovejh/project/RC/RC2021/build/yolov5/CMakeFiles/myplugins.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/nuaa/dovejh/2021RC/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nuaa/dovejh/2021RC/src /home/nuaa/dovejh/2021RC/src/yolov5 /home/nuaa/dovejh/2021RC/build /home/nuaa/dovejh/2021RC/build/yolov5 /home/nuaa/dovejh/2021RC/build/yolov5/CMakeFiles/myplugins.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : yolov5/CMakeFiles/myplugins.dir/depend
 

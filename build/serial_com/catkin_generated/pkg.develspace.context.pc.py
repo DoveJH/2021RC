@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "serial_com"
-PROJECT_SPACE_DIR = "/home/dovejh/project/RC/RC2021/devel"
+PROJECT_SPACE_DIR = "/home/nuaa/dovejh/2021RC/devel"
 PROJECT_VERSION = "0.0.0"

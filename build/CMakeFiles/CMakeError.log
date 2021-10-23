@@ -1,24 +1,25 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/dovejh/project/RC/RC2021/build/CMakeFiles/CMakeTmp
+Change Dir: /home/nuaa/dovejh/2021RC/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_14eba/fast"
-/usr/bin/make -f CMakeFiles/cmTC_14eba.dir/build.make CMakeFiles/cmTC_14eba.dir/build
-make[1]: 进入目录“/home/dovejh/project/RC/RC2021/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_14eba.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_14eba.dir/CheckSymbolExists.c.o   -c /home/dovejh/project/RC/RC2021/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_14eba
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_14eba.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_14eba.dir/CheckSymbolExists.c.o  -o cmTC_14eba 
-CMakeFiles/cmTC_14eba.dir/CheckSymbolExists.c.o：在函数‘main’中：
-CheckSymbolExists.c:(.text+0x1b)：对‘pthread_create’未定义的引用
+Run Build Command:"/usr/bin/make" "cmTC_cc90e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_cc90e.dir/build.make CMakeFiles/cmTC_cc90e.dir/build
+make[1]: Entering directory '/home/nuaa/dovejh/2021RC/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_cc90e.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_cc90e.dir/CheckSymbolExists.c.o   -c /home/nuaa/dovejh/2021RC/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_cc90e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cc90e.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_cc90e.dir/CheckSymbolExists.c.o  -o cmTC_cc90e 
+CMakeFiles/cmTC_cc90e.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x14): undefined reference to `pthread_create'
+CheckSymbolExists.c:(.text+0x18): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_14eba.dir/build.make:97: recipe for target 'cmTC_14eba' failed
-make[1]: *** [cmTC_14eba] Error 1
-make[1]: 离开目录“/home/dovejh/project/RC/RC2021/build/CMakeFiles/CMakeTmp”
-Makefile:126: recipe for target 'cmTC_14eba/fast' failed
-make: *** [cmTC_14eba/fast] Error 2
+CMakeFiles/cmTC_cc90e.dir/build.make:97: recipe for target 'cmTC_cc90e' failed
+make[1]: *** [cmTC_cc90e] Error 1
+make[1]: Leaving directory '/home/nuaa/dovejh/2021RC/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_cc90e/fast' failed
+make: *** [cmTC_cc90e/fast] Error 2
 
-File /home/dovejh/project/RC/RC2021/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /home/nuaa/dovejh/2021RC/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 
@@ -34,22 +35,22 @@ int main(int argc, char** argv)
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/dovejh/project/RC/RC2021/build/CMakeFiles/CMakeTmp
+Change Dir: /home/nuaa/dovejh/2021RC/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_a93f5/fast"
-/usr/bin/make -f CMakeFiles/cmTC_a93f5.dir/build.make CMakeFiles/cmTC_a93f5.dir/build
-make[1]: 进入目录“/home/dovejh/project/RC/RC2021/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_a93f5.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_a93f5.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_a93f5
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a93f5.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_a93f5.dir/CheckFunctionExists.c.o  -o cmTC_a93f5 -lpthreads 
-/usr/bin/ld: 找不到 -lpthreads
+Run Build Command:"/usr/bin/make" "cmTC_a7d72/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a7d72.dir/build.make CMakeFiles/cmTC_a7d72.dir/build
+make[1]: Entering directory '/home/nuaa/dovejh/2021RC/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a7d72.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_a7d72.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_a7d72
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a7d72.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_a7d72.dir/CheckFunctionExists.c.o  -o cmTC_a7d72 -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_a93f5.dir/build.make:97: recipe for target 'cmTC_a93f5' failed
-make[1]: *** [cmTC_a93f5] Error 1
-make[1]: 离开目录“/home/dovejh/project/RC/RC2021/build/CMakeFiles/CMakeTmp”
-Makefile:126: recipe for target 'cmTC_a93f5/fast' failed
-make: *** [cmTC_a93f5/fast] Error 2
+CMakeFiles/cmTC_a7d72.dir/build.make:97: recipe for target 'cmTC_a7d72' failed
+make[1]: *** [cmTC_a7d72] Error 1
+make[1]: Leaving directory '/home/nuaa/dovejh/2021RC/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_a7d72/fast' failed
+make: *** [cmTC_a7d72/fast] Error 2
 
 

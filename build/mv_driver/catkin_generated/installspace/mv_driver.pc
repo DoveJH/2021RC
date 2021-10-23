@@ -1,4 +1,4 @@
-prefix=/home/dovejh/project/RC/RC2021/install
+prefix=/home/nuaa/dovejh/2021RC/install
 
 Name: mv_driver
 Description: Description of mv_driver
