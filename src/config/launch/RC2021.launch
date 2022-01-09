@@ -19,6 +19,7 @@
     <node pkg="config" type="config_node" name="config_node" output="screen" respawn="true" />
     <node pkg="mv_driver" type="mv_driver_node" name="mv_driver_node" output="screen" respawn="true" />
     <node pkg="image_deal" type="image_deal_node" name="image_deal_node" output="screen" respawn="false" />
-    <node pkg="serial_com" type="serial_com_node" name="serial_com_node" output="screen" respawn="true" />
+    <node pkg="serial_com" type="serial_com_node" name="serial_com_node" output="screen" respawn="false" />
+    <node pkg="yolov5" type="yolov5_node" name="yolov5_node" output="screen" respawn="true" />
 </launch>
 

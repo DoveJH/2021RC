@@ -1,6 +1,6 @@
 #mv_driver Param
 auto_exposure: false
-exposure: 25000
+exposure: 30000
 
 #yolov5 Param
 engine_name: "/home/nuaa/dovejh/2021RC/src/config/engine/yolov5s.engine"
